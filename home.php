@@ -11,6 +11,7 @@
 <p>Hello World! eu sou muito gay</p>
 <p>Hello World! O Pedro é muito gay</p>
 <p>o peras é gay</p>
+<p>O friozinho e gay</p>
 </body>
 </html>
 
