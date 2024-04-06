@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          }
  
          // Verifica se o e-mail existe na base de dados (mudar variaveis)
-         $sql = "SELECT * FROM usuarios WHERE email = '$email'";
+         $sql = "SELECT * FROM utilizadores WHERE email = '$email'";
          $result = $conn->query($sql);
  
          // Verifica se o e-mail foi encontrado na base de dados
