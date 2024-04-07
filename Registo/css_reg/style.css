@@ -1,23 +1,25 @@
-@font-face {
+/* @font-face {
   font-family: "Poppins-Regular";
   src: url("../fonts/poppins/Poppins-Regular.ttf"); }
 @font-face {
   font-family: "Poppins-SemiBold";
-  src: url("../fonts/poppins/Poppins-SemiBold.ttf"); }
+  src: url("../fonts/poppins/Poppins-SemiBold.ttf"); } */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+
+}
 
 body {
-  font-family: "Poppins-Regular";
   color: #333;
   font-size: 13px;
-  margin: 0; 
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+
   }
 
 input, textarea, select, button {
-  font-family: "Poppins-Regular";
   color: #333;
   font-size: 13px; }
 
@@ -46,6 +48,8 @@ a:hover {
   position: relative;}
 
 .inner {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.26);
+  border-radius: 5px;
   padding: 20px;
   background: #fff;
   max-width: 850px;
@@ -61,7 +65,6 @@ a:hover {
   .inner h3 {
     text-transform: uppercase;
     font-size: 25px;
-    font-family: "Poppins-SemiBold";
     text-align: center;
     margin-bottom: 28px; }
 
@@ -91,22 +94,23 @@ a:hover {
   margin-bottom: 25px; }
   .form-control::-webkit-input-placeholder {
     font-size: 13px;
-    color: #333;
-    font-family: "Poppins-Regular"; }
+    color: #999;
+     }
   .form-control::-moz-placeholder {
     font-size: 13px;
-    color: #333;
-    font-family: "Poppins-Regular"; }
+    color: #999;
+     }
   .form-control:-ms-input-placeholder {
     font-size: 13px;
-    color: #333;
-    font-family: "Poppins-Regular"; }
+    color: #999;
+     }
   .form-control:-moz-placeholder {
     font-size: 13px;
-    color: #333;
-    font-family: "Poppins-Regular"; }
+    color: #999;
+     }
 
 select {
+  color: #999;
   -moz-appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
@@ -116,6 +120,8 @@ select {
 
 button {
   border: none;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 3px;
   width: 164px;
   height: 51px;
   margin: auto;
@@ -127,7 +133,7 @@ button {
   padding: 0;
   background: #333;
   font-size: 15px;
-  color: #fff;
+  color: #fec016;
   vertical-align: middle;
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
@@ -212,5 +218,11 @@ button {
 
   button {
     margin-top: 60px; } }
+
+
+.iniciarSess{
+  position: relative;
+  font-size: 0.9em;
+}
 
 /*# sourceMappingURL=style.css.map */
