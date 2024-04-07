@@ -121,6 +121,7 @@ position: relative;
 	text-align: center;
 	margin: -15px 0;
 	font-size: 15px;
+	font-weight: 600;
 	color: #333;
 }
 
@@ -265,8 +266,8 @@ input[type="checkbox"] + label:before
 input[type=checkbox]:checked + label:before
 {
     background-image: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjIwcHgiIGhlaWdodD0iMTVweCIgdmlld0JveD0iMCAwIDIwIDE1Ij4NCjxwb2x5Z29uIGZpbGw9IiNGRkZGRkYiIHBvaW50cz0iNy4xNDMsMTQuOTM4IDAsNy43OTYgMi4wMjEsNS43NzYgNy4xNDMsMTAuODk4IDE3Ljk3OSwwLjA2MiAyMCwyLjA4MiAiLz4NCjwvc3ZnPg0K');
-    background-color: rgb(3, 169, 245);
-    border-color: rgb(3, 169, 245);
+    background-color: #fec016;
+    border-color: #fec016;
     background-repeat: no-repeat;
     background-position: 50% 50%;
     -webkit-background-size: 11px auto;
