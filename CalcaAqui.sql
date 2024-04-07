@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 31-Mar-2024 às 17:24
+-- Tempo de geração: 07-Abr-2024 às 15:17
 -- Versão do servidor: 10.4.28-MariaDB
 -- versão do PHP: 8.2.4
 
@@ -24,23 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `administrador`
---
-
-CREATE TABLE `administrador` (
-  `id_administrador` int(11) NOT NULL,
-  `nome` varchar(60) NOT NULL,
-  `username` varchar(40) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `email` varchar(70) NOT NULL,
-  `morada` text NOT NULL,
-  `data_nasc` date NOT NULL,
-  `genero` varchar(40) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `conta`
 --
 
@@ -50,10 +33,16 @@ CREATE TABLE `conta` (
   `password` varchar(20) NOT NULL,
   `email` varchar(70) NOT NULL,
   `nome` varchar(70) NOT NULL,
-  `morada` varchar(250) NOT NULL,
-  `data_nasc` date NOT NULL,
   `genero` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Acionadores `conta`
+--
+DELIMITER $$
+CREATE TRIGGER `popula_util` AFTER INSERT ON `conta` FOR EACH ROW INSERT INTO utilizador (id_utilizador, username) VALUES (new.id_utilizador, new.username)
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -81,7 +70,8 @@ CREATE TABLE `pedido_reparacao` (
   `descricao` text DEFAULT NULL,
   `notas` text DEFAULT NULL,
   `servico` varchar(50) NOT NULL,
-  `calcado` varchar(50) NOT NULL
+  `calcado` varchar(50) NOT NULL,
+  `status_pedido` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -104,20 +94,14 @@ CREATE TABLE `servico` (
 
 CREATE TABLE `utilizador` (
   `id_utilizador` int(11) NOT NULL,
-  `username` int(11) NOT NULL
+  `username` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tabelas despejadas
 --
-
---
--- Índices para tabela `administrador`
---
-ALTER TABLE `administrador`
-  ADD PRIMARY KEY (`id_administrador`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Índices para tabela `conta`
@@ -150,12 +134,6 @@ ALTER TABLE `utilizador`
 --
 
 --
--- AUTO_INCREMENT de tabela `administrador`
---
-ALTER TABLE `administrador`
-  MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de tabela `conta`
 --
 ALTER TABLE `conta`
@@ -172,6 +150,16 @@ ALTER TABLE `feedback`
 --
 ALTER TABLE `pedido_reparacao`
   MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `conta`
+--
+ALTER TABLE `conta`
+  ADD CONSTRAINT `conta_ibfk_1` FOREIGN KEY (`id_utilizador`) REFERENCES `utilizador` (`id_utilizador`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
