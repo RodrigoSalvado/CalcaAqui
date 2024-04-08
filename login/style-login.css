@@ -24,7 +24,8 @@ html, body
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background: rgb(243, 243, 243);
+	background: url(imagens-log/fundo.jpg) no-repeat;
+	background-size: cover;
 	color: rgba(0,0,0,0.6);
 	font-family: RobotoDraft,Roboto;
 	-webkit-user-select: none;
@@ -57,7 +58,7 @@ position: relative;
     height: 460px;
     border-radius: 5px;
     background: white;
-    box-shadow: 0 1px 5px 0 rgba(0,0,0,0.26);
+    box-shadow: 4px 4px 5px 0 rgba(0,0,0,0.5);
     overflow: hidden;
 }
 
