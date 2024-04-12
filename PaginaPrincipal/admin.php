@@ -1,3 +1,17 @@
+<?php // Ligação à bd
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+$conn = new mysqli($servername, $username, $password);
+mysqli_select_db($conn , 'CalcaAqui');
+
+if ($conn->connect_error) {
+    die("Falha na conexão: " . $conn->connect_error);
+}else{
+    echo "Entrou na bd <hr>";
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +29,7 @@
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/admin.css" rel="stylesheet" />
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
 
@@ -24,10 +38,10 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="index.php">
             <span>
-              Calça Aqui
-            </span>
+Calça Aqui
+</span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -37,19 +51,19 @@
             <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Página Principal <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="index.php">Página Principal <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about.html"> Sobre Nós </a>
+                  <a class="nav-link" href="about.php"> Sobre Nós </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="do.html"> What we do </a>
+                  <a class="nav-link" href="do.php"> Serviços </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="portfolio.html"> Portfolio </a>
+                  <a class="nav-link" href="portfolio.php"> Portfolio </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact us</a>
+                  <a class="nav-link" href="contact.php">Contacte-nos</a>
                 </li>
               </ul>
               <div class="user_option">
@@ -67,58 +81,23 @@
     </header>
   </div>
 
-  <section class="do_section layout_padding">
+  <section class="admin_page">
     <div class="container">
-      <div class="heading_container">
-        <h2>
-          O que Fazemos
-        </h2>
-        <p>
-          Aqui apresentamos todos os serviços da nossa sapataria!
-        </p>
-      </div>
-      <div class="do_container">
-        <div class="box arrow-start arrow_bg">
-          <div class="img-box">
-            <img src="images/agulha.png" alt="">
+      <div class="row">
+        <div class="col-md-3">
+          <h5>
+Perfil Admin
+</h5>
+          <div class="info_box">
+            <div>
+            <p>Username</p>
+            <p>E-mail</p>
+            <p>Morada</p>
           </div>
-          <div class="detail-box">
-            <h6>
-              Costura do <br>
-              Calçado
-            </h6>
-          </div>
-        </div>
-        <div class="box arrow-middle arrow_bg">
-          <div class="img-box">
-            <img src="images/sapato.png" alt="">
-          </div>
-          <div class="detail-box">
-            <h6>
-              Muda de Capa <br>
-              e Sola
-            </h6>
-          </div>
-        </div>
-        <div class="box arrow-middle arrow_bg">
-          <div class="img-box">
-            <img src="images/engraxamento.png" alt="">
-          </div>
-          <div class="detail-box">
-            <h6>
-              Engraxamento
-            </h6>
-          </div>
-        </div>
-        <div class="box arrow-end arrow_bg">
-          <div class="img-box">
-            <img src="images/tinta-spray.png" alt="">
-          </div>
-          <div class="detail-box">
-            <h6>
-              Limpeza do <br>
-              Calçado
-            </h6>
+          <div>
+            <p>Área de Administração</p>
+            <button>Gestão de Pedidos</button><br>
+            <button>Gestão dos Clientes</button>
           </div>
         </div>
       </div>
@@ -131,14 +110,14 @@
         <div class="col-md-3">
           <div class="info_contact">
             <h5>
-              Sobre a Loja
-            </h5>
+Sobre a Loja
+</h5>
             <div>
               <div class="img-box">
                 <img src="images/location-white.png" width="18px" alt="">
               </div>
               <p>
-                Endereço
+Endereço
               </p>
             </div>
             <div>
@@ -146,35 +125,35 @@
                 <img src="images/telephone-white.png" width="12px" alt="">
               </div>
               <p>
-                +961 000000000
-              </p>
++961 000000000
+</p>
             </div>
             <div>
               <div class="img-box">
                 <img src="images/envelope-white.png" width="18px" alt="">
               </div>
               <p>
-                calcaaqui
+calcaaqui
                 @gmail.com
-              </p>
+                </p>
             </div>
           </div>
         </div>
         <div class="col-md-3">
           <div class="info_info">
             <h5>
-              Informações
+Informações
             </h5>
             <p>
-              Colocar texto
-            </p>
+Colocar texto
+</p>
           </div>
         </div>
 
         <div class="col-md-3">
           <div class="info_insta">
             <h5>
-              Responsáveis
+Responsáveis
             </h5>
             <div class="insta_container">
               <div>
@@ -220,12 +199,12 @@
         <div class="col-md-3">
           <div class="info_form ">
             <h5>
-              Novidades
+Novidades
             </h5>
             <form action="">
               <input type="email" placeholder="Insira o e-mail">
               <button>
-                Subscrever
+Subscrever
               </button>
             </form>
             <div class="social_box">
@@ -262,11 +241,11 @@
       autoplay: true,
       autoplayHoverPause: true,
       responsive: {
-        0: {
-          items: 1
+    0: {
+        items: 1
         },
         1000: {
-          items: 3
+        items: 3
         }
       }
     });
@@ -275,3 +254,9 @@
 </body>
 
 </html>
+
+<?php
+
+
+
+$conn -> close();

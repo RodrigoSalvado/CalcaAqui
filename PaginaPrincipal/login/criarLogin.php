@@ -1,3 +1,18 @@
+<?php // Ligação à bd
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+$conn = new mysqli($servername, $username, $password);
+mysqli_select_db($conn , 'CalcaAqui');
+
+if ($conn->connect_error) {
+    die("Falha na conexão: " . $conn->connect_error);
+}else{
+    echo "Entrou na bd <hr>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -54,8 +69,6 @@
 
 <?php
 
-include("database.php");
-
 //$sql = "SELECT FROM users(user,password) VALUES ($mail, $password)";
 
 if(isset($_POST["login"])){
@@ -83,6 +96,6 @@ if(isset($_POST["login"])){
 }
 
 
-mysqli_close($conn);
+$conn -> close();
 
 ?>
