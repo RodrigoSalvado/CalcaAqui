@@ -4,6 +4,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
     <link href="./responsive.css" rel="stylesheet" />
     <link href="./header.css" rel="stylesheet">
+    <title>Calça Aqui</title>
 </head>
 
 <header class="header_section">
