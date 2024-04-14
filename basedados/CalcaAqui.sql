@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Tempo de geração: 14-Abr-2024 às 18:00
--- Versão do servidor: 10.4.28-MariaDB
--- versão do PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Tempo de geração: 14-Abr-2024 às 20:50
+-- Versão do servidor: 10.4.32-MariaDB
+-- versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,9 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `CalcaAqui`
-
-
+-- Banco de dados: `calcaaqui`
+--
 
 -- --------------------------------------------------------
 
@@ -35,7 +34,7 @@ CREATE TABLE `conta` (
   `email` varchar(70) NOT NULL,
   `nome` varchar(70) NOT NULL,
   `genero` varchar(40) DEFAULT NULL,
-  `tipo_utilizador` int(11) NOT NULL
+  `tipo_utilizador` int(11) NOT NULL DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -88,6 +87,13 @@ CREATE TABLE `servico` (
   `foto` varchar(50) NOT NULL,
   `descricao` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `servico`
+--
+
+INSERT INTO `servico` (`tipo_servico`, `foto`, `descricao`) VALUES
+('costura', '', 'Sed lorem ipsum dolor sit amet nullam consequat feugiat consequat magna adipiscing magna etiam amet veroeros. Lorem ipsum dolor tempus sit cursus. Tempus nisl et nullam lorem ipsum dolor sit amet aliquam.');
 
 -- --------------------------------------------------------
 
@@ -183,16 +189,6 @@ ALTER TABLE `pedido_reparacao`
 --
 ALTER TABLE `tipo_utilizador`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `conta`
---
-ALTER TABLE `conta`
-  ADD CONSTRAINT `conta_ibfk_1` FOREIGN KEY (`id_utilizador`) REFERENCES `utilizador` (`id_utilizador`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
