@@ -102,6 +102,129 @@ if ($conn->connect_error) {
             </div>
         </section>
     </div>
+
+    <section class="info_section ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="info_contact">
+                        <h5>
+                            Sobre a Loja
+                        </h5>
+                        <div>
+                            <div class="img-box">
+                                <img src="../images/location-white.png" width="18px" alt="">
+                            </div>
+                            <p>
+                                Endereço
+                            </p>
+                        </div>
+                        <div>
+                            <div class="img-box">
+                                <img src="../images/telephone-white.png" width="12px" alt="">
+                            </div>
+                            <p>
+                                +961 000000000
+                            </p>
+                        </div>
+                        <div>
+                            <div class="img-box">
+                                <img src="../images/envelope-white.png" width="18px" alt="">
+                            </div>
+                            <p>
+                                calcaaqui
+                                @gmail.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="info_info">
+                        <h5>
+                            Informações
+                        </h5>
+                        <p>
+                            Colocar texto
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="info_insta">
+                        <h5>
+                            Responsáveis
+                        </h5>
+                        <div class="insta_container">
+                            <div>
+                                <a href="">
+                                    <div class="insta-box b-1">
+                                        <img src="../images/insta.png" alt="">
+                                    </div>
+                                </a>
+                                <a href="">
+                                    <div class="insta-box b-2">
+                                        <img src="../images/insta.png" alt="">
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div>
+                                <a href="">
+                                    <div class="insta-box b-3">
+                                        <img src="../images/insta.png" alt="">
+                                    </div>
+                                </a>
+                                <a href="">
+                                    <div class="insta-box b-4">
+                                        <img src="../images/insta.png" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="">
+                                    <div class="insta-box b-3">
+                                        <img src="../images/insta.png" alt="">
+                                    </div>
+                                </a>
+                                <a href="">
+                                    <div class="insta-box b-4">
+                                        <img src="../images/insta.png" alt="">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="info_form ">
+                        <h5>
+                            Novidades
+                        </h5>
+                        <form action="">
+                            <input type="email" placeholder="Insira o e-mail">
+                            <button>
+                                Subscrever
+                            </button>
+                        </form>
+                        <div class="social_box">
+                            <a href="">
+                                <img src="../images/fb.png" alt="">
+                            </a>
+                            <a href="">
+                                <img src="../images/twitter.png" alt="">
+                            </a>
+                            <a href="">
+                                <img src="../images/linkedin.png" alt="">
+                            </a>
+                            <a href="">
+                                <img src="../images/youtube.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 <!-- Scripts -->
