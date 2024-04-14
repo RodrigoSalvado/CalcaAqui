@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 07-Abr-2024 às 15:17
+-- Tempo de geração: 14-Abr-2024 às 18:00
 -- Versão do servidor: 10.4.28-MariaDB
 -- versão do PHP: 8.2.4
 
@@ -33,7 +33,8 @@ CREATE TABLE `conta` (
   `password` varchar(20) NOT NULL,
   `email` varchar(70) NOT NULL,
   `nome` varchar(70) NOT NULL,
-  `genero` varchar(40) DEFAULT NULL
+  `genero` varchar(40) DEFAULT NULL,
+  `tipo_utilizador` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -67,6 +68,7 @@ CREATE TABLE `pedido_reparacao` (
   `id_pedido` int(11) NOT NULL,
   `id_utilizador` int(11) NOT NULL,
   `data` datetime NOT NULL DEFAULT current_timestamp(),
+  `foto` varchar(100) DEFAULT NULL,
   `descricao` text DEFAULT NULL,
   `notas` text DEFAULT NULL,
   `servico` varchar(50) NOT NULL,
@@ -89,14 +91,32 @@ CREATE TABLE `servico` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `tipo_utilizador`
+--
+
+CREATE TABLE `tipo_utilizador` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `tipo_utilizador`
+--
+
+INSERT INTO `tipo_utilizador` (`id`, `nome`) VALUES
+(1, 'admin'),
+(2, 'utilizador');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `utilizador`
 --
 
 CREATE TABLE `utilizador` (
   `id_utilizador` int(11) NOT NULL,
   `username` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `admin` tinyint(1) NOT NULL DEFAULT 0
+  `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -122,6 +142,12 @@ ALTER TABLE `feedback`
 --
 ALTER TABLE `pedido_reparacao`
   ADD PRIMARY KEY (`id_pedido`);
+
+--
+-- Índices para tabela `tipo_utilizador`
+--
+ALTER TABLE `tipo_utilizador`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `utilizador`
@@ -150,6 +176,12 @@ ALTER TABLE `feedback`
 --
 ALTER TABLE `pedido_reparacao`
   MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `tipo_utilizador`
+--
+ALTER TABLE `tipo_utilizador`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restrições para despejos de tabelas
