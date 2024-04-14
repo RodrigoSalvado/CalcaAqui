@@ -19,6 +19,10 @@ SET time_zone = "+00:00";
 
 --
 -- Banco de dados: `CalcaAqui`
+
+CREATE DATABASE CalcaAqui;
+
+USE CalcaAqui;
 --
 
 -- --------------------------------------------------------
@@ -27,7 +31,7 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `conta`
 --
 
-CREATE TABLE `conta` (
+CREATE OR ALTER TABLE `conta` (
   `id_utilizador` int(11) NOT NULL,
   `username` varchar(40) NOT NULL,
   `password` varchar(20) NOT NULL,
@@ -51,7 +55,7 @@ DELIMITER ;
 -- Estrutura da tabela `feedback`
 --
 
-CREATE TABLE `feedback` (
+CREATE OR ALTER TABLE `feedback` (
   `id_feedback` int(11) NOT NULL,
   `id_utilizador` int(11) NOT NULL,
   `feedback` text NOT NULL,
@@ -64,7 +68,7 @@ CREATE TABLE `feedback` (
 -- Estrutura da tabela `pedido_reparacao`
 --
 
-CREATE TABLE `pedido_reparacao` (
+CREATE OR ALTER TABLE `pedido_reparacao` (
   `id_pedido` int(11) NOT NULL,
   `id_utilizador` int(11) NOT NULL,
   `data` datetime NOT NULL DEFAULT current_timestamp(),
@@ -82,7 +86,7 @@ CREATE TABLE `pedido_reparacao` (
 -- Estrutura da tabela `servico`
 --
 
-CREATE TABLE `servico` (
+CREATE OR ALTER TABLE `servico` (
   `tipo_servico` varchar(50) NOT NULL,
   `foto` varchar(50) NOT NULL,
   `descricao` text NOT NULL
@@ -94,7 +98,7 @@ CREATE TABLE `servico` (
 -- Estrutura da tabela `tipo_utilizador`
 --
 
-CREATE TABLE `tipo_utilizador` (
+CREATE OR ALTER TABLE `tipo_utilizador` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -113,7 +117,7 @@ INSERT INTO `tipo_utilizador` (`id`, `nome`) VALUES
 -- Estrutura da tabela `utilizador`
 --
 
-CREATE TABLE `utilizador` (
+CREATE OR ALTER TABLE `utilizador` (
   `id_utilizador` int(11) NOT NULL,
   `username` int(11) NOT NULL,
   `email` varchar(100) NOT NULL
