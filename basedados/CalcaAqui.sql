@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Abr-2024 às 20:50
+-- Tempo de geração: 14-Abr-2024 às 21:12
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -23,6 +23,11 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+CREATE DATABASE CalcaAqui;
+
+USE CalcaAqui;
+
+
 --
 -- Estrutura da tabela `conta`
 --
@@ -38,10 +43,17 @@ CREATE TABLE `conta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Extraindo dados da tabela `conta`
+--
+
+INSERT INTO `conta` (`id_utilizador`, `username`, `password`, `email`, `nome`, `genero`, `tipo_utilizador`) VALUES
+(3, 'fbchjea', '123', 'gvwejkg@nfvkjws.com', 'Rodrigo Salvado', 'masculino', 2);
+
+--
 -- Acionadores `conta`
 --
 DELIMITER $$
-CREATE TRIGGER `popula_util` AFTER INSERT ON `conta` FOR EACH ROW INSERT INTO utilizador (id_utilizador, username) VALUES (new.id_utilizador, new.username)
+CREATE TRIGGER `popula_util` AFTER INSERT ON `conta` FOR EACH ROW INSERT INTO utilizador (id_utilizador, username, email) VALUES (new.id_utilizador, new.username, new.email)
 $$
 DELIMITER ;
 
@@ -122,9 +134,16 @@ INSERT INTO `tipo_utilizador` (`id`, `nome`) VALUES
 
 CREATE TABLE `utilizador` (
   `id_utilizador` int(11) NOT NULL,
-  `username` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `utilizador`
+--
+
+INSERT INTO `utilizador` (`id_utilizador`, `username`, `email`) VALUES
+(3, 'fbchjea', 'gvwejkg@nfvkjws.com');
 
 --
 -- Índices para tabelas despejadas
@@ -170,7 +189,7 @@ ALTER TABLE `utilizador`
 -- AUTO_INCREMENT de tabela `conta`
 --
 ALTER TABLE `conta`
-  MODIFY `id_utilizador` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_utilizador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `feedback`
