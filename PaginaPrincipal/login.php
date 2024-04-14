@@ -71,8 +71,9 @@ if ($conn->connect_error) {
 
 </body>
 </html>
+
+
 <?php
+    $conn -> close();
+?>
 
-
-
-$conn -> close();

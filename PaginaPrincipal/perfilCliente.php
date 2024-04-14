@@ -1,16 +1,18 @@
-<?php // Ligação à bd
-$servername = "localhost";
-$username = "root";
-$password = "";
+<?php
+    //ligacao a base de dados
 
-$conn = new mysqli($servername, $username, $password);
-mysqli_select_db($conn , 'CalcaAqui');
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
 
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}else{
-    echo "Entrou na bd <hr>";
-}
+    $conn = new mysqli($servername, $username, $password);
+    mysqli_select_db($conn , 'CalcaAqui');
+
+    if ($conn->connect_error) {
+        die("Falha na conexão: " . $conn->connect_error);
+    }else{
+        echo "Entrou na bd <hr>";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -23,13 +25,12 @@ if ($conn->connect_error) {
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Calça Aqui</title>
-
+    <title>Perfil do Cliente</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
+
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/responsive.css" rel="stylesheet" />
 </head>
@@ -52,28 +53,26 @@ if ($conn->connect_error) {
                     <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                         <ul class="navbar-nav  ">
                             <li class="nav-item active">
-                                <a class="nav-link" href="PaginaPrincipal.php">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="PaginaPrincipal.php">Página Principal <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.php"> About </a>
+                                <a class="nav-link" href="about.php"> Sobre Nós </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="do.php"> What we do </a>
+                                <a class="nav-link" href="do.php"> Serviços </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="portfolio.php"> Portfolio </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.php">Contact us</a>
+                                <a class="nav-link" href="contact.php">Contacte-nos</a>
                             </li>
                         </ul>
                         <div class="user_option">
                             <a href="">
-                                <img src="images/user.png" alt="">
+                                <img src="./images/user.png" alt="">
                             </a>
-                            <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -82,37 +81,21 @@ if ($conn->connect_error) {
     </header>
 </div>
 
-<section class="work_section layout_padding">
-    <div class="container">
-        <div class="heading_container">
-            <h2>
-                Alguns dos nossos trabalhos
-            </h2>
-            <p>
-                Aqui estão alguns trabalhos realizados pelos nossos
-                profissionais, nesta sapataria, aqui damos sempre o nosso melhor
-                para satisfazer os nossos clientes, e para obtermos resultados como estes.
-            </p>
+    <div class="informacoes">
+        <div class="campos-user">
+            <h3>Informações pessoais:</h3>
+            <label for="">Nome completo:(ir buscar a base de dados)</label><br>
+            <label for="">Nome de utilizador:</label><br>
+            <label for="">Email:</label>
         </div>
-        <div class="work_container layout_padding2">
-            <div class="box b-1">
-                <img src="images/w-1.jpg" alt="">
-            </div>
-            <div class="box b-2">
-                <img src="images/w-2.jpg" alt="">
 
-            </div>
-            <div class="box b-3">
-                <img src="images/w-3.jpg" alt="">
+        <div class="pedidos">
+            <h3>Os meus pedidos:</h3>
 
-            </div>
-            <div class="box b-4">
-                <img src="images/w-4.jpg" alt="">
 
-            </div>
         </div>
+
     </div>
-</section>
 
 <section class="info_section ">
     <div class="container">
@@ -237,6 +220,11 @@ if ($conn->connect_error) {
     </div>
 </section>
 
+<section class="container-fluid footer_section">
+
+</section>
+
+
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
@@ -264,8 +252,8 @@ if ($conn->connect_error) {
 </body>
 
 </html>
+
+
 <?php
-
-
-
-$conn -> close();
+    $conn -> close();
+?>
