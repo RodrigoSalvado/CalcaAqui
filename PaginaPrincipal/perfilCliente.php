@@ -92,6 +92,11 @@
         <div class="pedidos">
             <h3>Os meus pedidos:</h3>
 
+            <?php
+
+
+
+            ?>
 
         </div>
 

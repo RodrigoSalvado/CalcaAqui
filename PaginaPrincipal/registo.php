@@ -1,23 +1,12 @@
 <?php // Ligação à bd
-$servername = "localhost";
-$username = "root";
-$password = "";
 
-$conn = new mysqli($servername, $username, $password);
-mysqli_select_db($conn , 'CalcaAqui');
-
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}else{
-    echo "Entrou na bd <hr>";
-}
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>RegistrationForm_v1 by Colorlib</title>
+    <title>Criar Conta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="fonts_reg/material-design-iconic-font/css/material-design-iconic-font.min.css">
@@ -31,38 +20,38 @@ if ($conn->connect_error) {
         <div class="image-holder">
             <img src="Registo/images_reg/leathers-for-Shoes.jpg" alt="">
         </div>
-        <form action="">
+        <form action="criarConta.php" method="post">
             <h3>Criar conta</h3>
             <div class="form-group">
-                <input type="text" placeholder="Nome" class="form-control">
-                <input type="text" placeholder="Sobrenome" class="form-control">
+                <input type="text" placeholder="Nome" class="form-control" name="nome" required>
+                <input type="text" placeholder="Sobrenome" class="form-control" name="sobrenome" required>
             </div>
             <div class="form-wrapper">
-                <input type="text" placeholder="Username" class="form-control">
+                <input type="text" placeholder="Username" class="form-control" name="username" required>
                 <i class="zmdi zmdi-account"></i>
             </div>
             <div class="form-wrapper">
-                <input type="text" placeholder="E-mail" class="form-control">
+                <input type="text" placeholder="E-mail" class="form-control" name="email" required>
                 <i class="zmdi zmdi-email"></i>
             </div>
             <div class="form-wrapper">
-                <select name="" id="" class="form-control">
+                <select name="genero" id="" class="form-control" required>
                     <option value="" disabled selected>Genero</option>
-                    <option value="male">Masculino</option>
-                    <option value="femal">Feminino</option>
-                    <option value="other">Outro</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outro">Outro</option>
                 </select>
                 <i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
             </div>
             <div class="form-wrapper">
-                <input type="password" placeholder="Password" class="form-control">
+                <input type="password" placeholder="Password" class="form-control" name="password" required>
                 <i class="zmdi zmdi-lock"></i>
             </div>
             <div class="form-wrapper">
-                <input type="password" placeholder="Confirm Password" class="form-control">
+                <input type="password" placeholder="Confirm Password" class="form-control" name="confPassword" required>
                 <i class="zmdi zmdi-lock"></i>
             </div>
-            <button>Registar
+            <button type="submit" name="botao" value="registar">Registar
                 <i class="zmdi zmdi-arrow-right"></i>
             </button>
             <div class="iniciarSess">
@@ -76,6 +65,6 @@ if ($conn->connect_error) {
 </html>
 <?php
 
+//$conn -> close();
 
-
-$conn -> close();
+?>
