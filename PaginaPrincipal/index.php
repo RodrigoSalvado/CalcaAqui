@@ -450,9 +450,7 @@ if ($conn->connect_error) {
                 </div>
             </div>
         </div>
-        <div class="map_img-box">
-            <img src="images/map-img.png" alt="">
-        </div>
+
     </div>
 </section>
 
