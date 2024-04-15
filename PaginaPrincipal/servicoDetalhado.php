@@ -1,8 +1,8 @@
 <?php // Ligação à bd
+global $conn;
 include("../basedados/db.h");
 
-$tipo_servico = $_GET["tipoServico"];
-echo $tipo_servico;
+
 
 ?>
 
@@ -89,8 +89,18 @@ echo $tipo_servico;
                         <h2>Ipsum sed adipiscing</h2>
                     </header>
                     <?php
-                        echo "<p>Sed lorem ipsum dolor sit amet nullam consequat feugiat consequat magna adipiscing magna etiam amet veroeros. 
-Lorem ipsum dolor tempus sit cursus. Tempus nisl et nullam lorem ipsum dolor sit amet aliquam.</p>";
+                    $tipo_servico = $_GET["tipoServico"];
+                    echo $tipo_servico;
+
+                    $sql = "SELECT descricao FROM servico WHERE tipo_servico = '$tipo_servico'";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        echo "Descrição do serviço para o tipo $tipo_servico: " . $row["descricao"];
+                    } else {
+                        echo "Nenhuma descrição encontrada para o tipo $tipo_servico";
+                    }
                     ?>
                     <ul class="actions">
                         <li><a href="#" class="button">Learn More</a></li>

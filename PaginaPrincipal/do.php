@@ -101,10 +101,12 @@ include("../basedados/db.h");
                     <img src="images/sapato.png" alt="">
                 </div>
                 <div class="detail-box">
+                    <a href='servicoDetalhado.php?tipoServico="mudar_sola"'>
                     <h6>
                         Muda de Capa <br>
                         e Sola
                     </h6>
+                    </a>
                 </div>
             </div>
             <div class="box arrow-middle arrow_bg">
