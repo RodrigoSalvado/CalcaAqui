@@ -11,6 +11,7 @@ if ($conn->connect_error) {
 }else{
     echo "Entrou na bd <hr>";
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -67,13 +68,38 @@ if ($conn->connect_error) {
     <footer><a href="registo.php">Não tem uma conta? Crie uma!</a></footer>
 </div>
 
-
-
 </body>
 </html>
 
 
 <?php
+
+if(isset($_POST["username"]) && isset($_POST["password"])){
+	
+	//Dados do formulário
+	$username = $_POST["user"];
+	$password = $_POST["pass"];
+	include './basedados/db.h';
+
+    $sql = "SELECT * FROM conta WHERE username = '$username' AND pass = '".md5($password);
+	$retval = mysqli_query( $conn, $sql );
+	if(! $retval ){
+		die('Could not get data: ' . mysqli_error($conn));// se não funcionar dá erro
+	}
+	$row = mysqli_fetch_array($retval);
+
+    if(strcmp($row["user"], $username) == 0 && strcmp($row["pass"], md5($password)) == 0){
+		
+		$_SESSION["user"] = $row["username"];
+	}else{
+		$_SESSION["user"] = -1;
+	}
+}	
+/*else{
+
+	header("refresh:0;url = ./PaginaPrincipal.html");
+}
+*/
     $conn -> close();
 ?>
 
