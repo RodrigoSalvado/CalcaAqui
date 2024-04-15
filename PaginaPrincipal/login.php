@@ -100,6 +100,7 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 	header("refresh:0;url = ./PaginaPrincipal.html");
 }
 */
+
     $conn -> close();
 ?>
 
