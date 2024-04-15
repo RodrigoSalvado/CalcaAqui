@@ -40,7 +40,7 @@ if ($result->num_rows > 0) {
       $genero = $row["genero"];
   }
 } else {
-  echo "Informações do usuário não encontradas.";
+  echo "Informações do utilizador não encontradas.";
 }
 
 ?>
