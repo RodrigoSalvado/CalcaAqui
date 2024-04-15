@@ -89,7 +89,7 @@ include("../basedados/db.h");
                     <a href='servicoDetalhado.php'><img src="images/agulha.png" alt=""></a>
                 </div>
                 <div class="detail-box">
-                    <a href='servicoDetalhado.php?tipoServico="costura"'><h6>
+                    <a href='servicoDetalhado.php?id="1"'><h6>
                             Costura do <br>
                             Calçado
                         </h6></a>
@@ -101,7 +101,7 @@ include("../basedados/db.h");
                     <img src="images/sapato.png" alt="">
                 </div>
                 <div class="detail-box">
-                    <a href='servicoDetalhado.php?tipoServico="mudar_sola"'>
+                    <a href='servicoDetalhado.php?id="2"'>
                     <h6>
                         Muda de Capa <br>
                         e Sola

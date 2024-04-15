@@ -2,7 +2,15 @@
 global $conn;
 include("../basedados/db.h");
 
+$id_servico = $_GET["id"];
 
+$sql = "SELECT * FROM servico WHERE id = $id_servico";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+
+}
 
 ?>
 
@@ -86,27 +94,23 @@ include("../basedados/db.h");
             <div class="spotlight">
                 <div class="content">
                     <header class="major">
-                        <h2>Ipsum sed adipiscing</h2>
+                        <?php
+                        echo $row["tipo_servico"];
+                        ?>
                     </header>
                     <?php
-                    $tipo_servico = $_GET["tipoServico"];
-                    echo $tipo_servico;
-
-                    $sql = "SELECT descricao FROM servico WHERE tipo_servico = '$tipo_servico'";
-                    $result = $conn->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        $row = $result->fetch_assoc();
-                        echo "Descrição do serviço para o tipo $tipo_servico: " . $row["descricao"];
-                    } else {
-                        echo "Nenhuma descrição encontrada para o tipo $tipo_servico";
-                    }
+                    echo $row["descricao"];
                     ?>
                     <ul class="actions">
-                        <li><a href="#" class="button">Learn More</a></li>
+                        <li><a href="#" class="button">Fazer Pedido</a></li>
                     </ul>
                 </div>
-                <span class="image"><img src="ServicoDetalhado/images/pic01.jpg" alt="" /></span>
+                <span class="image">
+                    <img src=<?php
+                    echo "images/".$row["foto"];
+                    ?>>
+
+                </span>
             </div>
         </section>
     </div>
