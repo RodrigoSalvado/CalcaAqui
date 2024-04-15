@@ -1,16 +1,7 @@
 <?php // Ligação à bd
-$servername = "localhost";
-$username = "root";
-$password = "";
 
-$conn = new mysqli($servername, $username, $password);
-mysqli_select_db($conn , 'CalcaAqui');
-
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}else{
-    echo "Entrou na bd <hr>";
-}
+global $conn;
+include("../basedados/db.h");
 ?>
 
 <!DOCTYPE html>
@@ -95,13 +86,14 @@ if ($conn->connect_error) {
         <div class="do_container">
             <div class="box arrow-start arrow_bg">
                 <div class="img-box">
-                    <img src="images/agulha.png" alt="">
+                    <a href='servicoDetalhado.php'><img src="images/agulha.png" alt=""></a>
                 </div>
                 <div class="detail-box">
-                    <h6>
-                        Costura do <br>
-                        Calçado
-                    </h6>
+                    <a href='servicoDetalhado.php?tipoServico="costura"'><h6>
+                            Costura do <br>
+                            Calçado
+                        </h6></a>
+
                 </div>
             </div>
             <div class="box arrow-middle arrow_bg">

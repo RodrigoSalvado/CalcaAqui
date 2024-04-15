@@ -9,7 +9,7 @@ mysqli_select_db($conn , 'CalcaAqui');
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }else{
-    echo "Entrou na bd <hr>";
+    #echo "Entrou na bd <hr>";
 }
 ?>
 <!DOCTYPE html>
@@ -84,18 +84,21 @@ Calça Aqui
   <section class="admin_page">
     <div class="container">
       <div class="row">
-        <div class="col-md-3">
-          <h5>
-Perfil Admin
-</h5>
-          <div class="info_box">
-            <div>
-            <p>Username</p>
-            <p>E-mail</p>
-            <p>Morada</p>
+        <div class="admin_box">
+          <div class="admin_heading">
+            <h2>
+              Informações Pessoais
+            </h2>
           </div>
-          <div>
-            <p>Área de Administração</p>
+          <div class="info_box">
+            <label for"">Username</label><br>
+            <label for"">E-mail</label><br>
+            <label for"">Morada</label>
+          </div>
+          <div class="admin_heading">
+             <h2>Área de Administração</h2>
+          </div>
+          <div class="botoes_gest">
             <button>Gestão de Pedidos</button><br>
             <button>Gestão dos Clientes</button>
           </div>
@@ -110,14 +113,14 @@ Perfil Admin
         <div class="col-md-3">
           <div class="info_contact">
             <h5>
-Sobre a Loja
-</h5>
+            Sobre a Loja
+            </h5>
             <div>
               <div class="img-box">
                 <img src="images/location-white.png" width="18px" alt="">
               </div>
               <p>
-Endereço
+              Endereço
               </p>
             </div>
             <div>
@@ -125,8 +128,8 @@ Endereço
                 <img src="images/telephone-white.png" width="12px" alt="">
               </div>
               <p>
-+961 000000000
-</p>
+              +961 000000000
+              </p>
             </div>
             <div>
               <div class="img-box">

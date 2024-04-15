@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Tempo de geração: 14-Abr-2024 às 18:00
--- Versão do servidor: 10.4.28-MariaDB
--- versão do PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Tempo de geração: 14-Abr-2024 às 21:12
+-- Versão do servidor: 10.4.32-MariaDB
+-- versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,10 +18,15 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `CalcaAqui`
+-- Banco de dados: `calcaaqui`
 --
 
 -- --------------------------------------------------------
+
+CREATE DATABASE CalcaAqui;
+
+USE CalcaAqui;
+
 
 --
 -- Estrutura da tabela `conta`
@@ -34,14 +39,21 @@ CREATE TABLE `conta` (
   `email` varchar(70) NOT NULL,
   `nome` varchar(70) NOT NULL,
   `genero` varchar(40) DEFAULT NULL,
-  `tipo_utilizador` int(11) NOT NULL
+  `tipo_utilizador` int(11) NOT NULL DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `conta`
+--
+
+INSERT INTO `conta` (`id_utilizador`, `username`, `password`, `email`, `nome`, `genero`, `tipo_utilizador`) VALUES
+(3, 'fbchjea', '123', 'gvwejkg@nfvkjws.com', 'Rodrigo Salvado', 'masculino', 2);
 
 --
 -- Acionadores `conta`
 --
 DELIMITER $$
-CREATE TRIGGER `popula_util` AFTER INSERT ON `conta` FOR EACH ROW INSERT INTO utilizador (id_utilizador, username) VALUES (new.id_utilizador, new.username)
+CREATE TRIGGER `popula_util` AFTER INSERT ON `conta` FOR EACH ROW INSERT INTO utilizador (id_utilizador, username, email) VALUES (new.id_utilizador, new.username, new.email)
 $$
 DELIMITER ;
 
@@ -88,6 +100,13 @@ CREATE TABLE `servico` (
   `descricao` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `servico`
+--
+
+INSERT INTO `servico` (`tipo_servico`, `foto`, `descricao`) VALUES
+('costura', '', 'Sed lorem ipsum dolor sit amet nullam consequat feugiat consequat magna adipiscing magna etiam amet veroeros. Lorem ipsum dolor tempus sit cursus. Tempus nisl et nullam lorem ipsum dolor sit amet aliquam.');
+
 -- --------------------------------------------------------
 
 --
@@ -115,9 +134,16 @@ INSERT INTO `tipo_utilizador` (`id`, `nome`) VALUES
 
 CREATE TABLE `utilizador` (
   `id_utilizador` int(11) NOT NULL,
-  `username` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `utilizador`
+--
+
+INSERT INTO `utilizador` (`id_utilizador`, `username`, `email`) VALUES
+(3, 'fbchjea', 'gvwejkg@nfvkjws.com');
 
 --
 -- Índices para tabelas despejadas
@@ -163,7 +189,7 @@ ALTER TABLE `utilizador`
 -- AUTO_INCREMENT de tabela `conta`
 --
 ALTER TABLE `conta`
-  MODIFY `id_utilizador` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_utilizador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `feedback`
@@ -182,16 +208,6 @@ ALTER TABLE `pedido_reparacao`
 --
 ALTER TABLE `tipo_utilizador`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `conta`
---
-ALTER TABLE `conta`
-  ADD CONSTRAINT `conta_ibfk_1` FOREIGN KEY (`id_utilizador`) REFERENCES `utilizador` (`id_utilizador`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,5 +1,5 @@
 <?php // Ligação à bd
-include("C:/xampp/htdocs/CalcaAqui/basedados/db.h"); // teste provisório
+include("../basedados/db.h");
 ?>
 
 <!DOCTYPE html>
