@@ -1,18 +1,17 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
 
-$conn = new mysqli($servername, $username, $password);
-mysqli_select_db($conn , 'CalcaAqui');
+    $conn = new mysqli($servername, $username, $password);
+    mysqli_select_db($conn , 'CalcaAqui');
 
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}else{
-    echo "Entrou na bd <hr>";
+    if ($conn->connect_error) {
+        die("Falha na conexão: " . $conn->connect_error);
+    }else{
+        echo "Entrou na bd <hr>";
 }
-
 
     $nome = $_POST["nome"];
     $sobrenome = $_POST["sobrenome"];
@@ -33,19 +32,36 @@ if ($conn->connect_error) {
         echo "$password". "<br>";
         echo "$confPassword". "<br>";
 
-        $sql = "INSERT INTO conta (username, password, email, nome, genero) VALUES ('$username', '$password', '$email', '$nomeCompleto', '$genero')";
-        $retval = mysqli_query($conn, $sql);
-        if($retval == true){
-            echo "dados inseridos com sucesso";
+        if(isset($nome, $sobrenome, $username, $email, $genero, $password, $confPassword)){
 
-        }else{
-            echo "erro";
+            if($password != $confPassword){
+               //echo "<script>mostrarPopupErro('As senhas não coincidem.');</script>";
+                echo "As passwords nao conincidem";
+            }else{
+                //encriptacao da password
+                $passwordEncriptada = password_hash($password, PASSWORD_DEFAULT);
+
+                $sqlSelect = "SELECT id_utilizador FROM conta WHERE email = '$email' OR username = '$username' ";
+                $resultSelect = mysqli_query($conn, $sqlSelect);
+
+                if($resultSelect->num_rows > 0){
+                    echo "este username ou email ja estao em uso";
+                }else{
+                    $sqlInsert = "INSERT INTO conta (username, password, email, nome, genero) VALUES ('$username', '$passwordEncriptada', '$email', '$nomeCompleto', '$genero')";
+                    $resultInsert = mysqli_query($conn, $sqlInsert);
+                    if($resultInsert == true){
+                        echo "dados inseridos com sucesso";
+                        header("Location: login.php");
+
+                    }else{
+                        echo "erro";
+                    }
+                }
+            }
         }
-
-
-
 
     }
 
-$conn -> close();
+
+    $conn -> close();
 ?>
