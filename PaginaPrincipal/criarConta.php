@@ -35,8 +35,8 @@
         if(isset($nome, $sobrenome, $username, $email, $genero, $password, $confPassword)){
 
             if($password != $confPassword){
-               //echo "<script>mostrarPopupErro('As senhas não coincidem.');</script>";
-                echo "As passwords nao conincidem";
+               echo "<script>window.alert('mensagem') ;</script>";
+               // echo "As passwords nao conincidem";
             }else{
                 //encriptacao da password
                 $passwordEncriptada = password_hash($password, PASSWORD_DEFAULT);

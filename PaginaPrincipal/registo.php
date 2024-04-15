@@ -52,11 +52,6 @@
 
 <body>
 
-<div id="popupErro" class="popup">
-    <span class="fechar" onclick="fecharPopupErro()">&times;</span>
-    <p id="mensagemErro"></p>
-</div>
-
 
 <div class="wrapper" style="  background-image: url('Registo/images_reg/fundo.jpg');">
     <div class="inner">
@@ -104,26 +99,9 @@
     </div>
 </div>
 
-<div id="popupErro" class="popup">
-    <span class="fechar" onclick="fecharPopupErro()">&times;</span>
-    <p id="mensagemErro"></p>
-</div>
 
-<script>
-    // Função para mostrar o popup de erro com a mensagem especificada
-    function mostrarPopupErro(mensagem) {
-        var popup = document.getElementById("popupErro");
-        var mensagemErro = document.getElementById("mensagemErro");
-        mensagemErro.innerHTML = mensagem;
-        popup.style.display = "block";
-    }
 
-    // Função para fechar o popup de erro
-    function fecharPopupErro() {
-        var popup = document.getElementById("popupErro");
-        popup.style.display = "none";
-    }
-</script>
+
 
 </body>
 </html>
