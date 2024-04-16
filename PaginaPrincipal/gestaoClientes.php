@@ -1,38 +1,3 @@
-<?php // Ligação à bd
-
-session_start();
-
-include("../basedados/db.h");
-
-//mudar variavel de sessão
-//descomentar para verificar se está logado ou não 
-
-#  if (!isset($_SESSION['username']) || $_SESSION['username'] !== true) {
-#   header("Location: login.php");
-#   exit;
-# }
-
-$user_logado = $_SESSION['username'];
-$sql = "SELECT username, nome, email, genero FROM conta WHERE username = '$user_logado'";
-$result = $conn->query($sql);
-
-$username = "";
-$nome = "";
-$email = "";
-$genero = "";
-
-if ($result->num_rows > 0) {
-  while ($row = $result->fetch_assoc()) {
-      $username = $row["username"];
-      $nome = $row["nome"];
-      $email = $row["email"];
-      $genero = $row["genero"];
-  }
-} else {
-  echo "Informações do utilizador não encontradas.";
-}
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -107,22 +72,12 @@ Calça Aqui
       <div class="row">
         <div class="admin_box">
           <div class="admin_heading">
-            <h2>
-              Informações Pessoais
-            </h2>
-          </div>
-          <div class="info_box">
-            <label for=""><?php echo $username; ?> Username</label><br>
-            <label for=""><?php echo $nome; ?> Nome</label><br>
-            <label for=""><?php echo $email; ?> E-mail</label><br>
-            <label for=""><?php echo $genero; ?>Genero</label><br><br>
-          </div>
-          <div class="admin_heading">
-             <h2>Área de Administração</h2>
+             <h2>Gestão dos Clientes</h2>
           </div>
           <div class="botoes_gest">
-            <button onclick="window.location.href='gestaoPedidos.php'" >Gestão de Pedidos</button><br>
-            <button onclick="window.location.href='gestaoClientes.php'">Gestão dos Clientes</button>
+            <?php
+                #ir buscar os Clientes a BD
+            ?>
           </div>
         </div>
       </div>
@@ -279,9 +234,3 @@ Subscrever
 </body>
 
 </html>
-
-<?php
-
-
-
-$conn -> close();
