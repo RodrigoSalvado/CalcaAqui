@@ -181,7 +181,7 @@ if ($conn->connect_error) {
         <div class="do_container">
             <div class="box arrow-start arrow_bg">
                 <div class="img-box">
-                    <img src="images/agulha.png" alt="">
+                   <img src="images/agulha.png" alt="">
                 </div>
                 <div class="detail-box">
                     <h6>

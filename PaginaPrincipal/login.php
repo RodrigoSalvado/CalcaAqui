@@ -1,18 +1,3 @@
-<?php // Ligação à bd
-$servername = "localhost";
-$username = "root";
-$password = "";
-
-$conn = new mysqli($servername, $username, $password);
-mysqli_select_db($conn , 'CalcaAqui');
-
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}else{
-    echo "Entrou na bd <hr>";
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -28,12 +13,12 @@ if ($conn->connect_error) {
     <div class="photo">
     </div>
     <span>Introduza os seus dados de Login</span>
-    <form action="" id="login-form">
+    <form action="confirmarLogin.php" id="login-form" method="post">
         <div id="u" class="form-group">
             <input id="username" spellcheck=false class="form-control" name="username" type="text" size="18" alt="login" required="">
             <span class="form-highlight"></span>
             <span class="form-bar"></span>
-            <label for="username" class="float-label">Email</label>
+            <label for="username" class="float-label">Username</label>
             <erroru>
                 Username is required
                 <i>
@@ -62,7 +47,7 @@ if ($conn->connect_error) {
         <div class="form-group">
             <input type="checkbox" id="rem">
             <label for="rem">Manter sessão iniciada</label>
-            <button id="submit" type="submit" ripple>Iniciar sessão</button>
+            <button id="submit" type="submit" name="botao" ripple>Iniciar sessão</button>
         </div>
     </form>
     <footer><a href="registo.php">Não tem uma conta? Crie uma!</a></footer>
@@ -74,7 +59,7 @@ if ($conn->connect_error) {
 
 <?php
 
-if(isset($_POST["username"]) && isset($_POST["password"])){
+/*if(isset($_POST["username"]) && isset($_POST["password"])){
 	
 	//Dados do formulário
 	$username = $_POST["user"];
@@ -95,12 +80,12 @@ if(isset($_POST["username"]) && isset($_POST["password"])){
 		$_SESSION["user"] = -1;
 	}
 }	
-/*else{
+else{
 
 	header("refresh:0;url = ./PaginaPrincipal.html");
 }
 */
 
-    $conn -> close();
+   // $conn -> close();
 ?>
 

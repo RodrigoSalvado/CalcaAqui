@@ -255,9 +255,6 @@ include("../basedados/db.h");
 
 </html>
 
-
 <?php
-
-
-
-$conn -> close();
+    $conn -> close();
+?>

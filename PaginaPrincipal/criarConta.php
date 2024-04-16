@@ -1,6 +1,5 @@
 <?php
-
-    $servername = "localhost";
+    /*$servername = "localhost";
     $username = "root";
     $password = "";
 
@@ -10,8 +9,11 @@
     if ($conn->connect_error) {
         die("Falha na conexão: " . $conn->connect_error);
     }else{
-        echo "Entrou na bd <hr>";
-}
+        echo "Entrou na bd <hr>";*/
+
+// Ligação à bd
+include("../basedados/db.h");
+
 
     $nome = $_POST["nome"];
     $sobrenome = $_POST["sobrenome"];
@@ -35,7 +37,7 @@
         if(isset($nome, $sobrenome, $username, $email, $genero, $password, $confPassword)){
 
             if($password != $confPassword){
-               echo "<script>window.alert('mensagem') ;</script>";
+               echo "<script>window.alert('As passwords não coincidem!') ;</script>";
                // echo "As passwords nao conincidem";
             }else{
                 //encriptacao da password
@@ -45,23 +47,22 @@
                 $resultSelect = mysqli_query($conn, $sqlSelect);
 
                 if($resultSelect->num_rows > 0){
-                    echo "este username ou email ja estao em uso";
+                    echo "<script>window.alert('Este username ou mail já esta em uso!') ;</script>";
                 }else{
                     $sqlInsert = "INSERT INTO conta (username, password, email, nome, genero) VALUES ('$username', '$passwordEncriptada', '$email', '$nomeCompleto', '$genero')";
                     $resultInsert = mysqli_query($conn, $sqlInsert);
                     if($resultInsert == true){
-                        echo "dados inseridos com sucesso";
+                        echo "A sua conta foi criada com sucesso!";
                         header("Location: login.php");
 
                     }else{
-                        echo "erro";
+                        echo "<script>window.alert('Não foi possivel criar a conta! Tente novamente.') ;</script>";
                     }
                 }
             }
         }
 
     }
-
 
     $conn -> close();
 ?>
