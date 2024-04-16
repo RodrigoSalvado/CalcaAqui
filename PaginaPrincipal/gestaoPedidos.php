@@ -86,9 +86,7 @@ Calça Aqui
              <h2>Gestão de Pedidos</h2>
           </div>
           <div class="botoes_gest">  
-             <?php foreach ($ as $): #ir buscar os pedidos a BD ?>
-                <button for=""><?php echo $['']; ?></button><br>
-            <?php endforeach; ?>
+
           </div>
         </div>
       </div>
