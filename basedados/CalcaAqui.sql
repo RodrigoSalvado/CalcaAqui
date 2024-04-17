@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `CalcaAqui`
 --
+    CREATE DATABASE CalcaAqui;
+
+    USE CalcaAqui;
 
 -- --------------------------------------------------------
 
