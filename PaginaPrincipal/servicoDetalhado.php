@@ -4,12 +4,11 @@ include("../basedados/db.h");
 
 $id_servico = $_GET["id"];
 
-$sql = "SELECT * FROM servico WHERE id = $id_servico";
+$sql = "SELECT * FROM servico WHERE id_servico = $id_servico";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
-
 }
 
 ?>
@@ -102,13 +101,14 @@ if ($result->num_rows > 0) {
                     echo $row["descricao"];
                     ?>
                     <ul class="actions">
-                        <li><a href="#" class="button">Fazer Pedido</a></li>
+                        <li><a href="formularioPedido.php" class="button">Fazer Pedido</a></li>
                     </ul>
                 </div>
                 <span class="image">
-                    <img src=<?php
-                    echo "images/".$row["foto"];
-                    ?>>
+                    <?php
+                    $caminho = $row["foto"];
+                    echo "<img src='ServicoDetalhado/images/$caminho'>";
+                    ?>
 
                 </span>
             </div>

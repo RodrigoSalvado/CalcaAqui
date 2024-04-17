@@ -114,9 +114,11 @@ include("../basedados/db.h");
                     <img src="images/engraxamento.png" alt="">
                 </div>
                 <div class="detail-box">
+                    <a href='servicoDetalhado.php?id="3"'>
                     <h6>
                         Engraxamento
                     </h6>
+                    </a>
                 </div>
             </div>
             <div class="box arrow-end arrow_bg">
@@ -124,10 +126,12 @@ include("../basedados/db.h");
                     <img src="images/tinta-spray.png" alt="">
                 </div>
                 <div class="detail-box">
+                    <a href='servicoDetalhado.php?id="4"'>
                     <h6>
                         Limpeza do <br>
                         Calçado
                     </h6>
+                    </a>
                 </div>
             </div>
         </div>
