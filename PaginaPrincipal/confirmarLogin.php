@@ -11,35 +11,23 @@
     if(isset($botao)){
         if(isset($username, $password)){
 
+            //consulta de password do user inserido
             $sqlSelect = "SELECT password FROM conta WHERE username = '".$_SESSION["username"]."'";
             $resultSelect = mysqli_query($conn, $sqlSelect);
 
             if($resultSelect->num_rows > 0){
                 $row = $resultSelect->fetch_assoc();
                 $pass = $row["password"];
-                echo $pass . "<br>";
-                //$passwordEncriptada = password_hash($password, PASSWORD_DEFAULT);
 
 
-                //comparacao com pass encriptada
-                if(md5($password) == $pass){
-                    echo "as passwords conicidem";
-                }else{
-                    echo "password errada". "<br>";
-                    echo $pass ."<br>";
-                    echo md5($password);
+                //cofirmacao de password
+                if(md5($password) == $pass) {
+                    //echo "<script>window.alert('password correta') ;</script>";
+                    header("Location: PaginaPrincipal.php");
                 }
 
-                //comparacao sem estar encriptada
-                /*if($pass == $password){
-                    echo "as passwords coincidem";
-                }else{
-                    echo "password incorreta";
-                }*/
-
-
             }else{
-                echo "palavra-passe nao encontrada";
+                echo "<script>window.alert('Dados de login invalidos!') ;</script>";
             }
 
         }else{
