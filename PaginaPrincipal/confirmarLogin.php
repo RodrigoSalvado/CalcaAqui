@@ -24,6 +24,8 @@
                 if(md5($password) == $pass) {
                     //echo "<script>window.alert('password correta') ;</script>";
                     header("Location: PaginaPrincipal.php");
+                }else{
+                    echo "<script>window.alert('Dados de login invalidos!') ;</script>";
                 }
 
             }else{
