@@ -41,7 +41,7 @@ include("../basedados/db.h");
                // echo "As passwords nao conincidem";
             }else{
                 //encriptacao da password
-                $passwordEncriptada = password_hash($password, PASSWORD_DEFAULT);
+                $passwordEncriptada = md5($password);
 
                 $sqlSelect = "SELECT id_utilizador FROM conta WHERE email = '$email' OR username = '$username' ";
                 $resultSelect = mysqli_query($conn, $sqlSelect);

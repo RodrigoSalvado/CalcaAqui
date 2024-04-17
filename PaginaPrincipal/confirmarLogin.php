@@ -22,10 +22,12 @@
 
 
                 //comparacao com pass encriptada
-                if(password_verify($password, $pass)){
+                if(md5($password) == $pass){
                     echo "as passwords conicidem";
                 }else{
-                    echo "password errada";
+                    echo "password errada". "<br>";
+                    echo $pass ."<br>";
+                    echo md5($password);
                 }
 
                 //comparacao sem estar encriptada

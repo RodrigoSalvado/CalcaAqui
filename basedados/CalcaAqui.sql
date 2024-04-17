@@ -35,7 +35,7 @@ USE CalcaAqui;
 CREATE TABLE `conta` (
   `id_utilizador` int(11) NOT NULL,
   `username` varchar(40) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(40) NOT NULL,
   `email` varchar(70) NOT NULL,
   `nome` varchar(70) NOT NULL,
   `genero` varchar(40) DEFAULT NULL,
