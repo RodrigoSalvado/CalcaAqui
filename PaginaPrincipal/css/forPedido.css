@@ -187,7 +187,10 @@ body {
 
 /*fim do header*/
 
-body{
-
-
+.nomeUtilizador {
+  text-align: center;
+}
+.botao {
+  text-align: right;
+  margin-top: 20px;
 }

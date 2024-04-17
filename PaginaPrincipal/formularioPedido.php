@@ -67,6 +67,10 @@
     </header>
   </div>
 
+  <br>
+  <br>
+
+<div class="nomeUtilizador">
   <section>
     <div class="nomeUtilizador">
     <h3>Nome do Utilizador:</h3>
@@ -89,9 +93,14 @@
     <h3>Calendário</h3>
     <label>Precisa do Serviço feito até alguma data?<br>
            Se sim selecione a data!</label>
-    </div>
-
+           <br>
+    <input type="date">
+          </div>
+</div>
+<div class="botao">
     <input type="submit" value="Enviar">
+</div>
+
   </section>
   
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
