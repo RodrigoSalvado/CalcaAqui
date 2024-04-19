@@ -101,7 +101,10 @@ if ($result->num_rows > 0) {
                     echo $row["descricao"];
                     ?>
                     <ul class="actions">
-                        <li><a href="formularioPedido.php" class="button">Fazer Pedido</a></li>
+                        <?php
+                        echo "<li><a href='formularioPedido.php?idServico = ".$id_servico."' class='button'>Fazer Pedido</a></li>"
+                        ?>
+
                     </ul>
                 </div>
                 <span class="image">

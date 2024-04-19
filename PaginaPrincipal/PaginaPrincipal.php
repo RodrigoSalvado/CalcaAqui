@@ -1,16 +1,5 @@
 <?php // Ligação à bd
-$servername = "localhost";
-$username = "root";
-$password = "";
-
-$conn = new mysqli($servername, $username, $password);
-mysqli_select_db($conn , 'CalcaAqui');
-
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}else{
-    echo "Entrou na bd <hr>";
-}
+include("./basedados/db.h");
 ?>
 
 <!DOCTYPE html>
@@ -181,13 +170,14 @@ if ($conn->connect_error) {
         <div class="do_container">
             <div class="box arrow-start arrow_bg">
                 <div class="img-box">
-                   <img src="images/agulha.png" alt="">
+                    <a href='servicoDetalhado.php'><img src="images/agulha.png" alt=""></a>
                 </div>
                 <div class="detail-box">
-                    <h6>
-                        Costura do <br>
-                        Calçado
-                    </h6>
+                    <a href='servicoDetalhado.php?id="1"'><h6>
+                            Costura do <br>
+                            Calçado
+                        </h6></a>
+
                 </div>
             </div>
             <div class="box arrow-middle arrow_bg">
@@ -195,10 +185,12 @@ if ($conn->connect_error) {
                     <img src="images/sapato.png" alt="">
                 </div>
                 <div class="detail-box">
-                    <h6>
-                        Muda de Capa <br>
-                        e Sola
-                    </h6>
+                    <a href='servicoDetalhado.php?id="2"'>
+                        <h6>
+                            Muda de Capa <br>
+                            e Sola
+                        </h6>
+                    </a>
                 </div>
             </div>
             <div class="box arrow-middle arrow_bg">
@@ -206,9 +198,11 @@ if ($conn->connect_error) {
                     <img src="images/engraxamento.png" alt="">
                 </div>
                 <div class="detail-box">
-                    <h6>
-                        Engraxamento
-                    </h6>
+                    <a href='servicoDetalhado.php?id="3"'>
+                        <h6>
+                            Engraxamento
+                        </h6>
+                    </a>
                 </div>
             </div>
             <div class="box arrow-end arrow_bg">
@@ -216,10 +210,12 @@ if ($conn->connect_error) {
                     <img src="images/tinta-spray.png" alt="">
                 </div>
                 <div class="detail-box">
-                    <h6>
-                        Limpeza do <br>
-                        Calçado
-                    </h6>
+                    <a href='servicoDetalhado.php?id="4"'>
+                        <h6>
+                            Limpeza do <br>
+                            Calçado
+                        </h6>
+                    </a>
                 </div>
             </div>
         </div>
