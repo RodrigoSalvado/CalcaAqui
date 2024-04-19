@@ -102,7 +102,8 @@ if ($result->num_rows > 0) {
                     ?>
                     <ul class="actions">
                         <?php
-                        echo "<li><a href='formularioPedido.php?idServico = ".$id_servico."' class='button'>Fazer Pedido</a></li>"
+                        $tipoServico = $row["tipo_servico"];
+                        echo "<li><a href='formularioPedido.php?id=".$tipoServico."' class='button'>Fazer Pedido</a></li>"
                         ?>
 
                     </ul>

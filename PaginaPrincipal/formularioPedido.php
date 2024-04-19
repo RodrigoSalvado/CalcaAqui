@@ -1,5 +1,12 @@
 <?php
-include("./basedados/db.h");
+include("../basedados/db.h");
+
+$tipo_servico = $_GET["id"];
+
+
+
+
+
 ?>
 
 
@@ -83,11 +90,19 @@ include("./basedados/db.h");
     <input type="text" name="" required><br>
     <h3>Tipo de serviço:</h3>
     <select required>
-        <option value=""></option>
-        <option value="servico1">Costura do Calçado</option>
-        <option value="servico2">Muda de capa e sola</option>
-        <option value="servico3">Engraxamento</option>
-        <option value="servico4">Limpeza de calçado</option>
+        <?php
+        $sql = "SELECT * FROM servico";
+        $result = $conn->query($sql);
+        echo "<option>$tipo_servico</option>";
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                if($row["tipo_servico"] != $tipo_servico){
+                    echo "<option>" . $row["tipo_servico"] . "</option>";
+                }
+            }
+        }
+        ?>
+
     </select>
   
     <h3>Email:</h3>
