@@ -1,11 +1,8 @@
 <?php
+global $conn;
 include("../basedados/db.h");
 
 $tipo_servico = $_GET["id"];
-
-
-
-
 
 ?>
 
@@ -31,6 +28,8 @@ $tipo_servico = $_GET["id"];
   <link href="css/forPedido.css" rel="stylesheet" />
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
+
+
 
 <body class="sub_page">
   <div class="hero_area">
@@ -82,47 +81,54 @@ $tipo_servico = $_GET["id"];
 
   <br>
   <br>
-
-<div class="nomeUtilizador">
-  <section>
+  <form action="envioPedido.php" method="post">
     <div class="nomeUtilizador">
-    <h3>Nome do Utilizador:</h3>
-    <input type="text" name="" required><br>
-    <h3>Tipo de serviço:</h3>
-    <select required>
-        <?php
-        $sql = "SELECT * FROM servico";
-        $result = $conn->query($sql);
-        echo "<option>$tipo_servico</option>";
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                if($row["tipo_servico"] != $tipo_servico){
-                    echo "<option>" . $row["tipo_servico"] . "</option>";
-                }
-            }
-        }
-        ?>
+    <section>
+        <div class="nomeUtilizador">
+        <h3>Nome do Utilizador:</h3>
+        <input type="text" name="username" required><br>
+        <h3>Tipo de serviço:</h3>
+        <select name="tipo_servico" required>
+           <?php
+           $sql = "SELECT tipo_servico FROM servico";
+           $result = $conn->query($sql);
+           echo "<option>$tipo_servico</option>";
+           if ($result->num_rows > 0) {
+               while ($row = $result->fetch_assoc()) {
+                 if($row["tipo_servico"] != $tipo_servico){
+                     echo "<option>" . $row["tipo_servico"] . "</option>";
+                 }
+             }
+         }
+         ?>
+        </select>
 
-    </select>
-  
-    <h3>Email:</h3>
-    <input type="text" name="" required>
+        <h3>Tipo de Calçado:</h3>
+        <select name="tipo_calcado">
+        <option value=""></option>
+        <option value="Ténis">Ténis</option>
+        <option value="Bota">Bota</option>
+        <option value="Sapato de Salto Alto">Sapato de salto alto</option>
+        <option value="Chinelo">Chinelo</option>
+        <option value="Pantufas">Pantufas</option>
+        </select>
   
     <h3>Foto:</h3>
-    <input type="file" name="imagem" required/>
+    <input type="file" name="imagem"/>
   
-    <h3>Calendário</h3>
-    <label>Precisa do Serviço feito até alguma data?<br>
-           Se sim selecione a data!</label>
+    <h3>Descrição</h3>
+    <label>Caso deseje deixar alguma indicação, uma data limite para ter o serviço feito!</label>
            <br>
-    <input type="date">
+        <input type="text" name="descricao">
           </div>
 </div>
 <div class="botao">
-    <input type="submit" value="Enviar">
+    <input name = "botao" type="submit" value="Enviar">
 </div>
 
   </section>
+
+  </form>
   
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
@@ -153,6 +159,8 @@ $tipo_servico = $_GET["id"];
 
 
 <?php
+
+
 
 
 $conn -> close();
