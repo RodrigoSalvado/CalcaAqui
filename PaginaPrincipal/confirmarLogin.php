@@ -1,4 +1,5 @@
 <?php
+    global $conn;
     include("../basedados/db.h");
 
     session_start();
@@ -23,7 +24,7 @@
                 //cofirmacao de password
                 if(md5($password) == $pass) {
                     //echo "<script>window.alert('password correta') ;</script>";
-                    header("Location: PaginaPrincipal.php");
+                    header("Location: perfilCliente.php");
                 }else{
                     echo "<script>window.alert('Dados de login invalidos!') ;</script>";
                 }

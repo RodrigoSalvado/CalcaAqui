@@ -1,18 +1,29 @@
 <?php
     //ligacao a base de dados
+    global $conn;
+    include("../basedados/db.h");
+    session_start();
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $nome = "";
+    $username = "";
+    $email = "";
 
-    $conn = new mysqli($servername, $username, $password);
-    mysqli_select_db($conn , 'CalcaAqui');
+    $user_logado = $_SESSION["username"];
+    $sqlSelect = "SELECT nome, username, email FROM conta WHERE username = '$user_logado'";
+    $resultSelect = mysqli_query($conn, $sqlSelect);
 
-    if ($conn->connect_error) {
-        die("Falha na conexão: " . $conn->connect_error);
+    if($resultSelect -> num_rows > 0){
+        while($row = $resultSelect->fetch_assoc()){
+            $nome = $row["nome"];
+            $username = $row["username"];
+            $email = $row["email"];
+
+        }
+
     }else{
-        echo "Entrou na bd <hr>";
+        echo "<script>window.alert('Não foram encontrados resultados') ;</script>";
     }
+
 ?>
 
 <!DOCTYPE html>
@@ -84,15 +95,53 @@
     <div class="informacoes">
         <div class="campos-user">
             <h3>Informações pessoais:</h3>
-            <label for="">Nome completo:(ir buscar a base de dados)</label><br>
-            <label for="">Nome de utilizador:</label><br>
-            <label for="">Email:</label>
+            <label for=""><?php echo $nome; ?></label><br>
+            <label for=""><?php echo $username; ?></label><br>
+            <label for=""><?php echo $email; ?></label>
         </div>
 
         <div class="pedidos">
             <h3>Os meus pedidos:</h3>
 
             <?php
+
+
+
+
+                //id do user que fez o login
+                $sql = "SELECT id_utilizador FROM utilizador WHERE username = '$user_logado'";
+                $result = mysqli_query($conn, $sql);
+
+                if($result -> num_rows > 0){
+                    $rowId = $result -> fetch_assoc();
+                    $idUserLogado = $rowId["id_utilizador"];
+                    //echo $idUserLogado;
+
+                    //dados do(s) pedido(s) do user que fez o login
+                    $sqlPedido = "SELECT servico, status_pedido FROM pedido_reparacao WHERE id_utilizador = '$idUserLogado'";
+                    $resultPedido = mysqli_query($conn, $sqlPedido);
+
+                    if($resultPedido -> num_rows > 0){
+                        while($rowPedido = $resultPedido -> fetch_assoc()){
+                            $servico = $rowPedido["servico"];
+                            $status_pedido = $rowPedido["status_pedido"];
+
+                            echo "<div class='pedido' ><label class='campos' id='servico' >$servico</label> <label class='campos' id='estado' >$status_pedido</label></div>";
+
+                            //echo $servico;
+                           // echo $status_pedido;
+                        }
+                    }else{
+                        if($resultPedido -> num_rows == 0){
+                            echo "ainda nao realizou nenhum pedido";
+                        }else{
+                            echo "erro ao realizar o select";
+                        }
+                    }
+
+                    }else{
+                         echo "erro";
+                    }
 
 
 
