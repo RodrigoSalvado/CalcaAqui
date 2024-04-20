@@ -160,7 +160,7 @@ $tipo_servico = $_GET["id"];
                                 <img src="images/telephone-white.png" width="12px" alt="">
                             </div>
                             <p>
-                                +961 000000000
+                                +351 000000000
                             </p>
                         </div>
                         <div>
@@ -168,8 +168,7 @@ $tipo_servico = $_GET["id"];
                                 <img src="images/envelope-white.png" width="18px" alt="">
                             </div>
                             <p>
-                                calcaaqui
-                                @gmail.com
+                                calcaaqui@gmail.com
                             </p>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 <?php // Ligação à bd
-include("./basedados/db.h");
+include("../basedados/db.h");
+global $conn;
 ?>
 
 <!DOCTYPE html>
