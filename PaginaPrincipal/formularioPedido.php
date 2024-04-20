@@ -1,6 +1,8 @@
 <?php // Ligação à bd
 global $conn;
 include("../basedados/db.h");
+
+$tipo_servico = $_GET["id"];
 ?>
 
     <!DOCTYPE html>
