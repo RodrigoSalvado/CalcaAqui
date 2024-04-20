@@ -1,12 +1,7 @@
-<?php
+<?php // Ligação à bd
 global $conn;
 include("../basedados/db.h");
-
-$tipo_servico = $_GET["id"];
-
 ?>
-
-
 
     <!DOCTYPE html>
     <html>
@@ -19,24 +14,21 @@ $tipo_servico = $_GET["id"];
         <meta name="author" content="" />
 
         <title>Calça Aqui</title>
-
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
+
         <link href="css/forPedido.css" rel="stylesheet" />
         <link href="css/responsive.css" rel="stylesheet" />
     </head>
-
-
 
     <body class="sub_page">
     <div class="hero_area">
         <header class="header_section">
             <div class="container-fluid">
                 <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-                    <a class="navbar-brand" href="./PaginaPrincipal.php">
+                    <a class="navbar-brand" href="PaginaPrincipal.php">
             <span>
               Calça Aqui
             </span>
@@ -49,19 +41,19 @@ $tipo_servico = $_GET["id"];
                         <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                             <ul class="navbar-nav  ">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="./PaginaPrincipal.php">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link" href="PaginaPrincipal.php">Página Principal <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="./about.php"> About </a>
+                                    <a class="nav-link" href="about.php"> Sobre Nós </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="./do.php"> What we do </a>
+                                    <a class="nav-link" href="do.php"> Serviços </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="./portfolio.php"> Portfolio </a>
+                                    <a class="nav-link" href="portfolio.php"> Portfolio </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="./contact.php">Contact us</a>
+                                    <a class="nav-link" href="contact.php">Contacte-nos</a>
                                 </li>
                             </ul>
                             <div class="user_option">
@@ -78,46 +70,44 @@ $tipo_servico = $_GET["id"];
             </div>
         </header>
     </div>
-
-    <br>
-    <br>
+    <section>
     <form action="envioPedido.php" method="post">
         <div class="nomeUtilizador">
-            <section>
+<br>
                 <div class="nomeUtilizador">
                     <h3>Nome do Utilizador:</h3>
                     <div class="info_box input">
-                    <input type="text" name="username" required><br>
+                        <input type="text" name="username" required><br>
                     </div>
                     <div class="servico select">
                         <br>
-                    <h3>Tipo de serviço:</h3>
-                    <select name="tipo_servico" required>
-                        <?php
-                        $sql = "SELECT tipo_servico FROM servico";
-                        $result = $conn->query($sql);
-                        echo "<option>$tipo_servico</option>";
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                if($row["tipo_servico"] != $tipo_servico){
-                                    echo "<option>" . $row["tipo_servico"] . "</option>";
+                        <h3>Tipo de serviço:</h3>
+                        <select name="tipo_servico" required>
+                            <?php
+                            $sql = "SELECT tipo_servico FROM servico";
+                            $result = $conn->query($sql);
+                            echo "<option>$tipo_servico</option>";
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    if($row["tipo_servico"] != $tipo_servico){
+                                        echo "<option>" . $row["tipo_servico"] . "</option>";
+                                    }
                                 }
                             }
-                        }
-                        ?>
-                    </select>
-                        </div>
+                            ?>
+                        </select>
+                    </div>
                     <br>
                     <div class="calcado select">
-                    <h3>Tipo de Calçado:</h3>
-                    <select name="tipo_calcado">
-                        <option value=""></option>
-                        <option value="Ténis">Ténis</option>
-                        <option value="Bota">Bota</option>
-                        <option value="Sapato de Salto Alto">Sapato de salto alto</option>
-                        <option value="Chinelo">Chinelo</option>
-                        <option value="Pantufas">Pantufas</option>
-                    </select>
+                        <h3>Tipo de Calçado:</h3>
+                        <select name="tipo_calcado">
+                            <option value=""></option>
+                            <option value="Ténis">Ténis</option>
+                            <option value="Bota">Bota</option>
+                            <option value="Sapato de Salto Alto">Sapato de salto alto</option>
+                            <option value="Chinelo">Chinelo</option>
+                            <option value="Pantufas">Pantufas</option>
+                        </select>
                     </div>
                     <br>
                     <h3>Foto:</h3>
@@ -127,18 +117,16 @@ $tipo_servico = $_GET["id"];
                     <h3>Descrição</h3>
                     <div class="desc input">
                         <input type="text" name="descricao" placeholder="Caso deseje deixar alguma indicação, uma data limite para ter o serviço feito!">
+                    </div>
                 </div>
-        </div>
-                <div class="container">
-        <div class="botao">
-            <input name = "botao" type="submit" value="Enviar">
-        </div>
-                </div>
-
-        </section>
+                    <div class="container">
+                    <div class="botao">
+                        <input name = "botao" type="submit" value="Enviar">
+                    </div>
+                    </div>
+            </section>
 
     </form>
-
     <section class="info_section ">
         <div class="container">
             <div class="row">
@@ -261,6 +249,10 @@ $tipo_servico = $_GET["id"];
         </div>
     </section>
 
+    <section class="container-fluid footer_section">
+
+    </section>
+
 
     <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
@@ -284,13 +276,12 @@ $tipo_servico = $_GET["id"];
                 }
             }
         });
-
     </script>
+
     </body>
+
     </html>
 
-
 <?php
-
 $conn -> close();
 ?>
