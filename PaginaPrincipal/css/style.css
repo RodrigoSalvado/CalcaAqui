@@ -746,7 +746,6 @@ a:focus {
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
   margin-bottom: 20px ;
   overflow: auto;
-
 }
 
 #servico{
@@ -766,7 +765,6 @@ a:focus {
 }
 
 .linha1{
-  background: tomato;
 
 }
 
@@ -785,13 +783,11 @@ a:focus {
 .linha2{
   padding-top: 25px;
   padding-bottom: 25px;
-  background: lightblue;
 }
 
 .linha2 .labels .campos{
   font-size: large;
   font-weight: 550;
-  background: tomato;
   width: 49%;
   padding: 10px;
 
@@ -800,10 +796,9 @@ a:focus {
 .linha2 .descricoes .desc{
   border-radius: 15px;
   height: auto;
-  background: tomato;
   width: 49%;
   padding: 20px;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.37);
   word-wrap: break-word;
   white-space: normal;
 }
@@ -812,8 +807,28 @@ a:focus {
   flex-direction: row;
 }
 
-.linha3{
-  background: lime;
+.linha3 {
+  text-align: center;
+
+}
+
+.linha3 h4{
+  text-align:center ;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.linha3 .campos2{
+  align-items: center;
+  width: 80%;
+  height: 50px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 15px;
+  border: solid 1px #333333;
+  color: #333333;
 }
 
 

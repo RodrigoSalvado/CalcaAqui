@@ -111,7 +111,7 @@ if ($result->num_rows > 0) {
                 <span class="image">
                     <?php
                     $caminho = $row["foto"];
-                    echo "<img src='ServicoDetalhado/images/$caminho'>";
+                    echo "<img src='ServicoDetalhado/images/$caminho' height='265px' > ";
                     ?>
 
                 </span>

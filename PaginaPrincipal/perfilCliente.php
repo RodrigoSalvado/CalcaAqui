@@ -128,7 +128,13 @@ echo $_SESSION["username"];
                             $servico = $rowPedido["servico"];
                             $status_pedido = $rowPedido["status_pedido"];
 
-                            echo "<div class='pedido' ><label class='campos' id='servico' >$servico</label> <label class='campos' id='estado' >$status_pedido</label></div>";
+                            echo "<button class='pedido' onclick='window.location.href=\"pedidoDetalhado.php\"' style='border: none;'>
+                                    <label class='campos' id='servico'>$servico</label>
+                                    <label class='campos' id='estado'>$status_pedido</label>
+                                  </button>";
+
+
+
 
                             //echo $servico;
                            // echo $status_pedido;

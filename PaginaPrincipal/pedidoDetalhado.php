@@ -3,6 +3,28 @@ global $conn;
 include("../basedados/db.h");
 session_start();
 
+echo $_SESSION["username"];
+
+    $nome = "";
+    $username = "";
+    $email = "";
+
+    $user_logado = $_SESSION["username"];
+    $sqlSelect = "SELECT nome, username, email FROM conta WHERE username = '$user_logado'";
+    $resultSelect = mysqli_query($conn, $sqlSelect);
+
+    if($resultSelect -> num_rows > 0){
+        while($row = $resultSelect->fetch_assoc()){
+            $nome = $row["nome"];
+            $username = $row["username"];
+            $email = $row["email"];
+
+        }
+
+    }else{
+        echo "<script>window.alert('Não foram encontrados resultados') ;</script>";
+    }
+
 ?>
 
     <!DOCTYPE html>
@@ -18,7 +40,7 @@ session_start();
         <title>Calça Aqui</title>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
 
         <link href="css/style.css" rel="stylesheet" />
@@ -93,9 +115,10 @@ session_start();
             </div>
         </div>
         <div class="linha3">
-            <label>nome bd</label><br>
-            <label>username bd</label><br>
-            <label>email bd</label>
+            <h4>Dados do cliente:</h4>
+            <label class="campos2"><?php echo $nome; ?></label><br>
+            <label class="campos2"><?php echo $username; ?></label><br>
+            <label class="campos2"><?php echo $email; ?></label>
         </div>
     </div>
 
