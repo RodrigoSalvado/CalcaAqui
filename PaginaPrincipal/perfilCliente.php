@@ -4,6 +4,8 @@
     include("../basedados/db.h");
     session_start();
 
+echo $_SESSION["username"];
+
     $nome = "";
     $username = "";
     $email = "";

@@ -713,7 +713,7 @@ a:focus {
 /* end footer section*/
 /*# sourceMappingURL=style.css.map */
 
-/*----------------------------------------------*/
+/*-------------------perfilcliente---------------------------*/
 .informacoes{
   padding: 30px;
   text-align: center;
@@ -758,6 +758,70 @@ a:focus {
   float: right;
   margin-right: 25px;
 }
+
+/*----------------------pedidodetalhado------------------------*/
+
+.info-pedido{
+  padding: 30px;
+}
+
+.linha1{
+  background: tomato;
+
+}
+
+.linha1 img{
+  border-radius: 15px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+}
+
+.linha1 h2{
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  text-align: center;
+}
+
+.linha2{
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background: lightblue;
+}
+
+.linha2 .labels .campos{
+  font-size: large;
+  font-weight: 550;
+  background: tomato;
+  width: 49%;
+  padding: 10px;
+
+}
+
+.linha2 .descricoes .desc{
+  border-radius: 15px;
+  height: auto;
+  background: tomato;
+  width: 49%;
+  padding: 20px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+  word-wrap: break-word;
+  white-space: normal;
+}
+.descricoes{
+  display: flex;
+  flex-direction: row;
+}
+
+.linha3{
+  background: lime;
+}
+
+
+
+
+
+
+
 
 
 
