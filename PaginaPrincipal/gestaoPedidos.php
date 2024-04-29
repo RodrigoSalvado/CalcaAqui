@@ -8,6 +8,7 @@ include("../basedados/db.h");
 //descomentar para verificar se está logado ou não 
 
 
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -86,7 +87,29 @@ Calça Aqui
              <h2>Gestão de Pedidos</h2>
           </div>
           <div class="botoes_gest">  
+          <?php
+            $sqlPedido = "SELECT servico, status_pedido FROM pedido_reparacao";
+            $resultPedido = mysqli_query($conn, $sqlPedido);
 
+            if($resultPedido -> num_rows > 0){
+                while($rowPedido = $resultPedido -> fetch_assoc()){
+                    $servico = $rowPedido["servico"];
+                    $status_pedido = $rowPedido["status_pedido"];
+
+                    echo "<div class='pedido' ><label class='campos' id='servico' >$servico</label> <label class='campos' id='estado' >$status_pedido</label></div>";
+
+                    //echo $servico;
+                   // echo $status_pedido;
+                }
+            }else{
+                if($resultPedido -> num_rows == 0){
+                    echo "ainda nao foi realizado nenhum pedido";
+                }else{
+                    echo "erro ao realizar o select";
+                }
+            }
+
+          ?>
           </div>
         </div>
       </div>
@@ -243,3 +266,9 @@ Subscrever
 </body>
 
 </html>
+
+<?php
+
+
+
+$conn -> close();

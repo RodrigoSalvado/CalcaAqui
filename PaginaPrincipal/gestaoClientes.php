@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  global $conn;
+  include("../basedados/db.h");
+  
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,12 +78,25 @@ Calça Aqui
       <div class="row">
         <div class="admin_box">
           <div class="admin_heading">
-             <h2>Gestão dos Clientes</h2>
+            <h2>Gestão dos Clientes</h2>
           </div>
           <div class="botoes_gest">
-            <?php
-                #ir buscar os Clientes a BD
-            ?>
+            <?php 
+            
+            $sql = "SELECT username FROM conta WHERE tipo_utilizador = 2";
+            $result = $conn->query($sql);
+          
+            $usernames = array();
+          
+            if ($result->num_rows > 0) {
+              while($row = $result->fetch_assoc()) {
+                $usernames[] = $row["username"];
+              }
+            } 
+            
+            foreach ($usernames as $username): ?>
+              <button><img src="images/account-profile-icon-1.png" width="40px" alt=""> <?php echo $username; ?></button>
+            <?php endforeach; ?>
           </div>
         </div>
       </div>
@@ -234,3 +253,7 @@ Subscrever
 </body>
 
 </html>
+
+<?php
+
+$conn -> close();

@@ -1,7 +1,7 @@
 <?php // Ligação à bd
 
 session_start();
-
+global $conn;
 include("../basedados/db.h");
 
 //mudar variavel de sessão
@@ -112,16 +112,16 @@ Calça Aqui
             </h2>
           </div>
           <div class="info_box">
-            <label for=""><?php echo $username; ?> Username</label><br>
-            <label for=""><?php echo $nome; ?> Nome</label><br>
-            <label for=""><?php echo $email; ?> E-mail</label><br>
-            <label for=""><?php echo $genero; ?>Genero</label><br><br>
+            <label for=""><?php echo $username; ?> </label><br>
+            <label for=""><?php echo $nome; ?> </label><br>
+            <label for=""><?php echo $email; ?> </label><br>
+            <label for=""><?php echo $genero; ?></label><br><br>
           </div>
           <div class="admin_heading">
              <h2>Área de Administração</h2>
           </div>
           <div class="botoes_gest">
-            <button onclick="window.location.href='gestaoPedidos.php'" >Gestão de Pedidos</button><br>
+            <button onclick="window.location.href='gestaoPedidos.php'">Gestão de Pedidos</button><br>
             <button onclick="window.location.href='gestaoClientes.php'">Gestão dos Clientes</button>
           </div>
         </div>
