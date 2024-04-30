@@ -50,7 +50,7 @@ if ($result->num_rows > 0) {
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
-  <link href="css/admin.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
 

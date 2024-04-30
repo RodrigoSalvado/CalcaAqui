@@ -831,6 +831,130 @@ a:focus {
   color: #333333;
 }
 
+.informacoes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+        flex-direction: column;
+  -webkit-box-align: center;
+    -ms-flex-align: center;
+        align-items: center;
+  text-align: center;
+}
+
+.informacoes  h2{
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  text-align: center;
+}
+
+.informacoes  h2::before,  h2::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 1px;
+  background-color: #fec016;
+}
+
+.informacoes  h2::before {
+  left: -5px;
+  -webkit-transform: translate(-100%, -50%);
+          transform: translate(-100%, -50%);
+}
+
+.informacoes  h2::after {
+  right: -5px;
+  -webkit-transform: translate(100%, -50%);
+          transform: translate(100%, -50%);
+}
+
+/*-------------------------Admin--------------------------*/
+
+.admin_page .admin_box{
+  margin: 15px auto 30px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.admin_page .info_box{
+  margin: 15px 24px 15px;
+}
+
+.admin_page .info_box label{
+  color: #7d7d7d;
+  margin: 7px 10% 4px;
+  width: 80%;
+  border: 1px solid #7d7d7d;
+  padding: 6px;
+  border-radius: 17px;
+}
+
+.admin_page .botoes_gest{
+  margin: 15px 24px 15px;
+}
+
+.admin_page .botoes_gest button:hover{
+  background-color: #fec016;
+}
+
+.admin_page .botoes_gest button{
+  color: #ffffff;
+  background-color: #353434;
+  margin: 7px auto 4px;
+  width: 100%;
+  border: 0px solid #000000;
+  padding: 25px;
+  border-radius: 25px;
+}
+
+.admin_page .admin_heading{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+        flex-direction: column;
+  -webkit-box-align: center;
+    -ms-flex-align: center;
+        align-items: center;
+  text-align: center;
+}
+
+.admin_page .admin_heading h2{
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  text-align: center;
+}
+
+.admin_page .admin_heading h2::before, .admin_heading h2::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 1px;
+  background-color: #fec016;
+}
+
+.admin_page .admin_heading h2::before {
+  left: -5px;
+  -webkit-transform: translate(-100%, -50%);
+          transform: translate(-100%, -50%);
+}
+
+.admin_page .admin_heading h2::after {
+  right: -5px;
+  -webkit-transform: translate(100%, -50%);
+          transform: translate(100%, -50%);
+}
 
 
 

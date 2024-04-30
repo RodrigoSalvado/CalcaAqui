@@ -96,15 +96,19 @@ echo $_SESSION["username"];
 
     <div class="informacoes">
         <div class="campos-user">
-            <h3>Informações pessoais:</h3>
+            <!--<div class="heading_client">-->
+                <h2>Informações pessoais:</h2>
+            <!--</div>-->
             <label for=""><?php echo $nome; ?></label><br>
             <label for=""><?php echo $username; ?></label><br>
             <label for=""><?php echo $email; ?></label>
         </div>
 
         <div class="pedidos">
-            <h3>Os meus pedidos:</h3>
-
+            <!--<div class="heading_client">-->
+                <h2>Os meus pedidos:</h2>
+            <!--</div>-->
+        
             <?php
 
 
