@@ -29,6 +29,9 @@ include("../basedados/db.h");
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
   <link href="css/admin.css" rel="stylesheet" />
   <link href="css/responsive.css" rel="stylesheet" />
+    <link href="css/gestaoPedido.css" rel="stylesheet" />
+
+
 </head>
 
 <body class="sub_page">
@@ -115,6 +118,83 @@ Calça Aqui
       </div>
     </div>
   </section>
+
+
+  <div class="container">
+      <table class="table table-primary table-sortable" role="grid">
+          <thead>
+          <tr>
+              <th class="header" scope="col" role="columnheader"><span>Pedido</span></th>
+              <th class="text-center header" scope="col" role="columnheader"><span>Utilizador</span></th>
+              <th class="text-center header" scope="col" role="columnheader"><span>Serviço</span></th>
+              <th class="text-center header" scope="col" role="columnheader"><span>Calçado</span></th>
+              <th class="text-center header" scope="col" role="columnheader"><span>Status</span></th>
+              <th class="text-center header" scope="col" role="columnheader"><span>Detalhes</span></th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <?php
+
+          $sql = "SELECT * FROM pedido_reparacao";
+          $result = $conn->query($sql);
+          if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+
+                  $id = $row["id_pedido"];
+                  $servico = $row["servico"];
+                  $calcado = $row["calcado"];
+                  $status = $row["status_pedido"];
+                  $idu = $row["id_utilizador"];
+
+                  $sqlUser = "SELECT * FROM utilizador where id_utilizador = $idu";
+                  $resultUser = $conn->query($sqlUser);
+
+                  if ($resultUser->num_rows > 0) {
+                      $rowUser = $result->fetch_assoc();
+                      $user = $rowUser["username"];
+                  }
+
+
+
+                  echo "
+            <tr>
+              <td class='text-center'>$id</td>
+              <td class='text-center'>$user</td>
+              <td class='text-center'>$servico</td>
+              <td class='text-center'>$calcado</td>
+              <td class='text-center'>$status</td>
+              <td class='text-center'><button></button></td>
+          </tr>
+          ";
+              }
+          }
+
+          ?>
+
+
+
+          </tbody>
+      </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <section class="info_section ">
     <div class="container">
