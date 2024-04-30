@@ -26,7 +26,6 @@ if ($result->num_rows > 0) {
       $username = $row["username"];
       $nome = $row["nome"];
       $email = $row["email"];
-      $genero = $row["genero"];
   }
 } else {
   echo "Informações do utilizador não encontradas.";
@@ -115,7 +114,6 @@ Calça Aqui
             <label for=""><?php echo $username; ?> </label><br>
             <label for=""><?php echo $nome; ?> </label><br>
             <label for=""><?php echo $email; ?> </label><br>
-            <label for=""><?php echo $genero; ?></label><br><br>
           </div>
           <div class="admin_heading">
              <h2>Área de Administração</h2>

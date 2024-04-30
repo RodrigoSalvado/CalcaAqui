@@ -719,17 +719,17 @@ a:focus {
   text-align: center;
 }
 
-.campos-user label{
-  background-color: rgba(51, 51, 51, 0.5);
-  width: 100%;
-  color: #ffffff;
-  padding: 20px;
-  text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+.campos-user{
+  margin: 15px 24px 15px;
 }
-.campos-user h3{
-  padding: 20px;
+
+.campos-user label{
+  color: #7d7d7d;
+  margin: 7px 10% 4px;
+  width: 80%;
+  border: 1px solid #7d7d7d;
+  padding: 6px;
+  border-radius: 17px;
 }
 
 .pedidos{
@@ -756,6 +756,48 @@ a:focus {
 #estado{
   float: right;
   margin-right: 25px;
+}
+
+.informacoes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+        flex-direction: column;
+  -webkit-box-align: center;
+    -ms-flex-align: center;
+        align-items: center;
+  text-align: center;
+}
+
+.informacoes  h2{
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  text-align: center;
+}
+
+.informacoes  h2::before,  h2::after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 1px;
+  background-color: #fec016;
+}
+
+.informacoes  h2::before {
+  left: -5px;
+  -webkit-transform: translate(-100%, -50%);
+          transform: translate(-100%, -50%);
+}
+
+.informacoes  h2::after {
+  right: -5px;
+  -webkit-transform: translate(100%, -50%);
+          transform: translate(100%, -50%);
 }
 
 /*----------------------pedidodetalhado------------------------*/
@@ -831,47 +873,6 @@ a:focus {
   color: #333333;
 }
 
-.informacoes {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-        flex-direction: column;
-  -webkit-box-align: center;
-    -ms-flex-align: center;
-        align-items: center;
-  text-align: center;
-}
-
-.informacoes  h2{
-  font-weight: bold;
-  text-transform: uppercase;
-  position: relative;
-  text-align: center;
-}
-
-.informacoes  h2::before,  h2::after{
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 40px;
-  height: 1px;
-  background-color: #fec016;
-}
-
-.informacoes  h2::before {
-  left: -5px;
-  -webkit-transform: translate(-100%, -50%);
-          transform: translate(-100%, -50%);
-}
-
-.informacoes  h2::after {
-  right: -5px;
-  -webkit-transform: translate(100%, -50%);
-          transform: translate(100%, -50%);
-}
 
 /*-------------------------Admin--------------------------*/
 
@@ -896,15 +897,15 @@ a:focus {
   border-radius: 17px;
 }
 
-.admin_page .botoes_gest{
+.botoes_gest{
   margin: 15px 24px 15px;
 }
 
-.admin_page .botoes_gest button:hover{
+.botoes_gest button:hover{
   background-color: #fec016;
 }
 
-.admin_page .botoes_gest button{
+.botoes_gest button{
   color: #ffffff;
   background-color: #353434;
   margin: 7px auto 4px;
