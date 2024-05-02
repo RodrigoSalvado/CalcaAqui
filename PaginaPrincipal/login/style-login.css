@@ -411,3 +411,15 @@ footer a:focus {
   pointer-events: none;
   border-radius: 100%;
 }
+
+.botao{
+	margin: 30px 40% 30px;
+	text-align: center;
+	margin-top: 90px;
+
+}
+.botao2{
+	margin: 30px 35% 30px;
+	text-align: center;
+	margin-top: 70px;
+}
