@@ -423,3 +423,12 @@ footer a:focus {
 	text-align: center;
 	margin-top: 70px;
 }
+
+#pass{
+	font-size: 13px;
+	color: #333333;
+	text-decoration: none;
+}
+#pass:hover{
+	color: #fec016;
+}

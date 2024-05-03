@@ -45,8 +45,7 @@
             </errorp>
         </div>
         <div class="form-group">
-            <input type="checkbox" id="rem">
-            <label for="rem">Manter sessão iniciada</label>
+            <a href="recuperarPass.php" id="pass">Esqueceu-se da palavra-passe?</a>
             <button id="submit" type="submit" name="botao" ripple>Iniciar sessão</button>
         </div>
     </form>
