@@ -844,6 +844,18 @@ a:focus {
   word-wrap: break-word;
   white-space: normal;
 }
+
+.linha2 .descricoes .desc_admin{
+  border-radius: 15px;
+  height: auto;
+  width: 45%;
+  padding: 20px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.37);
+  word-wrap: break-word;
+  white-space: normal;
+  margin: 10px;
+}
+
 .descricoes{
   display: flex;
   flex-direction: row;
