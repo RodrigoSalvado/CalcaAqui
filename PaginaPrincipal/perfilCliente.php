@@ -95,24 +95,16 @@ echo $_SESSION["username"];
 </div>
 
     <div class="informacoes">
+        <h2>Informações pessoais:</h2>
         <div class="campos-user">
-            <!--<div class="heading_client">-->
-                <h2>Informações pessoais:</h2>
-            <!--</div>-->
             <label for=""><?php echo $nome; ?></label><br>
             <label for=""><?php echo $username; ?></label><br>
             <label for=""><?php echo $email; ?></label>
         </div>
 
         <div class="pedidos">
-            <!--<div class="heading_client">-->
                 <h2>Os meus pedidos:</h2>
-            <!--</div>-->
-        
             <?php
-
-
-
 
                 //id do user que fez o login
                 $sql = "SELECT id_utilizador FROM utilizador WHERE username = '$user_logado'";
@@ -124,26 +116,22 @@ echo $_SESSION["username"];
                     //echo $idUserLogado;
 
                     //dados do(s) pedido(s) do user que fez o login
-                    $sqlPedido = "SELECT servico, status_pedido FROM pedido_reparacao WHERE id_utilizador = '$idUserLogado'";
+                    $sqlPedido = "SELECT id_pedido, servico, status_pedido FROM pedido_reparacao WHERE id_utilizador = '$idUserLogado'";
                     $resultPedido = mysqli_query($conn, $sqlPedido);
 
                     if($resultPedido -> num_rows > 0){
                         while($rowPedido = $resultPedido -> fetch_assoc()){
+                            $id_pedido = $rowPedido["id_pedido"];
                             $servico = $rowPedido["servico"];
                             $status_pedido = $rowPedido["status_pedido"];
 
+                            $_SESSION['id_pedido'] = $id_pedido;
 
-
-                            echo "<button class='pedido' onclick='window.location.href=\"pedidoDetalhado.php\"' style='border: none;'>
+                            echo "<button class='pedido' onclick='window.location.href=\"pedidoDetalhado.php?id_pedido=$id_pedido\"' style='border: none;'>
+                                    <label class='campos' id='id'>$id_pedido</label>
                                     <label class='campos' id='servico'>$servico</label>
                                     <label class='campos' id='estado'>$status_pedido</label>
                                   </button>";
-
-
-
-
-                            //echo $servico;
-                           // echo $status_pedido;
                         }
                     }else{
                         if($resultPedido -> num_rows == 0){
@@ -156,9 +144,6 @@ echo $_SESSION["username"];
                     }else{
                          echo "erro";
                     }
-
-
-
             ?>
 
         </div>

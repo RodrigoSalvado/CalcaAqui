@@ -719,8 +719,10 @@ a:focus {
   text-align: center;
 }
 
-.campos-user{
-  margin: 15px 24px 15px;
+.informacoes .campos-user{
+  width: 50%;
+  position: relative;
+  margin: 0 auto;
 }
 
 .campos-user label{
@@ -758,46 +760,11 @@ a:focus {
   margin-right: 25px;
 }
 
-.informacoes {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-        flex-direction: column;
-  -webkit-box-align: center;
-    -ms-flex-align: center;
-        align-items: center;
-  text-align: center;
-}
-
-.informacoes  h2{
+.informacoes h2{
   font-weight: bold;
   text-transform: uppercase;
   position: relative;
   text-align: center;
-}
-
-.informacoes  h2::before,  h2::after{
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 40px;
-  height: 1px;
-  background-color: #fec016;
-}
-
-.informacoes  h2::before {
-  left: -5px;
-  -webkit-transform: translate(-100%, -50%);
-          transform: translate(-100%, -50%);
-}
-
-.informacoes  h2::after {
-  right: -5px;
-  -webkit-transform: translate(100%, -50%);
-          transform: translate(100%, -50%);
 }
 
 /*----------------------pedidodetalhado------------------------*/
@@ -813,6 +780,7 @@ a:focus {
 .linha1 img{
   border-radius: 15px;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+  float: right;
 }
 
 .linha1 h2{
@@ -830,19 +798,21 @@ a:focus {
 .linha2 .labels .campos{
   font-size: large;
   font-weight: 550;
-  width: 49%;
+  width: 100%;
   padding: 10px;
+  text-align: center;
 
 }
 
 .linha2 .descricoes .desc{
   border-radius: 15px;
   height: auto;
-  width: 100%;
+  width: 70%;
   padding: 20px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.37);
   word-wrap: break-word;
   white-space: normal;
+  margin: 0 auto;
 }
 
 .linha2 .descricoes .desc_admin{
@@ -876,7 +846,7 @@ a:focus {
 
 .linha3 .campos2{
   align-items: center;
-  width: 80%;
+  width: 50%;
   height: 50px;
   text-align: center;
   padding: 10px;
