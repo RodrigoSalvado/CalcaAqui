@@ -127,10 +127,9 @@ Calça Aqui
                   $resultUser = $conn->query($sqlUser);
 
                   if ($resultUser->num_rows > 0) {
-                      $rowUser = $result->fetch_assoc();
+                      $rowUser = $resultUser->fetch_assoc();
                       $user = $rowUser["username"];
                   }
-
 
 
                   echo "
