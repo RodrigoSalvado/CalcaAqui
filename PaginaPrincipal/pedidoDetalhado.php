@@ -5,6 +5,7 @@ session_start();
 
 echo $_SESSION["username"];
 
+
     $nome = "";
     $username = "";
     $email = "";
@@ -107,11 +108,11 @@ echo $_SESSION["username"];
         <div class="linha2">
             <div class="labels">
                 <label class="campos">Descrição do pedido:</label>
-                <label class="campos">Notas do administrador:</label>
+
             </div>
             <div class="descricoes">
                 <label class="desc">ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</label>
-                <label class="desc">ir buscar a base de dados quando o admin deixar uma nota</label>
+
             </div>
         </div>
         <div class="linha3">

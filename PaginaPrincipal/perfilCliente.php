@@ -132,6 +132,8 @@ echo $_SESSION["username"];
                             $servico = $rowPedido["servico"];
                             $status_pedido = $rowPedido["status_pedido"];
 
+
+
                             echo "<button class='pedido' onclick='window.location.href=\"pedidoDetalhado.php\"' style='border: none;'>
                                     <label class='campos' id='servico'>$servico</label>
                                     <label class='campos' id='estado'>$status_pedido</label>
