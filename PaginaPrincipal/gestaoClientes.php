@@ -97,6 +97,7 @@ Calça Aqui
             foreach ($usernames as $username): ?>
               <button><img src="images/account-profile-icon-1.png" width="40px" alt=""> <?php echo $username; ?></button>
             <?php endforeach; ?>
+            
           </div>
         </div>
       </div>

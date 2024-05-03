@@ -139,16 +139,14 @@ Calça Aqui
               <td class='text-center'>$servico</td>
               <td class='text-center'>$calcado</td>
               <td class='text-center'>$status</td>
-              <td class='text-center'><button></button></td>
-          </tr>
+              <td class='text-center'><button class='button_detalhes' onclick='window.location.href=\"pedidoDetalhado.php\"'>Detalhes</button></td>
+            </tr>
           ";
               }
           }
 
           ?>
 
-
-                      
           </div>
           </tbody>
       </table>
