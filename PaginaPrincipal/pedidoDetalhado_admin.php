@@ -1,29 +1,39 @@
 <?php // Ligação à bd
+
 global $conn;
 include("../basedados/db.h");
 session_start();
 
-echo $_SESSION["username"];
 
-
-$nome = "";
-$username = "";
-$email = "";
-
+$nome = "Kirlitos";
+$username = "Kirlitos";
+$email = "erhhbn";
+/*
 $user_logado = $_SESSION["username"];
 $sqlSelect = "SELECT nome, username, email FROM conta WHERE username = '$user_logado'";
 $resultSelect = mysqli_query($conn, $sqlSelect);
 
 if($resultSelect -> num_rows > 0){
-    while($row = $resultSelect->fetch_assoc()){
-        $nome = $row["nome"];
-        $username = $row["username"];
-        $email = $row["email"];
-
+    while($rowUser = $resultSelect->fetch_assoc()){
+        $nome = $rowUser["nome"];
+        $username = $rowUser["username"];
+        $email = $rowUser["email"];
     }
 
 }else{
     echo "<script>window.alert('Não foram encontrados resultados') ;</script>";
+}
+*/
+$id = $_GET["id"];
+$sql = "SELECT * FROM pedido_reparacao WHERE id_pedido = $id";
+$result = mysqli_query($conn, $sql);
+
+if($result -> num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $descricao = $row["descricao"];
+        $notas = $row["notas"];
+        $status = $row["status_pedido"];
+    }
 }
 
 ?>
@@ -102,7 +112,9 @@ if($resultSelect -> num_rows > 0){
         <br>
         <img src="images/w-1.jpg" alt="imagem sapato" width="150px" height="150px">
         <label>Estado do pedido: </label>
-        <label>(BD)</label>
+        <label><?php
+                echo $status;
+            ?></label>
         <br>
     </div>
     <div class="linha2">
@@ -111,8 +123,12 @@ if($resultSelect -> num_rows > 0){
             <label class="campos_admin">Notas do pedido:</label>
         </div>
         <div class="descricoes">
-            <label class="desc_admin">ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</label>
-            <label class="desc_admin"> <button id="show-popup"><img src="images/plus.png" height="25px"></button></label>
+            <label class="desc_admin"> <?php
+                    echo $descricao;
+                ?></label>
+            <label class="desc_admin"><?php
+                    echo $notas;
+                ?> <button id="show-popup"><img src="images/plus.png" height="25px"></button></label>
         </div>
     </div>
     <div class="popup">
@@ -121,8 +137,10 @@ if($resultSelect -> num_rows > 0){
             <h5>
                 Coloque aqui as notas sobre o calçado:</br>
             </h5>
-            <textarea name="notas"></textarea>
-            <input type="submit" name="submit" value="Adicionar Notas"></br>
+            <textarea name="notas"><?php
+                    echo $notas;
+                ?></textarea>
+            <input type="submit" name="submit" value="Adicionar Notas">
         </form>
     </div>
     <div class="linha3">
@@ -290,5 +308,16 @@ if($resultSelect -> num_rows > 0){
 </html>
 
 <?php
+
+$notas = $_POST["notas"];
+
+$sql = "UPDATE pedido_reparacao SET notas = $notas WHERE id_pedido = $id";
+$result = mysqli_query($conn, $sql);
+if(isset($result)){
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    exit;
+}
+
+
 $conn -> close();
 ?>
