@@ -11,6 +11,15 @@ $foto = null;
 
 if(isset($botao)) {
 
+    // Verificar se a imagem foi enviada corretamente
+    if(isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+        // Ler o conteúdo da imagem
+        $foto = file_get_contents($_FILES['foto']['tmp_name']);
+        // Escapar a imagem para evitar SQL Injection
+        $foto = $conn->real_escape_string($foto);
+    }
+
+
     echo "Username: ".$username."<br>";
     echo "Tipo Servico: ".$tipo_servico."<br>";
     echo "Descricao: ".$descricao."<br>";
@@ -27,8 +36,8 @@ if(isset($botao)) {
     echo "Id: ".$id_utilizador."<br>";
 
 
-    $sql = "INSERT INTO `pedido_reparacao`(`id_utilizador`, `descricao`, `servico`, `calcado`) VALUES 
-                                        ('$id_utilizador', '$descricao', '$tipo_servico', '$tipo_calcado')";
+    $sql = "INSERT INTO `pedido_reparacao`(`id_utilizador`, `descricao`, `servico`, `calcado`, `foto`) VALUES 
+                                        ('$id_utilizador', '$descricao', '$tipo_servico', '$tipo_calcado', '$foto')";
 
     $resultInsert = $conn->query($sql);
 

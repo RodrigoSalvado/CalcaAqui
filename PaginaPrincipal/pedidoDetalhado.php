@@ -3,7 +3,9 @@ global $conn;
 include("../basedados/db.h");
 session_start();
 
-echo $_SESSION["username"];
+echo $_SESSION["username"] . "<br>";
+
+
 
 
     $nome = "";
@@ -25,6 +27,41 @@ echo $_SESSION["username"];
     }else{
         echo "<script>window.alert('Não foram encontrados resultados') ;</script>";
     }
+
+    if(isset($_GET['id_pedido'])){
+        $id_pedido = $_GET['id_pedido'];
+        echo $id_pedido;
+    }else{
+        echo "erro id";
+    }
+
+    $sqlDetalhado = "SELECT data, descricao, servico, calcado, status_pedido FROM pedido_reparacao WHERE id_pedido = '$id_pedido'";
+    $resultDetalhado = mysqli_query($conn, $sqlDetalhado);
+
+    if($resultDetalhado -> num_rows > 0){
+        while ($row = $resultDetalhado -> fetch_assoc()){
+            $data = $row["data"];
+            $descricao = $row["descricao"];
+            $servico = $row["servico"];
+            $calcado = $row["calcado"];
+            $status_pedido = $row["status_pedido"];
+        }
+        echo "sucesso";
+    }else{
+        echo "erro no select";
+    }
+
+// Data no formato padrão do MySQL
+
+// Converter para um objeto DateTime
+$data1 = new DateTime($data);
+
+// Formatar a data do dia
+$dia = $data1->format('d/m/Y');
+
+// Formatar a hora
+$hora = $data1->format('H:i:s');
+
 
 ?>
 
@@ -101,17 +138,24 @@ echo $_SESSION["username"];
             <h2>Pedido de reparação:</h2>
             <br>
             <img src="images/w-1.jpg" alt="imagem sapato" width="150px" height="150px">
-            <label>Estado do pedido: </label>
-            <label>(BD)</label>
             <br>
+            <label>Estado do pedido: </label>
+            <label><?php echo $status_pedido ?></label>
+            <br>
+            <label><?php echo $servico ?></label>
+            <br>
+            <label><?php echo "Dia: " . $dia . "<br>"; ?></label>
+            <br>
+            <label><?php echo "Hora: " . $hora; ?></label>
         </div>
+        <hr>
         <div class="linha2">
             <div class="labels">
                 <label class="campos">Descrição do pedido:</label>
 
             </div>
             <div class="descricoes">
-                <label class="desc">ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</label>
+                <label class="desc"><?php echo $descricao ?> </label>
 
             </div>
         </div>
