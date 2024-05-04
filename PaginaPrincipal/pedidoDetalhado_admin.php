@@ -108,12 +108,22 @@ if($resultSelect -> num_rows > 0){
     <div class="linha2">
         <div class="labels">
             <label class="campos">Descrição do pedido:</label>
-            <label class="campos">Notas do pedido:</label>
+            <label class="campos_admin">Notas do pedido:</label>
         </div>
         <div class="descricoes">
             <label class="desc_admin">ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</label>
-            <label class="desc_admin">ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</label>
+            <label class="desc_admin"> <button id="show-popup"><img src="images/plus.png" height="25px"></button></label>
         </div>
+    </div>
+    <div class="popup">
+        <button class="close-btn">&times;</button>
+        <form method="post" action="">
+            <h5>
+                Coloque aqui as notas sobre o calçado:</br>
+            </h5>
+            <textarea name="notas"></textarea>
+            <input type="submit" name="submit" value="Adicionar Notas"></br>
+        </form>
     </div>
     <div class="linha3">
         <h4>Dados do cliente:</h4>
@@ -250,7 +260,7 @@ if($resultSelect -> num_rows > 0){
 
 </section>
 
-
+<script type="text/javascript" src="js/pedidoDetalhado_admin.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
