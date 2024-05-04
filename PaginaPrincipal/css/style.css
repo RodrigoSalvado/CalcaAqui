@@ -830,9 +830,16 @@ a:focus {
 .linha2 .labels .campos{
   font-size: large;
   font-weight: 550;
-  width: 49%;
+  width: 50%;
   padding: 10px;
 
+}
+
+.linha2 .labels .campos_admin{
+  font-size: large;
+  font-weight: 550;
+  width: 49%;
+  padding: 25px;
 }
 
 .linha2 .descricoes .desc{
@@ -848,17 +855,108 @@ a:focus {
 .linha2 .descricoes .desc_admin{
   border-radius: 15px;
   height: auto;
-  width: 45%;
+  width: 50%;
   padding: 20px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.37);
   word-wrap: break-word;
   white-space: normal;
   margin: 10px;
+  position: relative;
+}
+
+.linha2 .descricoes .desc_admin button{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  height: 40px;
+  width: 40px;
+
+
 }
 
 .descricoes{
   display: flex;
   flex-direction: row;
+}
+
+
+.popup{
+  z-index: 10000;
+  position: fixed;
+  top: -150%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1);
+  width: 60%;
+  height: 60%;
+  background: #f5efef;
+  padding: 20px 30px;
+  box-shadow: 2px 2px 5px 5px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  transition: top 0ms ease-in-out 200ms,
+  opacity 200ms ease-in-out 0ms,
+  transform 20ms ease-in-out 0ms;
+}
+
+.popup.active{
+  top: 50%;
+  opacity: 1;
+  transition: top 0ms ease-in-out 0ms,
+  opacity 200ms ease-in-out 0ms,
+  transform 20ms ease-in-out 0ms;
+}
+
+.popup .close-btn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  font-size: 25px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.popup h5{
+  text-align: center;
+  padding: 0px 25px;
+  color: #222;
+  margin: 10px 0px 20px;
+  font-size: 25px;
+}
+
+.popup textarea{
+  resize: none;
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  height: 75%;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.popup input[type="text"]::placeholder {
+  color: #999;
+  font-style: italic;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.popup input[type="submit"]{
+  border-radius: 5px;
+  border: none;
+  background: white;
+  margin-top: 3%;
+}
+
+.popup input[type="submit"]:hover{
+
 }
 
 .linha3 {
