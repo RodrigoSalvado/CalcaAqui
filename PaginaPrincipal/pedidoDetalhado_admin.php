@@ -25,6 +25,7 @@ if($resultSelect -> num_rows > 0){
 }
 */
 $id = $_GET["id"];
+$_SESSION["id_pedido"] = $id;
 $sql = "SELECT * FROM pedido_reparacao WHERE id_pedido = $id";
 $result = mysqli_query($conn, $sql);
 
@@ -35,6 +36,7 @@ if($result -> num_rows > 0) {
         $status = $row["status_pedido"];
     }
 }
+
 
 ?>
 
@@ -112,10 +114,26 @@ if($result -> num_rows > 0) {
         <br>
         <img src="images/w-1.jpg" alt="imagem sapato" width="150px" height="150px">
         <label>Estado do pedido: </label>
-        <label><?php
-                echo $status;
-            ?></label>
-        <br>
+        <label>
+                <form method="post">
+                    <select name="status">
+                        <?php
+                        $sql = "SELECT status FROM status";
+                        $result = $conn->query($sql);
+                        echo "<option value='$status'>$status</option>";
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                if($row["status"] != $status){
+                                    echo "<option value = ".$row["status"]." name='status'>" . $row["status"] . "</option>";
+                                }
+                            }
+                        }
+                        ?>
+                    </select>
+                    <button class="open-btn" type="submit" name="submit-status" >&plus;</button>
+                </form>
+        </label>
+
     </div>
     <div class="linha2">
         <div class="labels">
@@ -128,7 +146,7 @@ if($result -> num_rows > 0) {
                 ?></label>
             <label class="desc_admin"><?php
                     echo $notas;
-                ?> <button id="show-popup"><img src="images/plus.png" height="25px"></button></label>
+                ?> <button id="show-popup">&plus;</button></label>
         </div>
     </div>
     <div class="popup">
@@ -140,7 +158,7 @@ if($result -> num_rows > 0) {
             <textarea name="notas"><?php
                     echo $notas;
                 ?></textarea>
-            <input type="submit" name="submit" value="Adicionar Notas">
+            <input type="submit" name="submit-notas" value="Adicionar Notas" id="enviarNotas">
         </form>
     </div>
     <div class="linha3">
@@ -309,14 +327,40 @@ if($result -> num_rows > 0) {
 
 <?php
 
-$notas = $_POST["notas"];
+try{
+    if(isset($_POST["submit-notas"])){
+        $n = $_POST["notas"];
 
-$sql = "UPDATE pedido_reparacao SET notas = $notas WHERE id_pedido = $id";
-$result = mysqli_query($conn, $sql);
-if(isset($result)){
-    header('Location: ' . $_SERVER['PHP_SELF']);
-    exit;
+        $sql = "UPDATE pedido_reparacao SET notas = '$n' WHERE id_pedido = $id";
+        $result = mysqli_query($conn, $sql);
+
+
+    }
+}catch(Exception $ex){
+
 }
+
+try{
+    if(isset($_POST["submit-status"])){
+        $st = $_POST["status"];
+
+
+        $sql = "UPDATE pedido_reparacao SET status_pedido = '$st' WHERE id_pedido = '$id'";
+        $result = mysqli_query($conn, $sql);
+
+        echo "passou";
+
+
+    }
+}catch(Exception $ex){
+
+}
+
+
+
+
+
+
 
 
 $conn -> close();
