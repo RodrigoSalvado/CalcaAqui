@@ -897,6 +897,10 @@ a:focus {
   transform 20ms ease-in-out 0ms;
 }
 
+.descricoes #show-popup:active{
+  outline: none;
+}
+
 .popup.active{
   top: 50%;
   opacity: 1;
@@ -916,6 +920,10 @@ a:focus {
   font-size: 25px;
   border-radius: 30px;
   text-align: center;
+}
+
+.popup .close-btn:active{
+  outline: none;
 }
 
 .popup h5{
