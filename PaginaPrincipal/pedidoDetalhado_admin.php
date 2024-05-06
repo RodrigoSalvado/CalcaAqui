@@ -120,11 +120,11 @@ if($result -> num_rows > 0) {
                         <?php
                         $sql = "SELECT status FROM status";
                         $result = $conn->query($sql);
-                        echo "<option value='$status'>$status</option>";
+                        echo "<option>$status</option>";
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 if($row["status"] != $status){
-                                    echo "<option value = ".$row["status"]." name='status'>" . $row["status"] . "</option>";
+                                    echo "<option>" . $row["status"] . "</option>";
                                 }
                             }
                         }
@@ -343,12 +343,10 @@ try{
 try{
     if(isset($_POST["submit-status"])){
         $st = $_POST["status"];
-
-
+        echo $st;
         $sql = "UPDATE pedido_reparacao SET status_pedido = '$st' WHERE id_pedido = '$id'";
         $result = mysqli_query($conn, $sql);
 
-        echo "passou";
 
 
     }
