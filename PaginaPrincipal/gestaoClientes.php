@@ -14,7 +14,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Calça Aqui</title>
+  <title>Gestão de clientes</title>
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
@@ -106,14 +106,17 @@ Calça Aqui
 
                   $user = $row["username"];
                   $email = $row["email"];
-                  
+                  $id_utilizador = $row["id_utilizador"];
+
+                  $_SESSION['id_utilizador'] = $id_utilizador;
+
                   echo "
             <tr>
-              <td class='text-center'>$user</td>
-              <td class='text-center'>$email</td>
-              <td class='text-center'><button class='button_detalhes' onclick='window.location.href=\".php\"'>Detalhes</button></td>
+                <td class='text-center'>$user</td>
+                <td class='text-center'>$email</td>
+                <td class='text-center'><a href='clienteDetalhado.php?id_utilizador=$id_utilizador' class='button_detalhes'>Detalhes</a></td>
             </tr>
-          ";
+        ";
               }
           }
 
