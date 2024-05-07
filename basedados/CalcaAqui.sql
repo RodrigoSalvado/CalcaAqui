@@ -137,7 +137,8 @@ CREATE TABLE `status` (
 INSERT INTO `status` (`id`, `status`) VALUES
                                           (1, 'Em Espera'),
                                           (2, 'Em Progresso'),
-                                          (3, 'Concluído');
+                                          (3, 'Concluído'),
+                                          (4, 'Recusar');
 
 -- --------------------------------------------------------
 
