@@ -47,26 +47,6 @@ body {
   position: relative;
 }
 
-.heading_container h2::before, .heading_container h2::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 40px;
-  height: 1px;
-  background-color: #fec016;
-}
-
-.heading_container h2::before {
-  left: -5px;
-  -webkit-transform: translate(-100%, -50%);
-  transform: translate(-100%, -50%);
-}
-
-.heading_container h2::after {
-  right: -5px;
-  -webkit-transform: translate(100%, -50%);
-  transform: translate(100%, -50%);
-}
 
 /*header section*/
 .hero_area {
@@ -779,27 +759,6 @@ a:focus {
   text-align: center;
 }
 
-.informacoes  h2::before,  h2::after{
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 40px;
-  height: 1px;
-  background-color: #fec016;
-}
-
-.informacoes  h2::before {
-  left: -5px;
-  -webkit-transform: translate(-100%, -50%);
-  transform: translate(-100%, -50%);
-}
-
-.informacoes  h2::after {
-  right: -5px;
-  -webkit-transform: translate(100%, -50%);
-  transform: translate(100%, -50%);
-}
-
 /*----------------------pedidodetalhado------------------------*/
 
 .info-pedido{
@@ -1050,27 +1009,6 @@ a:focus {
   text-transform: uppercase;
   position: relative;
   text-align: center;
-}
-
-.admin_page .admin_heading h2::before, .admin_heading h2::after{
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 40px;
-  height: 1px;
-  background-color: #fec016;
-}
-
-.admin_page .admin_heading h2::before {
-  left: -5px;
-  -webkit-transform: translate(-100%, -50%);
-  transform: translate(-100%, -50%);
-}
-
-.admin_page .admin_heading h2::after {
-  right: -5px;
-  -webkit-transform: translate(100%, -50%);
-  transform: translate(100%, -50%);
 }
 
 

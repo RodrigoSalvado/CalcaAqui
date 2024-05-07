@@ -156,23 +156,6 @@ Calça Aqui
   </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <section class="info_section ">
     <div class="container">
       <div class="row">

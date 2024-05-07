@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -33,7 +37,7 @@
             <input id="pass" spellcheck=false class="form-control" name="pass" type="text" size="18" alt="login" required="">
             <span class="form-highlight"></span>
             <span class="form-bar"></span>
-            <label for="pass" class="float-label">Confirmar nova palavra-passe!</label>
+            <label for="confirmar_pass" class="float-label">Confirmar nova palavra-passe!</label>
             <erroru>
                 Nova pass is required
                 <i>
@@ -57,5 +61,18 @@
 
 
 <?php
+global$conn;
 
+include("../basedados/db.h");
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nova_pass = $_POST["pass"];
+    $confirmar_pass = $_POST["confirmar_pass"];
+
+    if ($nova_pass === $confirmar_pass) {
+        echo "Senha recuperada com sucesso!";
+    } else {
+        echo "As senhas não coincidem. Por favor, tente novamente.";
+    }
+}
 ?>

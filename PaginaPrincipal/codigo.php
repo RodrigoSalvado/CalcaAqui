@@ -70,6 +70,9 @@
 
 
 <?php
+$codigo_aleatorio = sprintf("%06d", mt_rand(0, 999999));
 
+session_start();
+$_SESSION['codigo_recuperacao'] = $codigo_aleatorio;
 ?>
 
