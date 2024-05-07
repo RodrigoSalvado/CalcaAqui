@@ -2,6 +2,7 @@
 
 global $conn;
 include("../basedados/db.h");
+include("./enviarMail.php");
 session_start();
 
 
@@ -26,6 +27,77 @@ if($resultSelect -> num_rows > 0){
 */
 $id = $_GET["id"];
 $_SESSION["id_pedido"] = $id;
+
+try{
+    if(isset($_GET["submit-notas"])){
+        $n = $_GET["notas"];
+
+        $sql = "UPDATE pedido_reparacao SET notas = '$n' WHERE id_pedido = $id";
+        $result = mysqli_query($conn, $sql);
+        header("Refresh:0; url=pedidoDetalhado_admin.php?id=".$id);
+
+    }
+}catch(Exception $ex){
+
+}
+try{
+    if(isset($_GET["submit-status"])){
+        $st = $_GET["status"];
+        $sql = "UPDATE pedido_reparacao SET status_pedido = '$st' WHERE id_pedido = $id";
+        $result = mysqli_query($conn, $sql);
+
+
+
+
+        $sqlUser = "SELECT u.email, u.username FROM pedido_reparacao pr INNER JOIN utilizador u ON pr.id_utilizador = u.id_utilizador WHERE pr.id_pedido = $id";
+        $resultMail = mysqli_query($conn, $sqlUser);
+
+        if($resultMail -> num_rows > 0){
+            while($rowMail = $resultMail->fetch_assoc()){
+                $mailUser = $rowMail["email"];
+                $user = $rowMail["username"];
+            }
+
+        }
+
+
+
+            if(strcmp($st, "Em Progresso")){
+                $mail->addAddress($mailUser);
+                $mail->Subject = "O Seu Pedido Foi Aceite";
+                $mail->Body = "Olá ".$user." <br> Vimos por este meio informar que o seu pedido foi aceite e entrará em processo de reparação. <br><br> Cumprimentos Calça Aqui.";
+
+                $mail->send();
+
+            }else if(strcmp($st, "Concluído")){
+                $mail->addAddress($mailUser);
+                $mail->Subject = "O Seu Pedido Está Concluído";
+                $mail->Body = "bewvw";
+
+                $mail->send();
+
+            }else if(strcmp($st, "Recusado")){
+                $mail->addAddress($mailUser);
+                $mail->Subject = "O Seu Pedido Foi Recusado";
+                $mail->Body = "nvrwlr";
+
+                $mail->send();
+            }
+
+
+
+
+
+
+
+        echo "<script>alert('O estado foi atualizado para ".$st."');</script>";
+        header("Refresh:0; url=pedidoDetalhado_admin.php?id=".$id);
+    }
+}catch(Exception $ex){
+
+}
+
+
 $sql = "SELECT * FROM pedido_reparacao WHERE id_pedido = $id";
 $result = mysqli_query($conn, $sql);
 
@@ -115,7 +187,7 @@ if($result -> num_rows > 0) {
         <img src="images/w-1.jpg" alt="imagem sapato" width="150px" height="150px">
         <label>Estado do pedido: </label>
         <label>
-                <form method="post">
+                <form method="get" action="">
                     <select name="status">
                         <?php
                         $sql = "SELECT status FROM status";
@@ -130,6 +202,7 @@ if($result -> num_rows > 0) {
                         }
                         ?>
                     </select>
+                    <?php echo "<input type='text' name='id' value='".$id."' hidden/>"?>
                     <button class="open-btn" type="submit" name="submit-status" >&plus;</button>
                 </form>
         </label>
@@ -151,13 +224,14 @@ if($result -> num_rows > 0) {
     </div>
     <div class="popup">
         <button class="close-btn">&times;</button>
-        <form method="post" action="">
+        <form method="get" action="">
             <h5>
                 Coloque aqui as notas sobre o calçado:</br>
             </h5>
             <textarea name="notas"><?php
                     echo $notas;
                 ?></textarea>
+           <?php echo "<input type='text' name='id' value='".$id."' hidden/>"?>
             <input type="submit" name="submit-notas" value="Adicionar Notas" id="enviarNotas">
         </form>
     </div>
@@ -328,34 +402,6 @@ if($result -> num_rows > 0) {
 </html>
 
 <?php
-
-try{
-    if(isset($_POST["submit-notas"])){
-        $n = $_POST["notas"];
-
-        $sql = "UPDATE pedido_reparacao SET notas = '$n' WHERE id_pedido = $id";
-        $result = mysqli_query($conn, $sql);
-
-
-    }
-}catch(Exception $ex){
-
-}
-
-try{
-    if(isset($_POST["submit-status"])){
-        $st = $_POST["status"];
-        echo $st;
-        $sql = "UPDATE pedido_reparacao SET status_pedido = '$st' WHERE id_pedido = '$id'";
-        $result = mysqli_query($conn, $sql);
-
-
-
-    }
-}catch(Exception $ex){
-
-}
-
 
 
 

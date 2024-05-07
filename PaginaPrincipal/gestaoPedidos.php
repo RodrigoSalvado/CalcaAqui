@@ -99,7 +99,7 @@ Calça Aqui
       <table class="table table-primary table-sortable" role="grid">
           <thead>
           <tr>
-              <th class="header" scope="col" role="columnheader"><span>Pedido</span></th>
+              <th class="text-center header" scope="col" role="columnheader"><span>Pedido</span></th>
               <th class="text-center header" scope="col" role="columnheader"><span>Utilizador</span></th>
               <th class="text-center header" scope="col" role="columnheader"><span>Serviço</span></th>
               <th class="text-center header" scope="col" role="columnheader"><span>Calçado</span></th>

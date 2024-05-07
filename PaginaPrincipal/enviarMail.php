@@ -7,7 +7,9 @@ require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
 
-if(isset($_POST["submit"])){
+
+
+
 
     $mail = new PHPMailer(true);
 
@@ -18,20 +20,13 @@ if(isset($_POST["submit"])){
     $mail->Password = 'pngnrutleobqysue';
     $mail->SMTPSecure = 'ssl';
     $mail->Port = 465;
+    $mail->CharSet = 'UTF-8';
 
     $mail->setFrom('calcaaqui.noreply@gmail.com');
 
     $mail->isHTML(true);
 
-    $mail->addAddress($_POST["mail"]);
-    $mail->Subject = $_POST['sub'];
-    $mail->Body = $_POST['msg'];
-
-    $mail->send();
-
-
-    header('Location: testes.php');
 
 
 
-}
+
