@@ -80,29 +80,49 @@ Calça Aqui
           <div class="admin_heading">
             <h2>Gestão dos Clientes</h2>
           </div>
-          <div class="botoes_gest">
-            <?php 
-            
-            $sql = "SELECT username FROM conta WHERE tipo_utilizador = 2";
-            $result = $conn->query($sql);
-          
-            $usernames = array();
-          
-            if ($result->num_rows > 0) {
-              while($row = $result->fetch_assoc()) {
-                $usernames[] = $row["username"];
-              }
-            } 
-            
-            foreach ($usernames as $username): ?>
-              <button><img src="images/account-profile-icon-1.png" width="40px" alt=""> <?php echo $username; ?></button>
-            <?php endforeach; ?>
-            
-          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <div class="container">
+      <table class="table table-primary table-sortable" role="grid">
+          <thead>
+          <tr>
+              <th class="text-center header" scope="col" role="columnheader"><span>Utilizador</span></th>
+              <th class="text-center header" scope="col" role="columnheader"><span>E-mail</span></th>
+              <th class="text-center header" scope="col" role="columnheader"><span>Detalhes</span></th>
+          </tr>
+          </thead>
+          <tbody>
+          <div class="botoes_gest">  
+
+          <?php
+
+          $sql = "SELECT * FROM utilizador";
+          $result = $conn->query($sql);
+          if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+
+                  $user = $row["username"];
+                  $email = $row["email"];
+                  
+                  echo "
+            <tr>
+              <td class='text-center'>$user</td>
+              <td class='text-center'>$email</td>
+              <td class='text-center'><button class='button_detalhes' onclick='window.location.href=\".php\"'>Detalhes</button></td>
+            </tr>
+          ";
+              }
+          }
+
+          ?>
+
+          </div>
+          </tbody>
+      </table>
+  </div>
 
   <section class="info_section ">
     <div class="container">
