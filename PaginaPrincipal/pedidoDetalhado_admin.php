@@ -43,10 +43,6 @@ try{
 try{
     if(isset($_GET["submit-status"])){
         $st = $_GET["status"];
-        $sql = "UPDATE pedido_reparacao SET status_pedido = '$st' WHERE id_pedido = $id";
-        $result = mysqli_query($conn, $sql);
-
-
 
 
         $sqlUser = "SELECT u.email, u.username FROM pedido_reparacao pr INNER JOIN utilizador u ON pr.id_utilizador = u.id_utilizador WHERE pr.id_pedido = $id";
@@ -60,29 +56,48 @@ try{
 
         }
 
+        $sqlStatus = "SELECT id FROM status WHERE status = '$st'";
+        $resultStatus = mysqli_query($conn, $sqlStatus);
 
-
-            if(strcmp($st, "Em Progresso")){
-                $mail->addAddress($mailUser);
-                $mail->Subject = "O Seu Pedido Foi Aceite";
-                $mail->Body = "Olá ".$user." <br> Vimos por este meio informar que o seu pedido foi aceite e entrará em processo de reparação. <br><br> Cumprimentos Calça Aqui.";
-
-                $mail->send();
-
-            }else if(strcmp($st, "Concluído")){
-                $mail->addAddress($mailUser);
-                $mail->Subject = "O Seu Pedido Está Concluído";
-                $mail->Body = "bewvw";
-
-                $mail->send();
-
-            }else if(strcmp($st, "Recusado")){
-                $mail->addAddress($mailUser);
-                $mail->Subject = "O Seu Pedido Foi Recusado";
-                $mail->Body = "nvrwlr";
-
-                $mail->send();
+        if($resultStatus -> num_rows > 0){
+            while($rowStatus = $resultStatus->fetch_assoc()){
+                $estado = $rowStatus["id"];
             }
+        }
+
+
+
+
+        if($estado == 2){
+            $mail->addAddress($mailUser);
+            $mail->Subject = "O Seu Pedido Foi Aceite";
+            $mail->Body = "Olá ".$user.", <br> Vimos por este meio informar que o seu pedido foi aceite e entrará em processo de reparação. <br><br> Cumprimentos Calça Aqui.";
+
+            $mail->send();
+
+        }else if($estado == 3){
+            $mail->addAddress($mailUser);
+            $mail->Subject = "O Seu Pedido Está Concluído";
+            $mail->Body = "Olá ".$user.", <br>A reparação do seu pedido encontra-se concluida, para poder levantar o seu pedido diriga-se à loja. <br><br>Cumprimentos  Calça Aqui";
+
+            $mail->send();
+
+        }else if($estado == 4){
+            $mail->addAddress($mailUser);
+            $mail->Subject = "O Seu Pedido Foi Recusado";
+            $mail->Body = "Lamentamos ".$user.",mas não iremos avançar com a reparação do seu pedido.<br><br> Cumprimentos Calça Aqui.";
+
+            $mail->send();
+        }
+
+
+
+
+        $sql = "UPDATE pedido_reparacao SET status_pedido = '$st' WHERE id_pedido = $id";
+        $result = mysqli_query($conn, $sql);
+
+
+
 
 
 
@@ -91,7 +106,7 @@ try{
 
 
         echo "<script>alert('O estado foi atualizado para ".$st."');</script>";
-        header("Refresh:0; url=pedidoDetalhado_admin.php?id=".$id);
+        header("Location: pedidoDetalhado_admin.php?id=".$id);
     }
 }catch(Exception $ex){
 
