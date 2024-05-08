@@ -9,8 +9,6 @@ require 'phpmailer/src/SMTP.php';
 
 
 
-
-
     $mail = new PHPMailer(true);
 
     $mail->isSMTP();
