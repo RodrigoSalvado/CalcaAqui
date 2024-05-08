@@ -20,7 +20,7 @@ include("../basedados/db.h");
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Calça Aqui</title>
+  <title>Gestão de pedidos</title>
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 

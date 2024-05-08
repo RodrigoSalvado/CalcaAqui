@@ -1023,3 +1023,39 @@ a:focus {
 .button_detalhes:hover {
   background-color: #fec016;
 }
+
+/*-------------------------ClienteDetalhado--------------------------*/
+.container-c{
+  padding: 40px;
+}
+.container-c .parte1{
+  background: tomato;
+}
+.informacoes-cliente{
+  background: mediumpurple;
+}
+.foto {
+  display: inline-block;
+  vertical-align: top;
+  background: lightpink;
+  padding-right:20px ;
+}
+
+.dados-cliente {
+  display: inline-block;
+  margin-left: 10px;
+  background: lightblue;
+  width: 30%;
+}
+
+.campos3 {
+  width: 100%;
+  background: red;
+  padding: 10px;
+}
+
+.parte2{
+  padding-top: 25px;
+  background: lightblue;
+}
+
