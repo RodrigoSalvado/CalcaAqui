@@ -127,11 +127,12 @@ if($resultPedidos -> num_rows > 0){
                 <div class="dados-pedidos">
                     <?php
                     //pedidos information
-                    $sqlPedidos = "SELECT servico, status_pedido FROM pedido_reparacao WHERE id_utilizador = '$id_utilizador'";
+                    $sqlPedidos = "SELECT id_pedido, servico, status_pedido FROM pedido_reparacao WHERE id_utilizador = '$id_utilizador'";
                     $resultPedidos = mysqli_query($conn, $sqlPedidos);
 
                     if($resultPedidos -> num_rows > 0){
                         while($row2 = $resultPedidos -> fetch_assoc()){
+                            $id_pedido = $row2['id_pedido'];
                             $servico = $row2['servico'];
                             $status_pedido = $row2['status_pedido'];
 

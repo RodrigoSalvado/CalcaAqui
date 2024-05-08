@@ -3,8 +3,9 @@
     global $conn;
     include("../basedados/db.h");
     session_start();
-
+//user
 echo $_SESSION["username"];
+
 
     $nome = "";
     $username = "";
@@ -19,6 +20,7 @@ echo $_SESSION["username"];
             $nome = $row["nome"];
             $username = $row["username"];
             $email = $row["email"];
+
 
         }
 
@@ -125,7 +127,6 @@ echo $_SESSION["username"];
                             $servico = $rowPedido["servico"];
                             $status_pedido = $rowPedido["status_pedido"];
 
-                            $_SESSION['id_pedido'] = $id_pedido;
 
                             echo "<button class='pedido' onclick='window.location.href=\"pedidoDetalhado.php?id_pedido=$id_pedido\"' style='border: none;'>
                                     <label class='campos' id='id'>$id_pedido</label>
