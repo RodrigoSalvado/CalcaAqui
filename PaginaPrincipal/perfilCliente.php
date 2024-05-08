@@ -3,8 +3,9 @@
     global $conn;
     include("../basedados/db.h");
     session_start();
-
+//user
 echo $_SESSION["username"];
+
 
     $nome = "";
     $username = "";
@@ -19,6 +20,7 @@ echo $_SESSION["username"];
             $nome = $row["nome"];
             $username = $row["username"];
             $email = $row["email"];
+
 
         }
 
