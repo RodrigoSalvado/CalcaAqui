@@ -34,6 +34,7 @@ try{
 
         $sql = "UPDATE pedido_reparacao SET notas = '$n' WHERE id_pedido = $id";
         $result = mysqli_query($conn, $sql);
+        echo "<script>alert('Adicionou notas ao pedido');</script>";
         header("Refresh:0; url=pedidoDetalhado_admin.php?id=".$id);
 
     }
@@ -66,8 +67,6 @@ try{
         }
 
 
-
-
         if($estado == 2){
             $mail->addAddress($mailUser);
             $mail->Subject = "O Seu Pedido Foi Aceite";
@@ -91,18 +90,8 @@ try{
         }
 
 
-
-
         $sql = "UPDATE pedido_reparacao SET status_pedido = '$st' WHERE id_pedido = $id";
         $result = mysqli_query($conn, $sql);
-
-
-
-
-
-
-
-
 
 
         echo "<script>alert('O estado foi atualizado para ".$st."');</script>";
@@ -385,7 +374,7 @@ if($result -> num_rows > 0) {
 
 </section>
 
-<script type="text/javascript" src="js/pedidoDetalhado_admin.js"></script>
+<script type="text/javascript" src="js/popup.js"></script>
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
