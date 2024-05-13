@@ -4,11 +4,6 @@ session_start();
 
 include("../basedados/db.h");
 
-//mudar variavel de sessão
-//descomentar para verificar se está logado ou não 
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -117,13 +112,13 @@ Calça Aqui
           if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
                   if($row["status_pedido"]!= "Recusar"){
-                       $id = $row["id_pedido"];
+                        $id = $row["id_pedido"];
                         $servico = $row["servico"];
                         $calcado = $row["calcado"];
-                         $status = $row["status_pedido"];
-                         $idu = $row["id_utilizador"];
+                        $status = $row["status_pedido"];
+                        $idu = $row["id_utilizador"];
 
-                         $sqlUser = "SELECT * FROM utilizador where id_utilizador = $idu";
+                        $sqlUser = "SELECT * FROM utilizador where id_utilizador = $idu";
                         $resultUser = $conn->query($sqlUser);
 
                           if ($resultUser->num_rows > 0) {
@@ -310,7 +305,5 @@ Subscrever
 </html>
 
 <?php
-
-
 
 $conn -> close();

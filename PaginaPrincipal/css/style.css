@@ -699,6 +699,7 @@ a:focus {
   text-align: center;
 }
 
+
 .campos-user{
   margin: 15px 24px 15px;
 }
@@ -706,7 +707,7 @@ a:focus {
 .campos-user label{
   color: #7d7d7d;
   margin: 7px 10% 4px;
-  width: 80%;
+  width: 30%;
   border: 1px solid #7d7d7d;
   padding: 6px;
   border-radius: 17px;
@@ -714,6 +715,10 @@ a:focus {
 
 .pedidos{
   padding: 50px 0;
+}
+
+.pedidos2{
+  margin-top: 20px;
 }
 
 .pedido{
@@ -738,19 +743,7 @@ a:focus {
   margin-right: 25px;
 }
 
-.informacoes {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
-}
+
 
 .informacoes  h2{
   font-weight: bold;
@@ -1027,35 +1020,55 @@ a:focus {
 /*-------------------------ClienteDetalhado--------------------------*/
 .container-c{
   padding: 40px;
+  margin-bottom: 50px;
 }
-.container-c .parte1{
-  background: tomato;
+.container-c .parte1 {
 }
-.informacoes-cliente{
-  background: mediumpurple;
+.container-c .parte1 h2{
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+}
+.container-c .parte1 .dados-cliente{
+
 }
 .foto {
   display: inline-block;
   vertical-align: top;
-  background: lightpink;
-  padding-right:20px ;
+  padding-right:0px ;
+  padding-top: 25px;
 }
 
 .dados-cliente {
   display: inline-block;
   margin-left: 10px;
-  background: lightblue;
   width: 30%;
 }
 
 .campos3 {
   width: 100%;
-  background: red;
   padding: 10px;
+  border-radius: 15px;
+  border: 1px solid #7d7d7d;
+  color: #7d7d7d;
+
 }
 
 .parte2{
   padding-top: 25px;
-  background: lightblue;
+}
+.container .h2{
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.container-c .parte1{
+}
+.parte1 .centro{
+  display: flex;
+  justify-content: center;
 }
 

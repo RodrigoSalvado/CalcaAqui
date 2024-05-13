@@ -5,9 +5,6 @@ session_start();
 
 echo $_SESSION["username"] . "<br>";
 
-
-
-
     $nome = "";
     $username = "";
     $email = "";
@@ -27,6 +24,7 @@ echo $_SESSION["username"] . "<br>";
     }else{
         echo "<script>window.alert('Não foram encontrados resultados') ;</script>";
     }
+
 
     if(isset($_GET['id_pedido'])){
         $id_pedido = $_GET['id_pedido'];

@@ -104,52 +104,86 @@ echo $_SESSION["username"];
             <label for=""><?php echo $email; ?></label>
         </div>
 
-        <div class="pedidos">
+        <div class="pedidos2">
                 <h2>Os meus pedidos:</h2>
-            <?php
-
-                //id do user que fez o login
-                $sql = "SELECT id_utilizador FROM utilizador WHERE username = '$user_logado'";
-                $result = mysqli_query($conn, $sql);
-
-                if($result -> num_rows > 0){
-                    $rowId = $result -> fetch_assoc();
-                    $idUserLogado = $rowId["id_utilizador"];
-                    //echo $idUserLogado;
-
-                    //dados do(s) pedido(s) do user que fez o login
-                    $sqlPedido = "SELECT id_pedido, servico, status_pedido FROM pedido_reparacao WHERE id_utilizador = '$idUserLogado'";
-                    $resultPedido = mysqli_query($conn, $sqlPedido);
-
-                    if($resultPedido -> num_rows > 0){
-                        while($rowPedido = $resultPedido -> fetch_assoc()){
-                            $id_pedido = $rowPedido["id_pedido"];
-                            $servico = $rowPedido["servico"];
-                            $status_pedido = $rowPedido["status_pedido"];
-
-
-                            echo "<button class='pedido' onclick='window.location.href=\"pedidoDetalhado.php?id_pedido=$id_pedido\"' style='border: none;'>
-                                    <label class='campos' id='id'>$id_pedido</label>
-                                    <label class='campos' id='servico'>$servico</label>
-                                    <label class='campos' id='estado'>$status_pedido</label>
-                                  </button>";
-                        }
-                    }else{
-                        if($resultPedido -> num_rows == 0){
-                            echo "ainda nao realizou nenhum pedido";
-                        }else{
-                            echo "erro ao realizar o select";
-                        }
-                    }
-
-                    }else{
-                         echo "erro";
-                    }
-            ?>
-
         </div>
 
     </div>
+
+<div class="container">
+    <table class="table table-primary table-sortable" role="grid">
+        <thead>
+        <tr>
+            <th class="text-center header" scope="col" role="columnheader"><span>Pedido</span></th>
+            <th class="text-center header" scope="col" role="columnheader"><span>Utilizador</span></th>
+            <th class="text-center header" scope="col" role="columnheader"><span>Serviço</span></th>
+            <th class="text-center header" scope="col" role="columnheader"><span>Calçado</span></th>
+            <th class="text-center header" scope="col" role="columnheader"><span>Status</span></th>
+            <th class="text-center header" scope="col" role="columnheader"><span>Detalhes</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <div class="botoes_gest">
+
+            <?php
+
+            //id do user que fez o login
+            $sql = "SELECT id_utilizador FROM utilizador WHERE username = '$user_logado'";
+            $result = mysqli_query($conn, $sql);
+
+            if($result -> num_rows > 0){
+                $rowId = $result -> fetch_assoc();
+                $idUserLogado = $rowId["id_utilizador"];
+                //echo $idUserLogado;
+
+                //dados do(s) pedido(s) do user que fez o login
+                $sqlPedido = "SELECT id_pedido, id_utilizador, servico, calcado, status_pedido FROM pedido_reparacao WHERE id_utilizador = '$idUserLogado'";
+                $resultPedido = mysqli_query($conn, $sqlPedido);
+
+                if($resultPedido -> num_rows > 0){
+                    while($rowPedido = $resultPedido -> fetch_assoc()){
+                        $id_pedido = $rowPedido["id_pedido"];
+                        $id_utilizador = $rowPedido["id_utilizador"];
+                        $servico = $rowPedido["servico"];
+                        $calcado = $rowPedido["calcado"];
+                        $status_pedido = $rowPedido["status_pedido"];
+
+                        $sqlUser = "SELECT * FROM utilizador where id_utilizador = $id_utilizador";
+                        $resultUser = $conn->query($sqlUser);
+
+                        if ($resultUser->num_rows > 0) {
+                            $rowUser = $resultUser->fetch_assoc();
+                            $user = $rowUser["username"];
+                        }
+
+                        echo "
+                 <tr>
+                      <td class='text-center'>$id_pedido</td>
+                      <td class='text-center'>$user</td>
+                      <td class='text-center'>$servico</td>
+                      <td class='text-center'>$calcado</td>
+                      <td class='text-center'>$status_pedido</td>
+                      <td class='text-center'><a href='pedidoDetalhado.php?id_pedido=$id_pedido'><button class='button_detalhes'>Detalhes</button></a></td>
+                 </tr>
+                 ";
+                    }
+                }else{
+                    if($resultPedido -> num_rows == 0){
+                        echo "ainda nao realizou nenhum pedido";
+                    }else{
+                        echo "erro ao realizar o select";
+                    }
+                }
+
+            }else{
+                echo "erro";
+            }
+            ?>
+
+        </div>
+        </tbody>
+    </table>
+</div>
 
 <section class="info_section ">
     <div class="container">
