@@ -357,6 +357,7 @@ global $conn;
         </div>
     </div>
     <a href="feedback.php"><button class="btn-sub">Enviar Feedback</button></a>
+
 </section>
 
 <section class="target_section layout_padding2">
