@@ -356,6 +356,7 @@ global $conn;
             </div>
         </div>
     </div>
+    <a href="feedback.php"><button>Enviar Feedback</button></a>
 </section>
 
 <section class="target_section layout_padding2">
@@ -574,7 +575,20 @@ global $conn;
     </div>
 </section>
 
+<div class="popup">
+    <button class="close-btn">&times;</button>
+    <form method="get" action="">
+        <h5>
+            Coloque aqui o seu feedback:</br>
+        </h5>
+        <textarea name="feddback"></textarea>
+        <?php echo "<input type='text' name='id' value='".$id."' hidden/>"?>
+        <input type="submit" name="submit" value="Enviar Feedback">
+    </form>
+</div>
+
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="js/popup.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
 </script>
@@ -597,6 +611,8 @@ global $conn;
         }
     });
 </script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </body>
 
