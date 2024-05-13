@@ -95,37 +95,85 @@ Calça Aqui
           </tr>
           </thead>
           <tbody>
-          <div class="botoes_gest">  
+          <div class="botoes_gest">
 
-          <?php
+              <?php
 
-          $sql = "SELECT * FROM utilizador";
-          $result = $conn->query($sql);
-          if ($result->num_rows > 0) {
-              while ($row = $result->fetch_assoc()) {
+              // Número de resultados por página
+              $resultados_por_pagina = 5;
 
-                  $user = $row["username"];
-                  $email = $row["email"];
-                  $id_utilizador = $row["id_utilizador"];
+              // Página atual
+              $pagina_atual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
 
-                  $_SESSION['id_utilizador'] = $id_utilizador;
+              // Calcula o offset
+              $offset = ($pagina_atual - 1) * $resultados_por_pagina;
 
-                  echo "
-            <tr>
-                <td class='text-center'>$user</td>
-                <td class='text-center'>$email</td>
-                <td class='text-center'><a href='clienteDetalhado.php?id_utilizador=$id_utilizador' class='button_detalhes'>Detalhes</a></td>
-            </tr>
-        ";
+              // Query para buscar os resultados paginados
+              $sql = "SELECT * FROM utilizador LIMIT $offset, $resultados_por_pagina";
+              $result = $conn->query($sql);
+
+              if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
+
+                      $user = $row["username"];
+                      $email = $row["email"];
+                      $id_utilizador = $row["id_utilizador"];
+
+                      $_SESSION['id_utilizador'] = $id_utilizador;
+
+                      echo "
+        <tr>
+            <td class='text-center'>$user</td>
+            <td class='text-center'>$email</td>
+            <td class='text-center'><a href='clienteDetalhado.php?id_utilizador=$id_utilizador' class='button_detalhes'>Detalhes</a></td>
+        </tr>
+    ";
+                  }
               }
-          }
 
-          ?>
+              ?>
+
 
           </div>
           </tbody>
       </table>
   </div>
+
+  <!-- Adicione isso no seu HTML para mostrar os botões de paginação -->
+  <div class="pagination">
+      <?php
+      // Botões de página anterior e próxima
+      $pagina_anterior = $pagina_atual - 1;
+      $proxima_pagina = $pagina_atual + 1;
+
+
+      // Número total de resultados
+      $sql_count = "SELECT COUNT(*) AS total FROM utilizador";
+      $result_count = $conn->query($sql_count);
+      $row_count = $result_count->fetch_assoc();
+      $total_resultados = $row_count['total'];
+
+      // Número de resultados por página
+      $resultados_por_pagina = 5;
+
+      // Número total de páginas
+      $total_paginas = ceil($total_resultados / $resultados_por_pagina);
+
+
+      ?>
+      <?php if ($pagina_atual > 1): ?>
+          <a href="?pagina=<?php echo $pagina_anterior; ?>" class="btn">Anterior</a>
+      <?php endif; ?>
+
+      <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
+          <a href="?pagina=<?php echo $i; ?>" class="btn <?php echo ($i == $pagina_atual) ? 'active' : ''; ?>"><?php echo $i; ?></a>
+      <?php endfor; ?>
+
+      <?php if ($pagina_atual < $total_paginas): ?>
+          <a href="?pagina=<?php echo $proxima_pagina; ?>" class="btn">Próxima</a>
+      <?php endif; ?>
+  </div>
+
 
   <section class="info_section ">
     <div class="container">
