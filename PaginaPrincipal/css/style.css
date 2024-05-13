@@ -365,6 +365,23 @@ a:focus {
 
 .client_section {
   padding-bottom: 150px;
+  position: relative;
+}
+
+.client_section .btn-sub{
+  border: none;
+  position: absolute;
+  right: 23%;
+  top: 83%;
+  background-color: #353434;
+  padding: 0.7rem;
+  border-radius: 20px;
+  color: white;
+}
+
+.client_section .btn-sub:hover{
+  background-color: #fec016;
+  color: black;
 }
 
 .client_section .heading_container {
@@ -699,7 +716,6 @@ a:focus {
   text-align: center;
 }
 
-
 .campos-user{
   margin: 15px 24px 15px;
 }
@@ -707,7 +723,7 @@ a:focus {
 .campos-user label{
   color: #7d7d7d;
   margin: 7px 10% 4px;
-  width: 30%;
+  width: 80%;
   border: 1px solid #7d7d7d;
   padding: 6px;
   border-radius: 17px;
@@ -715,10 +731,6 @@ a:focus {
 
 .pedidos{
   padding: 50px 0;
-}
-
-.pedidos2{
-  margin-top: 20px;
 }
 
 .pedido{
@@ -743,7 +755,19 @@ a:focus {
   margin-right: 25px;
 }
 
-
+.informacoes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
 
 .informacoes  h2{
   font-weight: bold;
@@ -1020,55 +1044,154 @@ a:focus {
 /*-------------------------ClienteDetalhado--------------------------*/
 .container-c{
   padding: 40px;
-  margin-bottom: 50px;
 }
-.container-c .parte1 {
+.container-c .parte1{
+  background: tomato;
 }
-.container-c .parte1 h2{
-  text-align: center;
-  font-weight: bold;
-  text-transform: uppercase;
-  position: relative;
-}
-.container-c .parte1 .dados-cliente{
-
+.informacoes-cliente{
+  background: mediumpurple;
 }
 .foto {
   display: inline-block;
   vertical-align: top;
-  padding-right:0px ;
-  padding-top: 25px;
+  background: lightpink;
+  padding-right:20px ;
 }
 
 .dados-cliente {
   display: inline-block;
   margin-left: 10px;
+  background: lightblue;
   width: 30%;
 }
 
 .campos3 {
   width: 100%;
+  background: red;
   padding: 10px;
-  border-radius: 15px;
-  border: 1px solid #7d7d7d;
-  color: #7d7d7d;
-
 }
 
 .parte2{
   padding-top: 25px;
-}
-.container .h2{
-  text-align: center;
-  font-weight: bold;
-  text-transform: uppercase;
-  position: relative;
+  background: lightblue;
 }
 
-.container-c .parte1{
+/*-------------------------Feedback--------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
-.parte1 .centro{
+
+:root {
+  --yellow: #FFBD13;
+  --blue: #4383FF;
+  --blue-d-1: #3278FF;
+  --light: #F5F5F5;
+  --grey: #AAA;
+  --white: #FFF;
+  --shadow: 8px 8px 30px rgba(0,0,0,.05);
+}
+
+.feedback-container {
+  background: var(--light);
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 7rem;
 }
 
+
+
+.wrapper-feedback {
+  background: var(--white);
+  padding: 2rem;
+  max-width: 576px;
+  width: 100%;
+  border-radius: .75rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.wrapper-feedback h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: .5rem;
+  font-size: 2rem;
+  color: var(--yellow);
+  margin-bottom: 2rem;
+}
+.rating .star {
+  cursor: pointer;
+}
+.rating .star.active {
+  opacity: 0;
+  animation: animate .5s calc(var(--i) * .1s) ease-in-out forwards;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.rating .star:hover {
+  transform: scale(1.1);
+}
+textarea {
+  width: 100%;
+  background: var(--light);
+  padding: 1rem;
+  border-radius: .5rem;
+  border: none;
+  outline: none;
+  resize: none;
+  margin-bottom: .5rem;
+}
+.btn-group {
+  display: flex;
+  grid-gap: .5rem;
+  align-items: center;
+}
+.btn-group .btn {
+  padding: .75rem 1rem;
+  border-radius: .5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: .875rem;
+  font-weight: 500;
+}
+.btn-group .btn.submit {
+  background: var(--blue);
+  color: var(--white);
+}
+.btn-group .btn.submit:hover {
+  background: var(--blue-d-1);
+}
+.btn-group .btn.cancel {
+  background: var(--white);
+  color: var(--blue);
+}
+.btn-group .btn.cancel:hover {
+  background: var(--light);
+}
