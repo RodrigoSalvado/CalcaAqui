@@ -14,7 +14,7 @@ include("../basedados/db.h");
         <meta name="description" content="" />
         <meta name="author" content="" />
 
-        <title>Gestão de clientes</title>
+        <title>Feedback</title>
 
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
         <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
@@ -90,10 +90,10 @@ Calça Aqui
                     <i class='bx bx-star star' style="--i: 3;"></i>
                     <i class='bx bx-star star' style="--i: 4;"></i>
                 </div>
-                <textarea name="opinion" cols="30" rows="5" placeholder="Your opinion..."></textarea>
+                <textarea name="feedback" cols="30" rows="5" placeholder="Your opinion..." required></textarea>
                 <div class="btn-group">
-                    <a href="PaginaPrincipal.php"><button type="submit" class="btn submit">Submit</button></a>
-                    <a href="PaginaPrincipal.php"><button class="btn cancel">Cancel</button></a>
+                    <a><button type="submit" class="btn submit" name="submit">Submit</button></a>
+                    <a><button class="btn cancel" name="cancel">Cancel</button></a>
                 </div>
             </form>
         </div>
@@ -256,5 +256,35 @@ Calça Aqui
     </html>
 
 <?php
+
+
+if(isset($_POST["submit"])){
+    $feedback = $_POST["feedback"];
+    $rating = $_POST["rating"];
+
+    $id = $_SESSION["user"];
+
+    $sql = "INSERT INTO feedback (id_utilizador, feedback, rating) VALUES (7, '$feedback', $rating)";
+
+    $conn -> query($sql);
+
+    echo "<script>alert('Feedback Enviado')</script>";
+    header("Location: PaginaPrincipal.php");
+}
+
+if(isset($_POST["cancel"])){
+    header("Location: do.php");
+}
+
+
+
+
+
+
+
+
+
+
+
 
 $conn -> close();

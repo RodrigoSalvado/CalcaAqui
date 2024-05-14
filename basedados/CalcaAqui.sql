@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 05-Maio-2024 às 05:33
--- Versão do servidor: 10.4.32-MariaDB
--- versão do PHP: 8.2.12
+-- Host: localhost
+-- Tempo de geração: 14-Maio-2024 às 12:30
+-- Versão do servidor: 10.4.28-MariaDB
+-- versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,11 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `calcaaqui`
+-- Banco de dados: `CalcaAqui`
 --
 
     CREATE DATABASE CalcaAqui;
-
     USE CalcaAqui;
 
 -- --------------------------------------------------------
@@ -47,7 +46,11 @@ CREATE TABLE `conta` (
 
 INSERT INTO `conta` (`id_utilizador`, `username`, `password`, `email`, `nome`, `genero`, `tipo_utilizador`) VALUES
                                                                                                                 (3, 'fbchjea', '123', 'gvwejkg@nfvkjws.com', 'Rodrigo Salvado', 'masculino', 1),
-                                                                                                                (4, 'Kirlitos', '202cb962ac59075b964b07152d234b70', 'ergvrev@gvsgv', 'Kirlitos Salvationz', 'masculino', 1);
+                                                                                                                (4, 'Kirlitos', '202cb962ac59075b964b07152d234b70', 'ergvrev@gvsgv', 'Kirlitos Salvationz', 'masculino', 1),
+                                                                                                                (5, 'pedroduarte', 'c6cc8094c2dc07b700ffcc36d64e2138', 'pedro@gmail.com', 'Pedro Duarte', 'masculino', 2),
+                                                                                                                (6, 'Pedrocas', '202cb962ac59075b964b07152d234b70', 'pedrorduarte135@gmail.com', 'Pedro Duarte', 'masculino', 2),
+                                                                                                                (7, 'Kirlitos1', '202cb962ac59075b964b07152d234b70', 'rodrigosalvado51@gmail.com', 'Rodrigo Salvado', 'masculino', 2),
+                                                                                                                (9, 'fm', '202cb962ac59075b964b07152d234b70', 'fran04mateus11@gmail.com', 'Francisco Mateus', 'outro', 2);
 
 --
 -- Acionadores `conta`
@@ -67,8 +70,17 @@ CREATE TABLE `feedback` (
                             `id_feedback` int(11) NOT NULL,
                             `id_utilizador` int(11) NOT NULL,
                             `feedback` text NOT NULL,
-                            `servico` varchar(50) NOT NULL
+                            `rating` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `feedback`
+--
+
+INSERT INTO `feedback` (`id_feedback`, `id_utilizador`, `feedback`, `rating`) VALUES
+                                                                                  (1, 7, 'Bom dia', 3),
+                                                                                  (2, 7, 'qenflw', 2),
+                                                                                  (3, 7, 'kwefb 2;v', 5);
 
 -- --------------------------------------------------------
 
@@ -93,8 +105,12 @@ CREATE TABLE `pedido_reparacao` (
 --
 
 INSERT INTO `pedido_reparacao` (`id_pedido`, `id_utilizador`, `data`, `foto`, `descricao`, `notas`, `servico`, `calcado`, `status_pedido`) VALUES
-                                                                                                                                               (1, 3, '2024-05-02 15:49:05', NULL, 'Bom dia', '9324242344srg', 'Engraxamento', 'Ténis', 'Concluido'),
-                                                                                                                                               (3, 4, '2024-05-05 04:30:49', '', 'O ténis tem a sola a sair ', 'O ténis apresenta sinais de maus tratos\r\nPreparar cola\r\nDeixar secar por 4h', 'Costura de Calçado', 'Ténis', 'Em Espera');
+                                                                                                                                               (1, 3, '2024-05-02 15:49:05', NULL, 'Bom dia', '9324242344srg', 'Engraxamento', 'Ténis', 'Recusar'),
+                                                                                                                                               (3, 4, '2024-05-05 04:30:49', '', 'O ténis tem a sola a sair ', 'O ténis apresenta sinais de maus tratos\r\nPreparar cola\r\nDeixar secar por 4h', 'Costura de Calçado', 'Ténis', 'Concluído'),
+                                                                                                                                               (4, 5, '2024-05-06 16:59:56', '', 'whdbwdb', 'y7nwfinalva4334545', 'Costura de Calçado', 'Ténis', 'Concluído'),
+                                                                                                                                               (5, 6, '2024-05-07 17:38:41', '', 'Está sujo, limpem', NULL, 'Engraxamento', 'Sapato de Salto Alto', 'Recusar'),
+                                                                                                                                               (6, 7, '2024-05-07 19:03:34', '', 'me;kfvéq mqwrgk rkmbblk ', NULL, 'Limpeza de Calçado', 'Bota', 'Concluído'),
+                                                                                                                                               (7, 9, '2024-05-08 09:41:24', '', 'o salto saltou fora', '>', 'Costura de Calçado', 'Sapato de Salto Alto', 'Recusar');
 
 -- --------------------------------------------------------
 
@@ -177,7 +193,11 @@ CREATE TABLE `utilizador` (
 
 INSERT INTO `utilizador` (`id_utilizador`, `username`, `email`) VALUES
                                                                     (3, 'fbchjea', 'gvwejkg@nfvkjws.com'),
-                                                                    (4, 'Kirlitos', 'ergvrev@gvsgv');
+                                                                    (4, 'Kirlitos', 'ergvrev@gvsgv'),
+                                                                    (5, 'pedroduarte', 'pedro@gmail.com'),
+                                                                    (6, 'Pedrocas', 'pedrorduarte135@gmail.com'),
+                                                                    (7, 'Kirlitos1', 'rodrigosalvado51@gmail.com'),
+                                                                    (9, 'fm', 'fran04mateus11@gmail.com');
 
 --
 -- Índices para tabelas despejadas
@@ -235,19 +255,19 @@ ALTER TABLE `utilizador`
 -- AUTO_INCREMENT de tabela `conta`
 --
 ALTER TABLE `conta`
-    MODIFY `id_utilizador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+    MODIFY `id_utilizador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `feedback`
 --
 ALTER TABLE `feedback`
-    MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT;
+    MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `pedido_reparacao`
 --
 ALTER TABLE `pedido_reparacao`
-    MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+    MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `servico`
@@ -259,7 +279,7 @@ ALTER TABLE `servico`
 -- AUTO_INCREMENT de tabela `status`
 --
 ALTER TABLE `status`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `tipo_utilizador`
