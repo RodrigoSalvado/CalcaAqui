@@ -720,19 +720,20 @@ a:focus {
 .informacoes{
   padding: 30px;
   text-align: center;
+  width: 100%;
 }
 
 .campos-user{
-  margin: 15px 24px 15px;
 }
 
 .campos-user label{
   color: #7d7d7d;
   margin: 7px 10% 4px;
-  width: 80%;
+  width: 30%;
   border: 1px solid #7d7d7d;
   padding: 6px;
-  border-radius: 17px;
+  border-radius: 15px;
+  text-align: left;
 }
 
 .pedidos{
@@ -761,19 +762,7 @@ a:focus {
   margin-right: 25px;
 }
 
-.informacoes {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
-}
+
 
 .informacoes  h2{
   font-weight: bold;

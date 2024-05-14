@@ -48,7 +48,7 @@ global $conn;
                                 <a class="nav-link" href="about.php"> Sobre Nós </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="do.php"> Serviços </a>
+                                <a class="nav-link" href="servicos.php"> Serviços </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="portfolio.php"> Portfolio </a>
@@ -113,7 +113,7 @@ global $conn;
         <div class="do_container">
             <div class="box arrow-start arrow_bg">
                 <div class="img-box">
-                    <a href='servicoDetalhado.php?id="1"'>
+                    <a href='servicoDetalhado.php?id="1"' style="width: 100%">
                         <img src="images/agulha.png" alt="">
                     </a>
                 </div>
@@ -126,7 +126,7 @@ global $conn;
             </div>
             <div class="box arrow-middle arrow_bg">
                 <div class="img-box">
-                    <a href='servicoDetalhado.php?id="2"'>
+                    <a href='servicoDetalhado.php?id="2"' style="width: 100%">
                         <img src="images/sapato.png" alt="">
                     </a>
 
@@ -142,7 +142,7 @@ global $conn;
             </div>
             <div class="box arrow-middle arrow_bg">
                 <div class="img-box">
-                    <a href='servicoDetalhado.php?id="3"'>
+                    <a href='servicoDetalhado.php?id="3"' style="width: 100%">
                         <img src="images/engraxamento.png" alt="">
                     </a>
 
@@ -157,8 +157,8 @@ global $conn;
             </div>
             <div class="box arrow-end arrow_bg">
                 <div class="img-box">
-                    <a href='servicoDetalhado.php?id="4"'>
-                        <img src="images/tinta-spray.png" alt="">
+                    <a href='servicoDetalhado.php?id="4"' style="width: 100%" >
+                        <img src="images/sponge.png" alt="">
                     </a>
 
                 </div>

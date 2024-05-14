@@ -43,7 +43,7 @@
                                 <a class="nav-link" href="about.php"> Sobre Nós </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="do.php"> What we do </a>
+                                <a class="nav-link" href="servicos.php"> What we do </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="portfolio.php"> Portfolio </a>
@@ -80,7 +80,7 @@
         <div class="do_container">
             <div class="box arrow-start arrow_bg">
                 <div class="img-box">
-                    <a href='servicoDetalhado.php?id="1"'>
+                    <a href='servicoDetalhado.php?id="1"' style="width: 100%">
                         <img src="images/agulha.png" alt="">
                     </a>
                 </div>
@@ -93,7 +93,7 @@
             </div>
             <div class="box arrow-middle arrow_bg">
                 <div class="img-box">
-                    <a href='servicoDetalhado.php?id="2"'>
+                    <a href='servicoDetalhado.php?id="2"' style="width: 100%">
                         <img src="images/sapato.png" alt="">
                     </a>
 
@@ -109,7 +109,7 @@
             </div>
             <div class="box arrow-middle arrow_bg">
                 <div class="img-box">
-                    <a href='servicoDetalhado.php?id="3"'>
+                    <a href='servicoDetalhado.php?id="3"' style="width: 100%">
                         <img src="images/engraxamento.png" alt="">
                     </a>
 
@@ -124,8 +124,8 @@
             </div>
             <div class="box arrow-end arrow_bg">
                 <div class="img-box">
-                    <a href='servicoDetalhado.php?id="4"'>
-                        <img src="images/tinta-spray.png" alt="">
+                    <a href='servicoDetalhado.php?id="4"' style="width: 100%">
+                        <img src="images/sponge.png" alt="">
                     </a>
 
                 </div>
@@ -292,8 +292,3 @@
 </body>
 
 </html>
-<?php
-
-
-
-$conn -> close();

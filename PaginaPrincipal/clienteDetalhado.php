@@ -83,7 +83,7 @@ if($resultPedidos -> num_rows > 0){
                                     <a class="nav-link" href="about.php"> Sobre Nós </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="do.php"> Serviços </a>
+                                    <a class="nav-link" href="servicos.php"> Serviços </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="portfolio.php"> Portfolio </a>

@@ -58,7 +58,7 @@ if ($conn->connect_error) {
                                 <a class="nav-link" href="./about.php"> About </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./do.php"> What we do </a>
+                                <a class="nav-link" href="servicos.php"> What we do </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="./portfolio.php"> Portfolio </a>

@@ -75,7 +75,7 @@ echo $_SESSION["username"];
                                 <a class="nav-link" href="about.php"> Sobre Nós </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="do.php"> Serviços </a>
+                                <a class="nav-link" href="servicos.php"> Serviços </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="portfolio.php"> Portfolio </a>
@@ -96,15 +96,15 @@ echo $_SESSION["username"];
         </div>
     </header>
 </div>
-
+<br><br>
     <div class="informacoes">
         <h2>Informações pessoais:</h2>
         <div class="campos-user">
-            <label for=""><?php echo $nome; ?></label><br>
-            <label for=""><?php echo $username; ?></label><br>
-            <label for=""><?php echo $email; ?></label>
+            <label for="">Nome: <?php echo $nome; ?></label><br>
+            <label for="">Username: <?php echo $username; ?></label><br>
+            <label for="">Email: <?php echo $email; ?></label>
         </div>
-
+<br><br>
         <div class="pedidos2">
                 <h2>Os meus pedidos:</h2>
         </div>
@@ -151,10 +151,11 @@ echo $_SESSION["username"];
                                         echo "
                                         <tr>
                                                 <td class='text-center'>$id</td>
+                                                <td class='text-center'>$username</td>
                                                 <td class='text-center'>$servico</td>
                                                 <td class='text-center'>$calcado</td>
                                                 <td class='text-center'>$status</td>
-                                                <td class='text-center'><a href='pedidoDetalhado_admin.php?id=$id'><button class='button_detalhes'>Detalhes</button></a></td>
+                                                <td class='text-center'><a href='pedidoDetalhado.php?id_pedido=$id'><button class='button_detalhes'>Detalhes</button></a></td>
                                         </tr>
                                         ";
                                     }
