@@ -108,87 +108,112 @@ if($resultPedidos -> num_rows > 0){
     </div>
 
     <div class="container-c">
-        <div class="parte1" >
+        <div class="parte1">
 
-                <h2>Dados do cliente</h2>
-
-                <div class="centro">
-                    <div class="foto">
-                        <img src="images/user%20(1).png" alt="user-foto" style="width: 150px; height: 150px; ">
-                    </div>
-                    <div class="dados-cliente">
-                        <label class="campos3">Nome: <?php echo $nome ?></label><br>
-                        <label class="campos3">Género: <?php echo $genero ?></label><br>
-                        <label class="campos3">Username: <?php echo $user ?></label><br>
-                        <label class="campos3">Email: <?php echo $email?></label><br>
-                    </div>
+                <h3>Dados do cliente:</h3>
+                <div class="foto">
+                    <img src="images/user%20(1).png" alt="user-foto" style="width: 150px" height=150px">
+                </div>
+                <div class="dados-cliente">
+                    <label class="campos3"><?php echo $nome ?></label><br>
+                    <label class="campos3"><?php echo $genero ?></label><br>
+                    <label class="campos3"><?php echo $user ?></label><br>
+                    <label class="campos3"><?php echo $email?></label><br>
                 </div>
 
-        </div>
-    </div>
-
-    <div class="container">
-        <h2 class="h2">Pedidos realizados</h2>
         <table class="table table-primary table-sortable" role="grid">
             <thead>
-            <tr>
-                <th class="text-center header" scope="col" role="columnheader"><span>Pedido</span></th>
-                <th class="text-center header" scope="col" role="columnheader"><span>Utilizador</span></th>
-                <th class="text-center header" scope="col" role="columnheader"><span>Serviço</span></th>
-                <th class="text-center header" scope="col" role="columnheader"><span>Calçado</span></th>
-                <th class="text-center header" scope="col" role="columnheader"><span>Status</span></th>
-                <th class="text-center header" scope="col" role="columnheader"><span>Detalhes</span></th>
-            </tr>
+                <tr>
+                    <th class="text-center header" scope="col" role="columnheader"><span>Pedido</span></th>
+                    <th class="text-center header" scope="col" role="columnheader"><span>Serviço</span></th>
+                    <th class="text-center header" scope="col" role="columnheader"><span>Calçado</span></th>
+                    <th class="text-center header" scope="col" role="columnheader"><span>Status</span></th>
+                    <th class="text-center header" scope="col" role="columnheader"><span>Detalhes</span></th>
+                </tr>
             </thead>
-            <tbody>
-            <div class="botoes_gest">
+          <tbody>
+        </div>
+        <div class="parte2">
+            <div class="informacoes-pedidos">
+                <h3>Pedidos realizados:</h3>
+                <div class="dados-pedidos">
+                    <?php
 
-                <?php
+                    // Número de resultados por página
+                    $resultados_por_pagina = 5;
 
-                $sqlPedido = "SELECT id_pedido, id_utilizador, servico, calcado, status_pedido FROM pedido_reparacao WHERE id_utilizador = '$id_utilizador'";
-                $resultPedido = mysqli_query($conn, $sqlPedido);
+                    // Página atual
+                    $pagina_atual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
 
-                    if($resultPedido -> num_rows > 0){
-                        while($rowPedido = $resultPedido -> fetch_assoc()){
-                            $id_pedido = $rowPedido["id_pedido"];
-                            $id_utilizador = $rowPedido["id_utilizador"];
-                            $servico = $rowPedido["servico"];
-                            $calcado = $rowPedido["calcado"];
-                            $status_pedido = $rowPedido["status_pedido"];
+                    // Calcula o offset
+                    $offset = ($pagina_atual - 1) * $resultados_por_pagina;
 
-                            $sqlUser = "SELECT * FROM utilizador where id_utilizador = $id_utilizador";
-                            $resultUser = $conn->query($sqlUser);
+                    // Query para buscar os resultados paginados
+                    $sql = "SELECT * FROM pedido_reparacao WHERE id_utilizador = '$id_utilizador' LIMIT $offset, $resultados_por_pagina";
+                    $result = $conn->query($sql);
 
-                            if ($resultUser->num_rows > 0) {
-                                $rowUser = $resultUser->fetch_assoc();
-                                $user = $rowUser["username"];
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            if($row["status_pedido"]!= "Recusar"){
+                                $id = $row["id_pedido"];
+                                $servico = $row["servico"];
+                                $calcado = $row["calcado"];
+                                $status = $row["status_pedido"];
+
+                                echo "
+                                <tr>
+                                        <td class='text-center'>$id</td>
+                                        <td class='text-center'>$servico</td>
+                                        <td class='text-center'>$calcado</td>
+                                        <td class='text-center'>$status</td>
+                                        <td class='text-center'><a href='pedidoDetalhado_admin.php?id=$id'><button class='button_detalhes'>Detalhes</button></a></td>
+                                </tr>
+                                ";
                             }
-
-                            echo "
-                 <tr>
-                      <td class='text-center'>$id_pedido</td>
-                      <td class='text-center'>$user</td>
-                      <td class='text-center'>$servico</td>
-                      <td class='text-center'>$calcado</td>
-                      <td class='text-center'>$status_pedido</td>
-                      <td class='text-center'><a href='pedidoDetalhado.php?id_pedido=$id_pedido'><button class='button_detalhes'>Detalhes</button></a></td>
-                 </tr>
-                 ";
-                        }
-                    }else{
-                        if($resultPedido -> num_rows == 0){
-                            echo "ainda nao realizou nenhum pedido";
-                        }else{
-                            echo "erro ao realizar o select";
                         }
                     }
+                    ?>
+                    </div>
+                    </tbody>
+                    </table>
+                    </div>
+
+                    <!-- Adicione isso no seu HTML para mostrar os botões de paginação -->
+                    <div class="pagination">
+                    <?php
+                    // Botões de página anterior e próxima
+                    $pagina_anterior = $pagina_atual - 1;
+                    $proxima_pagina = $pagina_atual + 1;
 
 
-                ?>
-            </div>
-            </tbody>
-        </table>
-    </div>
+                    // Número total de resultados
+                    $sql_count = "SELECT COUNT(*) AS total FROM pedido_reparacao";
+                    $result_count = $conn->query($sql_count);
+                    $row_count = $result_count->fetch_assoc();
+                    $total_resultados = $row_count['total'];
+
+                    // Número de resultados por página
+                    $resultados_por_pagina = 5;
+
+                    // Número total de páginas
+                    $total_paginas = ceil($total_resultados / $resultados_por_pagina);
+
+
+                    ?>
+
+                    <?php if ($pagina_atual > 1): ?>
+                    <a href="?pagina=<?php echo $pagina_anterior; ?>" class="btn">Anterior</a>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
+                    <a href="?pagina=<?php echo $i; ?>" class="btn <?php echo ($i == $pagina_atual) ? 'active' : ''; ?>"><?php echo $i; ?></a>
+                    <?php endfor; ?>
+
+                    <?php if ($pagina_atual < $total_paginas): ?>
+                    <a href="?pagina=<?php echo $proxima_pagina; ?>" class="btn">Próxima</a>
+                    <?php endif; ?>
+                    </div>
+
 
     <section class="info_section ">
         <div class="container">
