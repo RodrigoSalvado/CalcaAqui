@@ -110,17 +110,20 @@ if($resultPedidos -> num_rows > 0){
     <div class="container-c">
         <div class="parte1">
 
-                <h3>Dados do cliente:</h3>
+            <h2>Dados do cliente</h2>
+            <br>
+            <div class="centro">
                 <div class="foto">
-                    <img src="images/user%20(1).png" alt="user-foto" style="width: 150px" height=150px">
+                    <img src="images/user%20(1).png" alt="user-foto" style="width: 150px; height: 150px; ">
                 </div>
                 <div class="dados-cliente">
-                    <label class="campos3"><?php echo $nome ?></label><br>
-                    <label class="campos3"><?php echo $genero ?></label><br>
-                    <label class="campos3"><?php echo $user ?></label><br>
-                    <label class="campos3"><?php echo $email?></label><br>
+                    <label class="campos3">Nome: <?php echo $nome ?></label><br>
+                    <label class="campos3">Género: <?php echo $genero ?></label><br>
+                    <label class="campos3">Username: <?php echo $user ?></label><br>
+                    <label class="campos3">Email: <?php echo $email?></label><br>
                 </div>
-
+            </div>
+            <br><br>
         <table class="table table-primary table-sortable" role="grid">
             <thead>
                 <tr>
@@ -135,7 +138,8 @@ if($resultPedidos -> num_rows > 0){
         </div>
         <div class="parte2">
             <div class="informacoes-pedidos">
-                <h3>Pedidos realizados:</h3>
+                <h2>Pedidos realizados:</h2>
+                <br>
                 <div class="dados-pedidos">
                     <?php
 
@@ -213,6 +217,7 @@ if($resultPedidos -> num_rows > 0){
                     <a href="?pagina=<?php echo $proxima_pagina; ?>" class="btn">Próxima</a>
                     <?php endif; ?>
                     </div>
+        </div>
 
 
     <section class="info_section ">

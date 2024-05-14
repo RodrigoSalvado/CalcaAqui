@@ -67,6 +67,7 @@ global $conn;
             </nav>
         </div>
     </header>
+    <br><br>
     <section class=" slider_section position-relative">
         <div class="container">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -112,52 +113,62 @@ global $conn;
         <div class="do_container">
             <div class="box arrow-start arrow_bg">
                 <div class="img-box">
-                    <a href='servicoDetalhado.php'><img src="images/agulha.png" alt=""></a>
+                    <a href='servicoDetalhado.php?id="1"'>
+                        <img src="images/agulha.png" alt="">
+                    </a>
                 </div>
                 <div class="detail-box">
-                    <a href='servicoDetalhado.php?id="1"'><h6>
+                    <label<h6>
                             Costura do <br>
                             Calçado
-                        </h6></a>
-
+                        </h6></label>
                 </div>
             </div>
             <div class="box arrow-middle arrow_bg">
                 <div class="img-box">
-                    <img src="images/sapato.png" alt="">
+                    <a href='servicoDetalhado.php?id="2"'>
+                        <img src="images/sapato.png" alt="">
+                    </a>
+
                 </div>
                 <div class="detail-box">
-                    <a href='servicoDetalhado.php?id="2"'>
+                    <label>
                         <h6>
                             Muda de Capa <br>
                             e Sola
                         </h6>
-                    </a>
+                    </label>
                 </div>
             </div>
             <div class="box arrow-middle arrow_bg">
                 <div class="img-box">
-                    <img src="images/engraxamento.png" alt="">
+                    <a href='servicoDetalhado.php?id="3"'>
+                        <img src="images/engraxamento.png" alt="">
+                    </a>
+
                 </div>
                 <div class="detail-box">
-                    <a href='servicoDetalhado.php?id="3"'>
+                    <label>
                         <h6>
                             Engraxamento
                         </h6>
-                    </a>
+                    </label>
                 </div>
             </div>
             <div class="box arrow-end arrow_bg">
                 <div class="img-box">
-                    <img src="images/tinta-spray.png" alt="">
+                    <a href='servicoDetalhado.php?id="4"'>
+                        <img src="images/tinta-spray.png" alt="">
+                    </a>
+
                 </div>
                 <div class="detail-box">
-                    <a href='servicoDetalhado.php?id="4"'>
+                    <label>
                         <h6>
                             Limpeza do <br>
                             Calçado
                         </h6>
-                    </a>
+                    </label>
                 </div>
             </div>
         </div>
@@ -165,39 +176,55 @@ global $conn;
 </section>
 
 
-<section class="work_section layout_padding">
+<section class="target_section layout_padding2">
     <div class="container">
-        <div class="heading_container">
-            <h2>
-                Alguns dos nossos trabalhos
-            </h2>
-            <p>
-                Aqui estão alguns trabalhos realizados pelos nossos
-                profissionais, nesta sapataria, aqui damos sempre o nosso melhor
-                para satisfazer os nossos clientes, e para obtermos resultados como estes.
-            </p>
-        </div>
-        <div class="work_container layout_padding2">
-            <div class="box b-1">
-                <img src="images/w-1.jpg" alt="">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="detail-box">
+                    <h2>
+                        10+
+                    </h2>
+                    <h5>
+                        Anos de Serviço
+                    </h5>
+                </div>
             </div>
-            <div class="box b-2">
-                <img src="images/w-2.jpg" alt="">
-
+            <div class="col-md-3 col-sm-6">
+                <div class="detail-box">
+                    <h2>
+                        200+
+                    </h2>
+                    <h5>
+                        Projetos Entregues
+                    </h5>
+                </div>
             </div>
-            <div class="box b-3">
-                <img src="images/w-3.jpg" alt="">
-
+            <div class="col-md-3 col-sm-6">
+                <div class="detail-box">
+                    <h2>
+                        1000+
+                    </h2>
+                    <h5>
+                        Clientes Satisfeitos
+                    </h5>
+                </div>
             </div>
-            <div class="box b-4">
-                <img src="images/w-4.jpg" alt="">
-
+            <div class="col-md-3 col-sm-6">
+                <div class="detail-box">
+                    <h2>
+                        1500+
+                    </h2>
+                    <h5>
+                        Sapatos Restaurados
+                    </h5>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 
+<br><br><br><br><br><br>
 
 
 <section class="client_section">
@@ -262,98 +289,13 @@ global $conn;
     </div>
 </section>
 
-<section class="target_section layout_padding2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6">
-                <div class="detail-box">
-                    <h2>
-                        10+
-                    </h2>
-                    <h5>
-                        Anos de Serviço
-                    </h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="detail-box">
-                    <h2>
-                        200+
-                    </h2>
-                    <h5>
-                        Projetos Entregues
-                    </h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="detail-box">
-                    <h2>
-                        1000+
-                    </h2>
-                    <h5>
-                        Clientes Satisfeitos
-                    </h5>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="detail-box">
-                    <h2>
-                        1500+
-                    </h2>
-                    <h5>
-                        Sapatos Restaurados
-                    </h5>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- end target section -->
 
 
 <!-- contact section -->
 
-<section class="contact_section layout_padding">
-    <div class="container">
 
-        <div class="heading_container">
-            <h2>
-                Contactar a Administração
-            </h2>
-        </div>
-        <div class="">
-            <div class="">
-                <div class="row">
-                    <div class="col-md-9 mx-auto">
-                        <div class="contact-form">
-                            <form action="">
-                                <div>
-                                    <input type="text" placeholder="Nome Completo ">
-                                </div>
-                                <div>
-                                    <input type="text" placeholder="Numero de Telefone">
-                                </div>
-                                <div>
-                                    <input type="email" placeholder="E-mail">
-                                </div>
-                                <div>
-                                    <input type="text" placeholder="Mensagem" class="input_message">
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <button type="submit" class="btn_on-hover">
-                                        Enviar
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
 
 <section class="info_section ">
     <div class="container">

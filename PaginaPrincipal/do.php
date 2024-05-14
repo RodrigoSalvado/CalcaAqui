@@ -1,8 +1,3 @@
-<?php // Ligação à bd
-global $conn;
-include("./basedados/db.h");
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,52 +80,62 @@ include("./basedados/db.h");
         <div class="do_container">
             <div class="box arrow-start arrow_bg">
                 <div class="img-box">
-                    <a href='servicoDetalhado.php'><img src="images/agulha.png" alt=""></a>
+                    <a href='servicoDetalhado.php?id="1"'>
+                        <img src="images/agulha.png" alt="">
+                    </a>
                 </div>
                 <div class="detail-box">
-                    <a href='servicoDetalhado.php?id="1"'><h6>
-                            Costura do <br>
-                            Calçado
-                        </h6></a>
+                    <label<h6>
+                        Costura do <br>
+                        Calçado
+                    </h6></label>
+                </div>
+            </div>
+            <div class="box arrow-middle arrow_bg">
+                <div class="img-box">
+                    <a href='servicoDetalhado.php?id="2"'>
+                        <img src="images/sapato.png" alt="">
+                    </a>
 
                 </div>
-            </div>
-            <div class="box arrow-middle arrow_bg">
-                <div class="img-box">
-                    <img src="images/sapato.png" alt="">
-                </div>
                 <div class="detail-box">
-                    <a href='servicoDetalhado.php?id="2"'>
-                    <h6>
-                        Muda de Capa <br>
-                        e Sola
-                    </h6>
-                    </a>
+                    <label>
+                        <h6>
+                            Muda de Capa <br>
+                            e Sola
+                        </h6>
+                    </label>
                 </div>
             </div>
             <div class="box arrow-middle arrow_bg">
                 <div class="img-box">
-                    <img src="images/engraxamento.png" alt="">
-                </div>
-                <div class="detail-box">
                     <a href='servicoDetalhado.php?id="3"'>
-                    <h6>
-                        Engraxamento
-                    </h6>
+                        <img src="images/engraxamento.png" alt="">
                     </a>
+
+                </div>
+                <div class="detail-box">
+                    <label>
+                        <h6>
+                            Engraxamento
+                        </h6>
+                    </label>
                 </div>
             </div>
             <div class="box arrow-end arrow_bg">
                 <div class="img-box">
-                    <img src="images/tinta-spray.png" alt="">
+                    <a href='servicoDetalhado.php?id="4"'>
+                        <img src="images/tinta-spray.png" alt="">
+                    </a>
+
                 </div>
                 <div class="detail-box">
-                    <a href='servicoDetalhado.php?id="4"'>
-                    <h6>
-                        Limpeza do <br>
-                        Calçado
-                    </h6>
-                    </a>
+                    <label>
+                        <h6>
+                            Limpeza do <br>
+                            Calçado
+                        </h6>
+                    </label>
                 </div>
             </div>
         </div>
