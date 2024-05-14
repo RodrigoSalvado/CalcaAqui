@@ -90,10 +90,10 @@ Calça Aqui
                     <i class='bx bx-star star' style="--i: 3;"></i>
                     <i class='bx bx-star star' style="--i: 4;"></i>
                 </div>
-                <textarea name="feedback" cols="30" rows="5" placeholder="Your opinion..." required></textarea>
+                <textarea name="feedback" cols="30" rows="5" placeholder="Your opinion..."></textarea>
                 <div class="btn-group">
                     <a><button type="submit" class="btn submit" name="submit">Submit</button></a>
-                    <a><button class="btn cancel" name="cancel">Cancel</button></a>
+
                 </div>
             </form>
         </div>
@@ -258,13 +258,23 @@ Calça Aqui
 <?php
 
 
-if(isset($_POST["submit"])){
+if(isset($_POST["submit"]) && isset($_POST["feedback"])){
     $feedback = $_POST["feedback"];
     $rating = $_POST["rating"];
 
-    $id = $_SESSION["user"];
+    $user = $_SESSION["user"];
 
-    $sql = "INSERT INTO feedback (id_utilizador, feedback, rating) VALUES (7, '$feedback', $rating)";
+    $sqlUser = "SELECT id_utilizador FROM utilizador WHERE username = $user";
+    $resultUser = mysqli_query($conn, $sqlUser);
+
+    /*
+    if(mysqli_num_rows($resultUser)>0) {
+        while ($row = mysqli_fetch_assoc($resultUser)) {
+            $id = $row["id_utilizador"];
+        }
+    }
+    */
+    $sql = "INSERT INTO feedback (id_utilizador, feedback, rating) VALUES ($id, '$feedback', $rating)";
 
     $conn -> query($sql);
 
@@ -275,15 +285,6 @@ if(isset($_POST["submit"])){
 if(isset($_POST["cancel"])){
     header("Location: do.php");
 }
-
-
-
-
-
-
-
-
-
 
 
 

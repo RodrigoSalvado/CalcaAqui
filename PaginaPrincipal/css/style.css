@@ -366,13 +366,26 @@ a:focus {
 .client_section {
   padding-bottom: 150px;
   position: relative;
+  display: flex;
 }
+
+.item .box .img-box{
+  display: flex;
+  justify-content: center;
+}
+
+.nome_cliente{
+  font-size: 32px;
+}
+
+
+
 
 .client_section .btn-sub{
   border: none;
   position: absolute;
   right: 23%;
-  top: 83%;
+  top: 75%;
   background-color: #353434;
   padding: 0.7rem;
   border-radius: 20px;
@@ -415,8 +428,11 @@ a:focus {
   width: 100%;
 }
 
+.rating_feedback{
+  color: #fec016;
+}
+
 .client_section .box .detail-box {
-  margin-top: 35px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -458,6 +474,7 @@ a:focus {
   position: absolute;
   top: 50%;
   color: #cdcbcd;
+  min-height: 200px;
 }
 
 .client_section .owl-carousel .owl-nav .owl-prev,
@@ -576,6 +593,7 @@ a:focus {
   color: #fff;
   border-radius: 30px;
 }
+
 
 .contact_section .map_img-box {
   width: 80%;
@@ -1182,15 +1200,15 @@ textarea {
   font-weight: 500;
 }
 .btn-group .btn.submit {
-  background: var(--blue);
+  background: #fec016;
   color: var(--white);
 }
 .btn-group .btn.submit:hover {
-  background: var(--blue-d-1);
+  background: #eab116;
 }
 .btn-group .btn.cancel {
   background: var(--white);
-  color: var(--blue);
+  color: black;
 }
 .btn-group .btn.cancel:hover {
   background: var(--light);
