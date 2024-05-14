@@ -378,9 +378,6 @@ a:focus {
   font-size: 32px;
 }
 
-
-
-
 .client_section .btn-sub{
   border: none;
   position: absolute;
@@ -1189,6 +1186,7 @@ textarea {
   display: flex;
   grid-gap: .5rem;
   align-items: center;
+  justify-content: right;
 }
 .btn-group .btn {
   padding: .75rem 1rem;

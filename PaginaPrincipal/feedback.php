@@ -90,15 +90,13 @@ Calça Aqui
                     <i class='bx bx-star star' style="--i: 3;"></i>
                     <i class='bx bx-star star' style="--i: 4;"></i>
                 </div>
-                <textarea name="feedback" cols="30" rows="5" placeholder="Your opinion..."></textarea>
+                <textarea name="feedback" cols="30" rows="5" placeholder="Deixe a sua opinião..." required></textarea>
                 <div class="btn-group">
-                    <a><button type="submit" class="btn submit" name="submit">Submit</button></a>
-
+                    <a><button type="submit" class="btn submit" name="submit">Enviar</button></a>
                 </div>
             </form>
         </div>
     </div>
-
 
 
 
@@ -258,34 +256,36 @@ Calça Aqui
 <?php
 
 
+
+
 if(isset($_POST["submit"]) && isset($_POST["feedback"])){
-    $feedback = $_POST["feedback"];
-    $rating = $_POST["rating"];
+    if(empty($_POST["rating"])){
+        echo "<script>alert('Dê uma classifição de estrelas!')</script>";
+    }else{
+        $feedback = $_POST["feedback"];
+        $rating = $_POST["rating"];
 
-    $user = $_SESSION["user"];
+        /*
+        $user = $_SESSION["user"];
 
-    $sqlUser = "SELECT id_utilizador FROM utilizador WHERE username = $user";
-    $resultUser = mysqli_query($conn, $sqlUser);
+        $sqlUser = "SELECT id_utilizador FROM utilizador WHERE username = $user";
+        $resultUser = mysqli_query($conn, $sqlUser);
 
-    /*
-    if(mysqli_num_rows($resultUser)>0) {
-        while ($row = mysqli_fetch_assoc($resultUser)) {
-            $id = $row["id_utilizador"];
+
+        if(mysqli_num_rows($resultUser)>0) {
+            while ($row = mysqli_fetch_assoc($resultUser)) {
+                $id = $row["id_utilizador"];
+            }
         }
+        */
+        $sql = "INSERT INTO feedback (id_utilizador, feedback, rating) VALUES ('7', '$feedback', $rating)";
+
+        $conn -> query($sql);
+
+        echo "<script>alert('Feedback Enviado')</script>";
+        header("Location: PaginaPrincipal.php");
     }
-    */
-    $sql = "INSERT INTO feedback (id_utilizador, feedback, rating) VALUES ($id, '$feedback', $rating)";
 
-    $conn -> query($sql);
-
-    echo "<script>alert('Feedback Enviado')</script>";
-    header("Location: PaginaPrincipal.php");
 }
-
-if(isset($_POST["cancel"])){
-    header("Location: do.php");
-}
-
-
 
 $conn -> close();
