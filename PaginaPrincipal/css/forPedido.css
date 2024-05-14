@@ -285,7 +285,7 @@ a:focus {
 .info_box input{
   color: black;
   margin: 7px 10% 4px;
-  width: 80%;
+  width: 30%;
   border: 1px solid #7d7d7d;
   padding: 6px;
   border-radius: 17px;
@@ -297,6 +297,7 @@ a:focus {
   border: 1px solid #7d7d7d;
   padding: 4px;
   border-radius: 17px;
+  text-align: center;
 }
 .calcado select{
   color: black;
@@ -305,6 +306,7 @@ a:focus {
   border: 1px solid #7d7d7d;
   padding: 4px;
   border-radius: 17px;
+  text-align: center;
 }
 
 .desc input{
@@ -327,4 +329,5 @@ a:focus {
   text-align: right;
   font-size: 25px;
   padding: 10px 40px;
+
 }

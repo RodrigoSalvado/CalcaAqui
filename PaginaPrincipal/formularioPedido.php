@@ -125,7 +125,6 @@ $tipo_servico = $_GET["id"];
                     <div class="botao">
                         <input name = "botao" type="submit" value="Enviar">
                     </div>
-                    </div>
             </section>
 
 
