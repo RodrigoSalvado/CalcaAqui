@@ -12,7 +12,7 @@ echo $_SESSION["username"];
     $email = "";
 
     $user_logado = $_SESSION["username"];
-    $sqlSelect = "SELECT nome, username, email FROM conta WHERE username = '$user_logado'";
+    $sqlSelect = "SELECT id_utilizador, nome, username, email FROM conta WHERE username = '$user_logado'";
     $resultSelect = mysqli_query($conn, $sqlSelect);
 
     if($resultSelect -> num_rows > 0){
@@ -20,6 +20,7 @@ echo $_SESSION["username"];
             $nome = $row["nome"];
             $username = $row["username"];
             $email = $row["email"];
+            $id_utilizador = $row["id_utilizador"];
 
 
         }
@@ -122,68 +123,84 @@ echo $_SESSION["username"];
             <th class="text-center header" scope="col" role="columnheader"><span>Detalhes</span></th>
         </tr>
         </thead>
-        <tbody>
-        <div class="botoes_gest">
+                <tbody>
+                    <div class="botoes_gest">
+                        <?php
 
+                            // Número de resultados por página
+                            $resultados_por_pagina = 5;
+
+                            // Página atual
+                            $pagina_atual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+
+                            // Calcula o offset
+                            $offset = ($pagina_atual - 1) * $resultados_por_pagina;
+
+                            // Query para buscar os resultados paginados
+                            $sql = "SELECT * FROM pedido_reparacao WHERE id_utilizador = '$id_utilizador' LIMIT $offset, $resultados_por_pagina";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    if($row["status_pedido"]!= "Recusar"){
+                                        $id = $row["id_pedido"];
+                                        $servico = $row["servico"];
+                                        $calcado = $row["calcado"];
+                                        $status = $row["status_pedido"];
+
+                                        echo "
+                                        <tr>
+                                                <td class='text-center'>$id</td>
+                                                <td class='text-center'>$servico</td>
+                                                <td class='text-center'>$calcado</td>
+                                                <td class='text-center'>$status</td>
+                                                <td class='text-center'><a href='pedidoDetalhado_admin.php?id=$id'><button class='button_detalhes'>Detalhes</button></a></td>
+                                        </tr>
+                                        ";
+                                    }
+                                }
+                            }
+                            ?>
+                        </div>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Adicione isso no seu HTML para mostrar os botões de paginação -->
+            <div class="pagination">
             <?php
+            // Botões de página anterior e próxima
+            $pagina_anterior = $pagina_atual - 1;
+            $proxima_pagina = $pagina_atual + 1;
 
-            //id do user que fez o login
-            $sql = "SELECT id_utilizador FROM utilizador WHERE username = '$user_logado'";
-            $result = mysqli_query($conn, $sql);
 
-            if($result -> num_rows > 0){
-                $rowId = $result -> fetch_assoc();
-                $idUserLogado = $rowId["id_utilizador"];
-                //echo $idUserLogado;
+            // Número total de resultados
+            $sql_count = "SELECT COUNT(*) AS total FROM pedido_reparacao";
+            $result_count = $conn->query($sql_count);
+            $row_count = $result_count->fetch_assoc();
+            $total_resultados = $row_count['total'];
 
-                //dados do(s) pedido(s) do user que fez o login
-                $sqlPedido = "SELECT id_pedido, id_utilizador, servico, calcado, status_pedido FROM pedido_reparacao WHERE id_utilizador = '$idUserLogado'";
-                $resultPedido = mysqli_query($conn, $sqlPedido);
+            // Número de resultados por página
+            $resultados_por_pagina = 5;
 
-                if($resultPedido -> num_rows > 0){
-                    while($rowPedido = $resultPedido -> fetch_assoc()){
-                        $id_pedido = $rowPedido["id_pedido"];
-                        $id_utilizador = $rowPedido["id_utilizador"];
-                        $servico = $rowPedido["servico"];
-                        $calcado = $rowPedido["calcado"];
-                        $status_pedido = $rowPedido["status_pedido"];
+            // Número total de páginas
+            $total_paginas = ceil($total_resultados / $resultados_por_pagina);
 
-                        $sqlUser = "SELECT * FROM utilizador where id_utilizador = $id_utilizador";
-                        $resultUser = $conn->query($sqlUser);
 
-                        if ($resultUser->num_rows > 0) {
-                            $rowUser = $resultUser->fetch_assoc();
-                            $user = $rowUser["username"];
-                        }
-
-                        echo "
-                 <tr>
-                      <td class='text-center'>$id_pedido</td>
-                      <td class='text-center'>$user</td>
-                      <td class='text-center'>$servico</td>
-                      <td class='text-center'>$calcado</td>
-                      <td class='text-center'>$status_pedido</td>
-                      <td class='text-center'><a href='pedidoDetalhado.php?id_pedido=$id_pedido'><button class='button_detalhes'>Detalhes</button></a></td>
-                 </tr>
-                 ";
-                    }
-                }else{
-                    if($resultPedido -> num_rows == 0){
-                        echo "ainda nao realizou nenhum pedido";
-                    }else{
-                        echo "erro ao realizar o select";
-                    }
-                }
-
-            }else{
-                echo "erro";
-            }
             ?>
 
+            <?php if ($pagina_atual > 1): ?>
+                <a href="?pagina=<?php echo $pagina_anterior; ?>" class="btn">Anterior</a>
+            <?php endif; ?>
+
+            <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
+                <a href="?pagina=<?php echo $i; ?>" class="btn <?php echo ($i == $pagina_atual) ? 'active' : ''; ?>"><?php echo $i; ?></a>
+            <?php endfor; ?>
+
+            <?php if ($pagina_atual < $total_paginas): ?>
+                <a href="?pagina=<?php echo $proxima_pagina; ?>" class="btn">Próxima</a>
+            <?php endif; ?>
         </div>
-        </tbody>
-    </table>
-</div>
 
 <section class="info_section ">
     <div class="container">
