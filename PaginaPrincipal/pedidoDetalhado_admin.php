@@ -77,7 +77,9 @@ try{
         }else if($estado == 3){
             $mail->addAddress($mailUser);
             $mail->Subject = "O Seu Pedido Está Concluído";
-            $mail->Body = "Olá ".$user.", <br>A reparação do seu pedido encontra-se concluida, para poder levantar o seu pedido diriga-se à loja. <br><br>Cumprimentos  Calça Aqui";
+            $mail->Body = "Olá ".$user.", <br>A reparação do seu pedido encontra-se concluida, para poder levantar o seu pedido diriga-se à loja. <br><br>
+            <a href='./feedback.php?id=".$id."'>Envie Feedback</a>
+            <br><br>Cumprimentos  Calça Aqui";
 
             $mail->send();
 

@@ -265,8 +265,8 @@ if(isset($_POST["submit"]) && isset($_POST["feedback"])){
         $feedback = $_POST["feedback"];
         $rating = $_POST["rating"];
 
-        /*
-        $user = $_SESSION["user"];
+
+        $user = $_GET["id"];
 
         $sqlUser = "SELECT id_utilizador FROM utilizador WHERE username = $user";
         $resultUser = mysqli_query($conn, $sqlUser);
@@ -277,8 +277,8 @@ if(isset($_POST["submit"]) && isset($_POST["feedback"])){
                 $id = $row["id_utilizador"];
             }
         }
-        */
-        $sql = "INSERT INTO feedback (id_utilizador, feedback, rating) VALUES ('7', '$feedback', $rating)";
+
+        $sql = "INSERT INTO feedback (id_utilizador, feedback, rating) VALUES ($id, '$feedback', $rating)";
 
         $conn -> query($sql);
 
