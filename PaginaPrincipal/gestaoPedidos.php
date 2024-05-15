@@ -161,6 +161,8 @@ Calça Aqui
     </table>
   </div>
 <br>
+
+
   <!-- Adicione isso no seu HTML para mostrar os botões de paginação -->
   <div class="pagination">
       <?php
