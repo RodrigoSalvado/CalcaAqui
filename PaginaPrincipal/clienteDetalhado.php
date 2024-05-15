@@ -181,7 +181,7 @@ if($resultPedidos -> num_rows > 0){
                     </tbody>
                     </table>
                     </div>
-
+                    <br><br>
                     <!-- Adicione isso no seu HTML para mostrar os botões de paginação -->
                     <div class="pagination">
                     <?php
@@ -204,18 +204,20 @@ if($resultPedidos -> num_rows > 0){
 
 
                     ?>
+                        <div class="paginacao">
+                            <?php if ($pagina_atual > 1): ?>
+                                <a href="?pagina=<?php echo $pagina_anterior; ?>" class="btn"><</a>
+                            <?php endif; ?>
 
-                    <?php if ($pagina_atual > 1): ?>
-                    <a href="?pagina=<?php echo $pagina_anterior; ?>" class="btn">Anterior</a>
-                    <?php endif; ?>
+                            <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
+                                <a href="?pagina=<?php echo $i; ?>" class="btn <?php echo ($i == $pagina_atual) ? 'active' : ''; ?>"><?php echo $i; ?></a>
+                            <?php endfor; ?>
 
-                    <?php for ($i = 1; $i <= $total_paginas; $i++): ?>
-                    <a href="?pagina=<?php echo $i; ?>" class="btn <?php echo ($i == $pagina_atual) ? 'active' : ''; ?>"><?php echo $i; ?></a>
-                    <?php endfor; ?>
+                            <?php if ($pagina_atual < $total_paginas): ?>
+                                <a href="?pagina=<?php echo $proxima_pagina; ?>" class="btn"> > </a>
+                            <?php endif; ?>
+                        </div>
 
-                    <?php if ($pagina_atual < $total_paginas): ?>
-                    <a href="?pagina=<?php echo $proxima_pagina; ?>" class="btn">Próxima</a>
-                    <?php endif; ?>
                     </div>
         </div>
 

@@ -1205,3 +1205,26 @@ textarea {
 .btn-group .btn.cancel:hover {
   background: var(--light);
 }
+
+/*-------------paginacao--------------*/
+.pagination{
+  display: flex;
+  justify-content: center;
+}
+.pagination a{
+  color: white;
+  background: #333333;
+  padding: 8px 15px;
+  text-decoration: none;
+  display: inline-block;
+}
+.pagination a.active{
+  background: #fec016;
+}
+.pagination a.active:hover{
+  background: #b2870f;
+}
+.pagination a:hover{
+  color: white;
+  background: #5b5b5b;
+}
