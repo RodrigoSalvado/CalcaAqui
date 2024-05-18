@@ -1,6 +1,7 @@
 <?php // Ligação à bd
 include("../basedados/db.h");
 session_start();
+
 ?>
 
 <!DOCTYPE html>

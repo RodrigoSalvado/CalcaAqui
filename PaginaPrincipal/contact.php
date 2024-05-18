@@ -2,6 +2,7 @@
 include "../basedados/db.h";
 global $conn;
 session_start();
+
 ?>
 
 <!DOCTYPE html>

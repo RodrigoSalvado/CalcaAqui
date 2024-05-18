@@ -3,7 +3,6 @@
 session_start();
 global $conn;
 include("../basedados/db.h");
-
 //mudar variavel de sessão
 //descomentar para verificar se está logado ou não 
 

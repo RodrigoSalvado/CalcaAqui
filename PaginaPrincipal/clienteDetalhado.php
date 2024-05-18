@@ -3,6 +3,7 @@ include("../basedados/db.h");
 global $conn;
 session_start();
 
+
 if(isset($_GET['id_utilizador'])){
     $id_utilizador = $_GET['id_utilizador'];
     echo $id_utilizador;
