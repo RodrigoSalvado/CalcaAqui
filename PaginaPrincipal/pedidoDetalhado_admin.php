@@ -221,20 +221,30 @@ if($result -> num_rows > 0) {
         <label>Estado do pedido: </label>
         <label>
                 <form method="get" action="">
-                    <select name="status">
-                        <?php
+                    <?php
+                    $sqlSt = "SELECT cor FROM status WHERE status = '$status'";
+                    $resultSt = mysqli_query($conn, $sqlSt);
+                    if(mysqli_num_rows($resultSt)>0){
+                        $row = mysqli_fetch_assoc($resultSt);
+                        $cor = $row["cor"];
+                    }
+                    echo '<select name="status" style="background-color: '.$cor.'" >';
                         $sql = "SELECT status FROM status";
                         $result = $conn->query($sql);
-                        echo "<option>$status</option>";
+
+                        echo "<option style='background-color: white'>$status</option>";
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 if($row["status"] != $status){
-                                    echo "<option>" . $row["status"] . "</option>";
+                                    echo "<option style='background-color: white'>" . $row["status"] . "</option>";
+
                                 }
                             }
                         }
+
+                        echo "</select>";
                         ?>
-                    </select>
+
                     <?php echo "<input type='text' name='id' value='".$id."' hidden/>"?>
                     <button class="open-btn" type="submit" name="submit-status" >&plus;</button>
                 </form>
