@@ -9,7 +9,7 @@ echo $_SESSION["username"] . "<br>";
     $username = "";
     $email = "";
 
-    $user_logado = $_SESSION["username"];
+    $user_logado = $_SESSION["user"]["nome"];
     $sqlSelect = "SELECT nome, username, email FROM conta WHERE username = '$user_logado'";
     $resultSelect = mysqli_query($conn, $sqlSelect);
 
@@ -118,7 +118,7 @@ $hora = $data1->format('H:i:s');
                             </ul>
                             <div class="user_option">
                             <?php
-                                session_start();
+                                
 
                                 $href = 'login.php';
                                                 

@@ -5,12 +5,12 @@ include("../basedados/db.h");
 include("./enviarMail.php");
 session_start();
 
-
-$nome = "Kirlitos";
-$username = "Kirlitos";
-$email = "erhhbn";
 /*
-$user_logado = $_SESSION["username"];
+$nome = "";
+$username = "";
+$email = "";
+*/
+$user_logado = $_SESSION["user"]["nome"];
 $sqlSelect = "SELECT nome, username, email FROM conta WHERE username = '$user_logado'";
 $resultSelect = mysqli_query($conn, $sqlSelect);
 
@@ -24,7 +24,7 @@ if($resultSelect -> num_rows > 0){
 }else{
     echo "<script>window.alert('Não foram encontrados resultados') ;</script>";
 }
-*/
+
 $id = $_GET["id"];
 $_SESSION["id_pedido"] = $id;
 
@@ -173,8 +173,6 @@ if($result -> num_rows > 0) {
                         </ul>
                         <div class="user_option">
                         <?php
-                            session_start();
-
                             $href = 'login.php';
                                             
                             if (isset($_SESSION['user'])) {

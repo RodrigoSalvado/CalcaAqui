@@ -61,8 +61,6 @@ Calça Aqui
               </ul>
               <div class="user_option">
               <?php
-                session_start();
-
                 $href = 'login.php';
                                 
                 if (isset($_SESSION['user'])) {
