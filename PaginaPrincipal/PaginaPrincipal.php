@@ -58,8 +58,21 @@ global $conn;
                             </li>
                         </ul>
                         <div class="user_option">
-                            <a href="login.php">
-                                <img src="images/user.png" alt="">
+                            <?php
+                                session_start();
+
+                                $href = 'login.php';
+                                
+                                if (isset($_SESSION['user'])) {
+                                    if ($_SESSION['user']['tipo_user'] == 1) {
+                                        $href = 'admin.php';
+                                    } elseif ($_SESSION['user']['tipo_user'] == 2) {
+                                        $href = 'perfilCliente.php';
+                                    }
+                                }
+                            ?>
+                            <a href="<?php echo $href; ?>">
+                                <img src="images/user.png" alt="User">
                             </a>
                         </div>
                     </div>
@@ -71,6 +84,11 @@ global $conn;
     <section class=" slider_section position-relative">
         <div class="container">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row">
@@ -88,7 +106,61 @@ global $conn;
                                             desde serviços complexos, como costura do calçado, a serviços mais simples, como a
                                             limpeza dos sapatos.
                                         </p>
-
+                                        <div class="">
+                                            <a href="do.php">
+                                                Saiba Mais
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col">
+                                <div class="detail-box">
+                                    <div>
+                                        <h2>
+                                            Sapataria
+                                        </h2>
+                                        <h1>
+                                            Calça aqui
+                                        </h1>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                            labore
+                                        </p>
+                                        <div class="">
+                                            <a href="">
+                                                Contact us
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col">
+                                <div class="detail-box">
+                                    <div>
+                                        <h2>
+                                            Sapataria
+                                        </h2>
+                                        <h1>
+                                            Calça aqui
+                                        </h1>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                            labore
+                                        </p>
+                                        <div class="">
+                                            <a href="">
+                                                Contact us
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -175,6 +247,34 @@ global $conn;
     </div>
 </section>
 
+<section class="who_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="img-box">
+                    <img src="images/who.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="detail-box">
+                    <div class="heading_container">
+                        <h2>
+                            Quem Somos?
+                        </h2>
+                    </div>
+                    <p>
+                        Colocar aqui texto
+                    </p>
+                    <div>
+                        <a href="">
+                            Saiba Mais
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="target_section layout_padding2">
     <div class="container">
@@ -236,57 +336,68 @@ global $conn;
         </div>
         <div class="carousel-wrap ">
             <div class="owl-carousel">
-                <?php
-
-                    $sql = "SELECT * FROM feedback";
-                    $result = $conn -> query($sql);
-
-                    if(mysqli_num_rows($result)>0){
-                        while($row = mysqli_fetch_assoc($result)){
-                            $feedback = $row["feedback"];
-                            $rating = $row["rating"];
-                            $user = "";
-                            $num_estrelas = "";
-
-                            $sqlUser = "SELECT username FROM utilizador WHERE id_utilizador = ".$row['id_utilizador']."";
-                            $resultUser = mysqli_query($conn, $sqlUser);
-
-                            if(mysqli_num_rows($resultUser)>0) {
-                                while ($row = mysqli_fetch_assoc($resultUser)) {
-                                    $user = $row["username"];
-                                }
-                            }
-
-                            for($i=0; $i<$rating; $i++){
-                                $num_estrelas .= "★";
-                            }
-
-                            echo '
-                                    <div class="item">
-                                        <div class="box">
-                                            <div class="img-box">
-                                                <p class="nome_cliente">'.$user.'</p>
-                                            </div>
-                                            <div class="detail-box">
-                                                <p class="rating_feedback">
-                                                    '.$num_estrelas.' <br>
-                                                </p>
-                                                <p>
-                                                    '.$feedback.'
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>';
-                        }
-                    }
-
-
-
-
-                ?>
+                <div class="item">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="images/c-1.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Tempor iidunt <br>
+                                <span>
+                    Dipiscing elit
+                  </span>
+                            </h5>
+                            <img src="images/quote.png" alt="">
+                            <p>
+                                Excelente serviço, foi tudo muito prático e rápido, uma semana e já tive o meu serviço pronto, recomendo 5 estrelas ★★★★★
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="images/c-2.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Tempor incididunt <br>
+                                <span>
+                    Dipiscing elit
+                  </span>
+                            </h5>
+                            <img src="images/quote.png" alt="">
+                            <p>
+                                Foram muito atenciosos, viram o meu problema e resolveram num instante, quem me dera que todos fossem assim!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="box">
+                        <div class="img-box">
+                            <img src="images/c-3.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Tempor incididunt <br>
+                                <span>
+                    Dipiscing elit
+                  </span>
+                            </h5>
+                            <img src="images/quote.png" alt="">
+                            <p>
+                                No início não estava com muita fé, mas como não tinha outra alternativa optei pelo CalçaAqui, melhor decisão impossível, Que trabalho bem feito ★★★★★
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <a href="feedback.php"><button class="btn-sub">Enviar Feedback</button></a>
+
 </section>
 
 

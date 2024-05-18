@@ -85,10 +85,22 @@ echo $_SESSION["username"];
                             </li>
                         </ul>
                         <div class="user_option">
-                            <a href="">
-                                <img src="./images/user.png" alt="">
-                            </a>
+                        <?php
+                            session_start();
 
+                            $href = 'login.php';
+                                            
+                            if (isset($_SESSION['user'])) {
+                            if ($_SESSION['user']['tipo_user'] == 1) {
+                                $href = 'admin.php';
+                            } elseif ($_SESSION['user']['tipo_user'] == 2) {
+                                $href = 'perfilCliente.php';
+                            }
+                        }
+                        ?>
+                        <a href="<?php echo $href; ?>">
+                            <img src="images/user.png" alt="User">
+                        </a>
                         </div>
                     </div>
                 </div>
