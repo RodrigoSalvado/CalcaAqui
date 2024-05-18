@@ -3,7 +3,8 @@ include("../basedados/db.h");
 global $conn;
 
 session_start();
-$nomeUser = $_SESSION["user"];
+
+$nomeUser = isset($_SESSION["user"])? $_SESSION["user"]: Null;
 ?>
 
 <!DOCTYPE html>

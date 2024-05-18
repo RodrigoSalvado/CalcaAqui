@@ -15,6 +15,7 @@ if($resultSelect -> num_rows > 0){
         $nome = $rowUser["nome"];
         $username = $rowUser["username"];
         $email = $rowUser["email"];
+
     }
 
 }else{
@@ -22,7 +23,6 @@ if($resultSelect -> num_rows > 0){
 }
 
 $id = $_GET["id"];
-$_SESSION["id_pedido"] = $id;
 
 try{
     if(isset($_GET["submit-notas"])){
@@ -74,7 +74,7 @@ try{
             $mail->addAddress($mailUser);
             $mail->Subject = "O Seu Pedido Está Concluído";
             $mail->Body = "Olá ".$user.", <br>A reparação do seu pedido encontra-se concluida, para poder levantar o seu pedido diriga-se à loja. <br><br>
-            <a href='./feedback.php?id=".$id."'>Envie Feedback</a>
+            <a href='http://localhost/CalcaAqui/PaginaPrincipal/feedback.php?id=".$username."'>Envie Feedback</a>
             <br><br>Cumprimentos  Calça Aqui";
 
             $mail->send();

@@ -12,7 +12,8 @@ $foto = $_FILES["file"];
 if(isset($botao)) {
 
 
-    if(isset($foto)) {
+    if(strcmp($foto['name'], "")!= 0) {
+
         try{
             $fotoUp = explode('.', $foto['name']);
             $allowed_extensions = ['jpg', 'jpeg', 'png', 'svg'];

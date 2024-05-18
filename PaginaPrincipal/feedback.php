@@ -4,6 +4,8 @@ global $conn;
 include("../basedados/db.h");
 
 $nomeUser = $_SESSION["user"];
+$user = $_GET["id"];
+echo $user;
 ?>
     <!DOCTYPE html>
     <html>
@@ -296,9 +298,9 @@ if(isset($_POST["submit"]) && isset($_POST["feedback"])){
         $rating = $_POST["rating"];
 
 
-        $user = $_GET["id"];
 
-        $sqlUser = "SELECT id_utilizador FROM utilizador WHERE username = $user";
+
+        $sqlUser = "SELECT id_utilizador FROM utilizador WHERE username = '$user'";
         $resultUser = mysqli_query($conn, $sqlUser);
 
 
