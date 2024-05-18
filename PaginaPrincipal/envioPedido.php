@@ -7,16 +7,26 @@ $tipo_servico = $_POST["tipo_servico"];
 $botao = $_POST["botao"];
 $descricao = $_POST["descricao"];
 $tipo_calcado = $_POST["tipo_calcado"];
-$foto = $_FILES["imagem"];
+$foto = $_FILES["file"];
 
 if(isset($botao)) {
 
-    // Verificar se a imagem foi enviada corretamente
-    if(isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
-        // Ler o conteúdo da imagem
-        $foto = file_get_contents($_FILES['foto']['tmp_name']);
-        // Escapar a imagem para evitar SQL Injection
-        $foto = $conn->real_escape_string($foto);
+
+    if(isset($foto)) {
+        try{
+            $fotoUp = explode('.', $foto['name']);
+            $allowed_extensions = ['jpg', 'jpeg', 'png', 'svg'];
+
+            $extension = strtolower(pathinfo($foto['name'], PATHINFO_EXTENSION));
+            if (in_array($extension, $allowed_extensions)) {
+                move_uploaded_file($foto['tmp_name'], 'fotos-pedidos/'.$foto['name']);
+                $nomeFoto = $foto['name'];
+            } else {
+                die("O arquivo não possui uma extensão permitida. Use  jpg, jpeg, png, svg");
+            }
+        }catch(Exception $e){
+
+        }
     }
 
 
@@ -37,13 +47,13 @@ if(isset($botao)) {
 
 
     $sql = "INSERT INTO `pedido_reparacao`(`id_utilizador`, `descricao`, `servico`, `calcado`, `foto`) VALUES 
-                                        ('$id_utilizador', '$descricao', '$tipo_servico', '$tipo_calcado', '$foto')";
+                                        ('$id_utilizador', '$descricao', '$tipo_servico', '$tipo_calcado', '$nomeFoto')";
 
     $resultInsert = $conn->query($sql);
 
     if($resultInsert){
         echo "O seu pedido foi criado com sucesso!";
-        header("Location: PaginaPrincipal.php");
+        //header("Location: PaginaPrincipal.php");
 
     }else{
         echo "<script>window.alert('Não foi possivel criar o pedido! Tente novamente.') ;</script>";

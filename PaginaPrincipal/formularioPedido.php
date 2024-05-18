@@ -100,7 +100,7 @@ $tipo_servico = $_GET["id"];
         </header>
     </div>
     <section>
-    <form action="envioPedido.php" method="post">
+    <form action="envioPedido.php" method="post" enctype="multipart/form-data">
         <div class="nomeUtilizador">
 <br>
                 <div class="nomeUtilizador">
@@ -142,7 +142,7 @@ $tipo_servico = $_GET["id"];
                     </div>
                     <br>
                     <h3>Foto:</h3>
-                    <input type="file" name="imagem"/>
+                    <input type="file" name="file"/>
                     <br>
                     <br>
                     <h3>Descrição</h3>
