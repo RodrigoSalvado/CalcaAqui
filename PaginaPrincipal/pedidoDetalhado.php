@@ -2,13 +2,13 @@
 global $conn;
 include("../basedados/db.h");
 session_start();
-echo $_SESSION["username"] . "<br>";
+echo $_SESSION["user"] . "<br>";
 
     $nome = "";
     $username = "";
     $email = "";
 
-    $user_logado = $_SESSION["username"];
+    $user_logado = $_SESSION["user"];
     $sqlSelect = "SELECT nome, username, email FROM conta WHERE username = '$user_logado'";
     $resultSelect = mysqli_query($conn, $sqlSelect);
 
@@ -32,7 +32,7 @@ echo $_SESSION["username"] . "<br>";
         echo "erro id";
     }
 
-    $sqlDetalhado = "SELECT data, descricao, servico, calcado, status_pedido FROM pedido_reparacao WHERE id_pedido = '$id_pedido'";
+    $sqlDetalhado = "SELECT data, descricao, servico, calcado,foto, status_pedido FROM pedido_reparacao WHERE id_pedido = '$id_pedido'";
     $resultDetalhado = mysqli_query($conn, $sqlDetalhado);
 
     if($resultDetalhado -> num_rows > 0){
@@ -42,6 +42,7 @@ echo $_SESSION["username"] . "<br>";
             $servico = $row["servico"];
             $calcado = $row["calcado"];
             $status_pedido = $row["status_pedido"];
+            $foto = $row["foto"];
         }
         echo "sucesso";
     }else{
@@ -127,12 +128,15 @@ $hora = $data1->format('H:i:s');
                                         </a>
                                     ';
                                 }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
+                                    $nomeUser = $_SESSION["user"];
                                     echo '
                                         <a href="perfilCliente.php">
-                                            <img src="images/user.png" alt="">
+                                            
+                                            <img src="images/user.png" alt="">   
+                                            <span style="text-decoration: none; color: white">' . htmlspecialchars($nomeUser) . '</span>                                    
                                         </a>
                                         <a href="logout.php">
-                                            <img id="logout" src="images/logout.png" alt="">
+                                            <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
                                         </a>
                                         
                                     ';
@@ -159,7 +163,8 @@ $hora = $data1->format('H:i:s');
         <div class="linha1">
             <h2>Pedido de reparação:</h2>
             <br>
-            <img src="images/w-1.jpg" alt="imagem sapato" width="150px" height="150px">
+            <img src='./imgs/".$row["img_cabana"]."'
+            <?php echo "<img src='./imgs/".$foto."' alt='imagem sapato' width='150px' height='150px'>";?>
             <br>
             <label>Estado do pedido: </label>
             <label><?php echo $status_pedido ?></label>

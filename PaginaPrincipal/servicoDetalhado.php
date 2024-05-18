@@ -79,12 +79,15 @@ if ($result->num_rows > 0) {
                                         </a>
                                     ';
                                 }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
+                                    $nomeUser = $_SESSION["user"];
                                     echo '
                                         <a href="perfilCliente.php">
-                                            <img src="images/user.png" alt="">
+                                            
+                                            <img src="images/user.png" alt="">   
+                                            <span style="text-decoration: none; color: white">' . htmlspecialchars($nomeUser) . '</span>                                    
                                         </a>
                                         <a href="logout.php">
-                                            <img id="logout" src="images/logout.png" alt="">
+                                            <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
                                         </a>
                                         
                                     ';

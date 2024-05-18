@@ -19,8 +19,10 @@ if(isset($botao)) {
 
             $extension = strtolower(pathinfo($foto['name'], PATHINFO_EXTENSION));
             if (in_array($extension, $allowed_extensions)) {
-                move_uploaded_file($foto['tmp_name'], 'fotos-pedidos/'.$foto['name']);
-                $nomeFoto = $foto['name'];
+                $nomeFoto = trim($foto['name'], " ");
+                echo $nomeFoto;
+                move_uploaded_file($foto['tmp_name'], 'fotos-pedidos/'.$nomeFoto);
+
             } else {
                 die("O arquivo não possui uma extensão permitida. Use  jpg, jpeg, png, svg");
             }
@@ -53,7 +55,7 @@ if(isset($botao)) {
 
     if($resultInsert){
         echo "O seu pedido foi criado com sucesso!";
-        //header("Location: PaginaPrincipal.php");
+        header("Location: PaginaPrincipal.php");
 
     }else{
         echo "<script>window.alert('Não foi possivel criar o pedido! Tente novamente.') ;</script>";

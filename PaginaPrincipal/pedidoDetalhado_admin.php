@@ -108,8 +108,11 @@ if($result -> num_rows > 0) {
         $descricao = $row["descricao"];
         $notas = $row["notas"];
         $status = $row["status_pedido"];
+        $foto = $row["foto"];
     }
 }
+
+echo $foto;
 
 
 ?>
@@ -179,12 +182,15 @@ if($result -> num_rows > 0) {
                                         </a>
                                     ';
                             }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
+                                $nomeUser = $_SESSION["user"];
                                 echo '
                                         <a href="perfilCliente.php">
-                                            <img src="images/user.png" alt="">
+                                            
+                                            <img src="images/user.png" alt="">   
+                                            <span style="text-decoration: none; color: white">' . htmlspecialchars($nomeUser) . '</span>                                    
                                         </a>
                                         <a href="logout.php">
-                                            <img id="logout" src="images/logout.png" alt="">
+                                            <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
                                         </a>
                                         
                                     ';
@@ -211,7 +217,7 @@ if($result -> num_rows > 0) {
     <div class="linha1">
         <h2>Pedido de reparação:</h2>
         <br>
-        <img src="images/w-1.jpg" alt="imagem sapato" width="150px" height="150px">
+        <?php echo "<img src='./imgs/".$foto."' alt='imagem sapato' width='150px' height='150px'>";?>
         <label>Estado do pedido: </label>
         <label>
                 <form method="get" action="">
