@@ -396,7 +396,7 @@ global $conn;
             </div>
         </div>
     </div>
-    <a href="feedback.php"><button class="btn-sub">Enviar Feedback</button></a>
+   
 
 </section>
 
