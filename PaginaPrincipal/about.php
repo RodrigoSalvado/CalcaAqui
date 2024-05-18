@@ -1,5 +1,6 @@
 <?php // Ligação à bd
 include("../basedados/db.h");
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -57,21 +58,26 @@ include("../basedados/db.h");
                         </ul>
                         <div class="user_option">
                             <?php
-                                session_start();
-
-                                $href = 'login.php';
-                                
-                                if (isset($_SESSION['user'])) {
-                                    if ($_SESSION['user']['tipo_user'] == 1) {
-                                        $href = 'admin.php';
-                                    } elseif ($_SESSION['user']['tipo_user'] == 2) {
-                                        $href = 'perfilCliente.php';
-                                    }
-                                }
+                            if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 1){
+                                echo '
+                                        <a href="admin.php">
+                                            <img src="images/user.png" alt="">
+                                        </a>
+                                    ';
+                            }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
+                                echo '
+                                        <a href="perfilCliente.php">
+                                            <img src="images/user.png" alt="">
+                                        </a>
+                                    ';
+                            }else{
+                                echo '
+                                        <a href="login.php">
+                                            <img src="images/user.png" alt="">
+                                        </a>
+                                    ';
+                            }
                             ?>
-                            <a href="<?php echo $href; ?>">
-                                <img src="images/user.png" alt="User">
-                            </a>
                             <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
                                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
                             </form>

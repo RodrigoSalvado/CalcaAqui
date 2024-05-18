@@ -1,7 +1,8 @@
 <?php // Ligação à bd
 global $conn;
 include("../basedados/db.h");
-
+session_start();
+$username = $_SESSION["user"];
 $tipo_servico = $_GET["id"];
 ?>
 
@@ -59,22 +60,27 @@ $tipo_servico = $_GET["id"];
                                 </li>
                             </ul>
                             <div class="user_option">
-                            <?php
-                                session_start();
-
-                                $href = 'login.php';
-
-                                if (isset($_SESSION['user'])) {
-                                    if ($_SESSION['tipo_user'] == 1) {
-                                        $href = 'admin.php';
-                                    } elseif ($_SESSION['tipo_user'] == 2) {
-                                        $href = 'perfilCliente.php';
-                                    }
+                                <?php
+                                if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 1){
+                                    echo '
+                                        <a href="admin.php">
+                                            <img src="images/user.png" alt="">
+                                        </a>
+                                    ';
+                                }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
+                                    echo '
+                                        <a href="perfilCliente.php">
+                                            <img src="images/user.png" alt="">
+                                        </a>
+                                    ';
+                                }else{
+                                    echo '
+                                        <a href="login.php">
+                                            <img src="images/user.png" alt="">
+                                        </a>
+                                    ';
                                 }
-                            ?>
-                            <a href="<?php echo $href; ?>">
-                                <img src="images/user.png" alt="User">
-                            </a>
+                                ?>
                                 <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
                                     <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
                                 </form>
@@ -86,13 +92,15 @@ $tipo_servico = $_GET["id"];
         </header>
     </div>
     <section>
-    <form action="envioPedido.php" method="post" enctype="multipart/form-data">
+    <form action="envioPedido.php" method="post">
         <div class="nomeUtilizador">
 <br>
                 <div class="nomeUtilizador">
                     <h3>Nome do Utilizador:</h3>
                     <div class="info_box input">
-                        <input type="text" name="username" required><br>
+                        <input type="text" name="username" value=<?php if(isset($_SESSION["user"])){
+                            echo "$username";
+                        }?> required><br>
                     </div>
                     <div class="servico select">
                         <br>

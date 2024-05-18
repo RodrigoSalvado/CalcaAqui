@@ -4,14 +4,14 @@
     include("../basedados/db.h");
     session_start();
 //user
-//echo $_SESSION["user"]["nome"];
+echo $_SESSION["username"];
 
 
     $nome = "";
     $username = "";
     $email = "";
 
-    $user_logado = $_SESSION["user"]["nome"];
+    $user_logado = $_SESSION["username"];
     $sqlSelect = "SELECT id_utilizador, nome, username, email FROM conta WHERE username = '$user_logado'";
     $resultSelect = mysqli_query($conn, $sqlSelect);
 
@@ -85,21 +85,28 @@
                             </li>
                         </ul>
                         <div class="user_option">
-                        <?php
-
-                        $href = 'login.php';
-
-                        if (isset($_SESSION['user'])) {
-                            if ($_SESSION['tipo_user'] == 1) {
-                                $href = 'admin.php';
-                            } elseif ($_SESSION['tipo_user'] == 2) {
-                                $href = 'perfilCliente.php';
+                            <?php
+                            if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 1){
+                                echo '
+                                        <a href="admin.php">
+                                            <img src="images/user.png" alt="">
+                                        </a>
+                                    ';
+                            }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
+                                echo '
+                                        <a href="perfilCliente.php">
+                                            <img src="images/user.png" alt="">
+                                        </a>
+                                    ';
+                            }else{
+                                echo '
+                                        <a href="login.php">
+                                            <img src="images/user.png" alt="">
+                                        </a>
+                                    ';
                             }
-                        }
-                        ?>
-                        <a href="<?php echo $href; ?>">
-                            <img src="images/user.png" alt="User">
-                        </a>
+                            ?>
+
                         </div>
                     </div>
                 </div>

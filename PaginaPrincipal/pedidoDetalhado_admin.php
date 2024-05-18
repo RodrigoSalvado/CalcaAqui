@@ -5,12 +5,12 @@ include("../basedados/db.h");
 include("./enviarMail.php");
 session_start();
 
+
+$nome = "Kirlitos";
+$username = "Kirlitos";
+$email = "erhhbn";
 /*
-$nome = "";
-$username = "";
-$email = "";
-*/
-$user_logado = $_SESSION["user"]["nome"];
+$user_logado = $_SESSION["username"];
 $sqlSelect = "SELECT nome, username, email FROM conta WHERE username = '$user_logado'";
 $resultSelect = mysqli_query($conn, $sqlSelect);
 
@@ -24,7 +24,7 @@ if($resultSelect -> num_rows > 0){
 }else{
     echo "<script>window.alert('Não foram encontrados resultados') ;</script>";
 }
-
+*/
 $id = $_GET["id"];
 $_SESSION["id_pedido"] = $id;
 
@@ -77,9 +77,9 @@ try{
         }else if($estado == 3){
             $mail->addAddress($mailUser);
             $mail->Subject = "O Seu Pedido Está Concluído";
-            $mail->Body = "<html>Olá ".$user.", <br>A reparação do seu pedido encontra-se concluida, para poder levantar o seu pedido diriga-se à loja. <br><br>
+            $mail->Body = "Olá ".$user.", <br>A reparação do seu pedido encontra-se concluida, para poder levantar o seu pedido diriga-se à loja. <br><br>
             <a href='./feedback.php?id=".$id."'>Envie Feedback</a>
-            <br><br>Cumprimentos  Calça Aqui </html>";
+            <br><br>Cumprimentos  Calça Aqui";
 
             $mail->send();
 
@@ -172,20 +172,27 @@ if($result -> num_rows > 0) {
                             </li>
                         </ul>
                         <div class="user_option">
-                        <?php
-                        $href = 'login.php';
-
-                            if (isset($_SESSION['user'])) {
-                                if ($_SESSION['tipo_user'] == 1) {
-                                    $href = 'admin.php';
-                                } elseif ($_SESSION['tipo_user'] == 2) {
-                                    $href = 'perfilCliente.php';
-                                }
+                            <?php
+                            if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 1){
+                                echo '
+                                        <a href="admin.php">
+                                            <img src="images/user.png" alt="">
+                                        </a>
+                                    ';
+                            }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
+                                echo '
+                                        <a href="perfilCliente.php">
+                                            <img src="images/user.png" alt="">
+                                        </a>
+                                    ';
+                            }else{
+                                echo '
+                                        <a href="login.php">
+                                            <img src="images/user.png" alt="">
+                                        </a>
+                                    ';
                             }
-                        ?>
-                        <a href="<?php echo $href; ?>">
-                            <img src="images/user.png" alt="User">
-                        </a>
+                            ?>
                             <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
                                 <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
                             </form>
