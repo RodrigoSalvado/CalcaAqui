@@ -22,7 +22,7 @@ if(isset($botao)) {
             if (in_array($extension, $allowed_extensions)) {
                 $nomeFoto = trim($foto['name'], " ");
                 echo $nomeFoto;
-                move_uploaded_file($foto['tmp_name'], 'fotos-pedidos/'.$nomeFoto);
+                move_uploaded_file($foto['tmp_name'], 'images/'.$nomeFoto);
 
             } else {
                 die("O arquivo não possui uma extensão permitida. Use  jpg, jpeg, png, svg");

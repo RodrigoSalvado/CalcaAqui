@@ -217,7 +217,7 @@ if($result -> num_rows > 0) {
     <div class="linha1">
         <h2>Pedido de reparação:</h2>
         <br>
-        <?php echo "<img src='./fotos-pedidos/$foto' alt='imagem sapato' width='150px' height='150px'>";?>
+        <?php echo "<img src='./images/$foto' alt='imagem sapato' width='150px' height='150px'>";?>
         <label>Estado do pedido: </label>
         <label>
                 <form method="get" action="">

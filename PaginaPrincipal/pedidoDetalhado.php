@@ -164,7 +164,7 @@ $hora = $data1->format('H:i:s');
         <div class="linha1">
             <h2>Pedido de reparação:</h2>
             <br>
-            <?php echo "<img src='./fotos-pedidos/$foto' alt='imagem sapato' width='150px' height='150px'>";?>
+            <?php echo "<img src='./images/$foto' alt='imagem sapato' width='150px' height='150px'>";?>
             <br>
             <label>Estado do pedido: </label>
             <label><?php echo $status_pedido ?></label>
