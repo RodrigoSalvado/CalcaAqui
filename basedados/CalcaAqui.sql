@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Tempo de geração: 14-Maio-2024 às 12:30
--- Versão do servidor: 10.4.28-MariaDB
--- versão do PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Tempo de geração: 18-Maio-2024 às 23:05
+-- Versão do servidor: 10.4.32-MariaDB
+-- versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `CalcaAqui`
+-- Banco de dados: `calcaaqui`
 --
 
     CREATE DATABASE CalcaAqui;
@@ -50,7 +50,8 @@ INSERT INTO `conta` (`id_utilizador`, `username`, `password`, `email`, `nome`, `
                                                                                                                 (5, 'pedroduarte', 'c6cc8094c2dc07b700ffcc36d64e2138', 'pedro@gmail.com', 'Pedro Duarte', 'masculino', 2),
                                                                                                                 (6, 'Pedrocas', '202cb962ac59075b964b07152d234b70', 'pedrorduarte135@gmail.com', 'Pedro Duarte', 'masculino', 2),
                                                                                                                 (7, 'Kirlitos1', '202cb962ac59075b964b07152d234b70', 'rodrigosalvado51@gmail.com', 'Rodrigo Salvado', 'masculino', 2),
-                                                                                                                (9, 'fm', '202cb962ac59075b964b07152d234b70', 'fran04mateus11@gmail.com', 'Francisco Mateus', 'outro', 2);
+                                                                                                                (9, 'fm', '202cb962ac59075b964b07152d234b70', 'fran04mateus11@gmail.com', 'Francisco Mateus', 'outro', 2),
+                                                                                                                (10, 'Rodrigo', '202cb962ac59075b964b07152d234b70', 'dsgaj@gmail.com', 'Rodrigo Salvado', 'masculino', 2);
 
 --
 -- Acionadores `conta`
@@ -80,7 +81,9 @@ CREATE TABLE `feedback` (
 INSERT INTO `feedback` (`id_feedback`, `id_utilizador`, `feedback`, `rating`) VALUES
                                                                                   (1, 7, 'Bom dia', 3),
                                                                                   (2, 7, 'qenflw', 2),
-                                                                                  (3, 7, 'kwefb 2;v', 5);
+                                                                                  (3, 7, 'kwefb 2;v', 5),
+                                                                                  (4, 4, 'Adorei o serviço', 4),
+                                                                                  (5, 4, 'Mau serviço', 1);
 
 -- --------------------------------------------------------
 
@@ -105,12 +108,7 @@ CREATE TABLE `pedido_reparacao` (
 --
 
 INSERT INTO `pedido_reparacao` (`id_pedido`, `id_utilizador`, `data`, `foto`, `descricao`, `notas`, `servico`, `calcado`, `status_pedido`) VALUES
-                                                                                                                                               (1, 3, '2024-05-02 15:49:05', NULL, 'Bom dia', '9324242344srg', 'Engraxamento', 'Ténis', 'Recusar'),
-                                                                                                                                               (3, 4, '2024-05-05 04:30:49', '', 'O ténis tem a sola a sair ', 'O ténis apresenta sinais de maus tratos\r\nPreparar cola\r\nDeixar secar por 4h', 'Costura de Calçado', 'Ténis', 'Concluído'),
-                                                                                                                                               (4, 5, '2024-05-06 16:59:56', '', 'whdbwdb', 'y7nwfinalva4334545', 'Costura de Calçado', 'Ténis', 'Concluído'),
-                                                                                                                                               (5, 6, '2024-05-07 17:38:41', '', 'Está sujo, limpem', NULL, 'Engraxamento', 'Sapato de Salto Alto', 'Recusar'),
-                                                                                                                                               (6, 7, '2024-05-07 19:03:34', '', 'me;kfvéq mqwrgk rkmbblk ', NULL, 'Limpeza de Calçado', 'Bota', 'Concluído'),
-                                                                                                                                               (7, 9, '2024-05-08 09:41:24', '', 'o salto saltou fora', '>', 'Costura de Calçado', 'Sapato de Salto Alto', 'Recusar');
+    (24, 7, '2024-05-18 21:13:28', '', '', NULL, 'Costura de Calçado', '', 'Concluído');
 
 -- --------------------------------------------------------
 
@@ -143,18 +141,19 @@ INSERT INTO `servico` (`id_servico`, `tipo_servico`, `foto`, `descricao`) VALUES
 
 CREATE TABLE `status` (
                           `id` int(11) NOT NULL,
-                          `status` varchar(50) NOT NULL
+                          `status` varchar(50) NOT NULL,
+                          `cor` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `status`
 --
 
-INSERT INTO `status` (`id`, `status`) VALUES
-                                          (1, 'Em Espera'),
-                                          (2, 'Em Progresso'),
-                                          (3, 'Concluído'),
-                                          (4, 'Recusar');
+INSERT INTO `status` (`id`, `status`, `cor`) VALUES
+                                                 (1, 'Em Espera', 'Blue'),
+                                                 (2, 'Em Progresso', 'Yellow'),
+                                                 (3, 'Concluído', 'Green'),
+                                                 (4, 'Recusar', 'Red');
 
 -- --------------------------------------------------------
 
@@ -197,7 +196,8 @@ INSERT INTO `utilizador` (`id_utilizador`, `username`, `email`) VALUES
                                                                     (5, 'pedroduarte', 'pedro@gmail.com'),
                                                                     (6, 'Pedrocas', 'pedrorduarte135@gmail.com'),
                                                                     (7, 'Kirlitos1', 'rodrigosalvado51@gmail.com'),
-                                                                    (9, 'fm', 'fran04mateus11@gmail.com');
+                                                                    (9, 'fm', 'fran04mateus11@gmail.com'),
+                                                                    (10, 'Rodrigo', 'dsgaj@gmail.com');
 
 --
 -- Índices para tabelas despejadas
@@ -255,19 +255,19 @@ ALTER TABLE `utilizador`
 -- AUTO_INCREMENT de tabela `conta`
 --
 ALTER TABLE `conta`
-    MODIFY `id_utilizador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+    MODIFY `id_utilizador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `feedback`
 --
 ALTER TABLE `feedback`
-    MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+    MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `pedido_reparacao`
 --
 ALTER TABLE `pedido_reparacao`
-    MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+    MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de tabela `servico`
