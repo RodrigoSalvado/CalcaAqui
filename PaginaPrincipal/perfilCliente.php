@@ -4,14 +4,14 @@
     include("../basedados/db.h");
     session_start();
 //user
-echo $_SESSION["user"];
+
 
     $nome = "";
     $username = "";
     $email = "";
 
-    $user_logado = $_SESSION["user"];
-    $sqlSelect = "SELECT id_utilizador, nome, username, email FROM conta WHERE username = '$user_logado'";
+    $nomeUser = $_SESSION["user"];
+    $sqlSelect = "SELECT id_utilizador, nome, username, email FROM conta WHERE username = '$nomeUser'";
     $resultSelect = mysqli_query($conn, $sqlSelect);
 
     if($resultSelect -> num_rows > 0){
@@ -87,14 +87,15 @@ echo $_SESSION["user"];
                             if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 1){
                                 echo '
                                         <a href="admin.php">
-                                            <img src="images/user.png" alt="">
+                                            <img src="images/user.png" alt="">   
+                                            <span style="text-decoration: none; color: white">' . htmlspecialchars($nomeUser) . '</span>                                    
                                         </a>
                                         <a href="logout.php">
-                                            <img id="logout" src="images/logout.png" alt="">
+                                            <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
                                         </a>
                                     ';
                             }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
-                                $nomeUser = $_SESSION["user"];
+
                                 echo '
                                         <a href="perfilCliente.php">
                                             
