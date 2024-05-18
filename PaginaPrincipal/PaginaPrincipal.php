@@ -77,7 +77,7 @@ session_start();
                                             <img src="images/user.png" alt="">
                                         </a>
                                         <a href="logout.php">
-                                            <img id="logout" src="images/logout.png" alt="">
+                                            <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
                                         </a>
                                         
                                     ';

@@ -7,10 +7,14 @@
     $username = $_POST["username"];
     $password = $_POST["password"];
 
+
     $botao = $_POST["botao"];
 
     if(isset($botao)){
         if(isset($username) && isset($password)){
+
+
+
 
             //Selecionar user correspondente da base de dados
             $sql = "SELECT * FROM conta WHERE username = '$username' AND password = '".md5($password)."';";

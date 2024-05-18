@@ -13,6 +13,7 @@
 
 // Ligação à bd
 include("../basedados/db.h");
+global $conn;
 
 
     $nome = $_POST["nome"];
