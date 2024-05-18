@@ -101,12 +101,19 @@ if($resultPedidos -> num_rows > 0){
                                         <a href="admin.php">
                                             <img src="images/user.png" alt="">
                                         </a>
+                                        <a href="logout.php">
+                                            <img id="logout" src="images/logout.png" alt="">
+                                        </a>
                                     ';
                                 }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
                                     echo '
                                         <a href="perfilCliente.php">
                                             <img src="images/user.png" alt="">
                                         </a>
+                                        <a href="logout.php">
+                                            <img id="logout" src="images/logout.png" alt="">
+                                        </a>
+                                        
                                     ';
                                 }else{
                                     echo '
