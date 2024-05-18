@@ -396,7 +396,7 @@ global $conn;
             </div>
         </div>
     </div>
-    <a href="feedback.php"><button class="btn-sub">Enviar Feedback</button></a>
+   
 
 </section>
 
@@ -530,18 +530,6 @@ global $conn;
         </div>
     </div>
 </section>
-
-<div class="popup">
-    <button class="close-btn">&times;</button>
-    <form method="get" action="">
-        <h5>
-            Coloque aqui o seu feedback:</br>
-        </h5>
-        <textarea name="feddback"></textarea>
-        <?php echo "<input type='text' name='id' value='".$id."' hidden/>"?>
-        <input type="submit" name="submit" value="Enviar Feedback">
-    </form>
-</div>
 
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="js/popup.js"></script>
