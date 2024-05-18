@@ -4,13 +4,13 @@
     include("../basedados/db.h");
     session_start();
 //user
-echo $_SESSION["username"];
+echo $_SESSION["user"];
 
     $nome = "";
     $username = "";
     $email = "";
 
-    $user_logado = $_SESSION["username"];
+    $user_logado = $_SESSION["user"];
     $sqlSelect = "SELECT id_utilizador, nome, username, email FROM conta WHERE username = '$user_logado'";
     $resultSelect = mysqli_query($conn, $sqlSelect);
 

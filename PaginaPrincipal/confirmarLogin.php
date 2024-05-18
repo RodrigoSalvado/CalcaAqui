@@ -6,39 +6,40 @@
 
     $username = $_POST["username"];
     $password = $_POST["password"];
+
+
     $botao = $_POST["botao"];
 
     if(isset($botao)){
-        if(isset($username, $password)){
-
-            //consulta de password do user inserido
-            $sqlSelect = "SELECT password, tipo_utilizador FROM conta WHERE username = '".$_SESSION["username"]."'";
-            $resultSelect = mysqli_query($conn, $sqlSelect);
-
-            if($resultSelect->num_rows > 0){
-                $row = $resultSelect->fetch_assoc();
-                $pass = $row["password"];
+        if(isset($username) && isset($password)){
 
 
-                //cofirmacao de password
-                if(md5($password) == $pass) {
 
-                    $_SESSION["user"] = $username;
-                    $_SESSION["tipo"] = $row["tipo_utilizador"];
 
-                    //echo "<script>window.alert('password correta') ;</script>";
-                    header("Location: perfilCliente.php");
-                    //header("Location: PaginaPrincipal.php");
-                }else{
-                    echo "<script>window.alert('Dados de login invalidos!') ;</script>";
-                }
-
-            }else{
-                echo "<script>window.alert('Dados de login invalidos!') ;</script>";
+            //Selecionar user correspondente da base de dados
+            $sql = "SELECT * FROM conta WHERE username = '$username' AND password = '".md5($password)."';";
+            $retval = mysqli_query( $conn, $sql );
+            if(! $retval ){
+                die('Could not get data: ' . mysqli_error($conn));// se não funcionar dá erro
             }
+            $row = mysqli_fetch_array($retval);
 
+            //==================================================================//
+            if(strcmp($row["username"], $username) == 0 && strcmp($row["password"], md5($password)) == 0){
+                //=========================DADOS VÁLIDOS=========================//
+                //Identifica o utilizador
+                $_SESSION["user"] = $row["username"];
+                $_SESSION["tipo"] = $row["tipo_utilizador"];
+            }else{
+                $_SESSION["user"] = -1;
+                $_SESSION["tipo"] = -1;
+            }
+            header("Location: PaginaPrincipal.php");
         }else{
-            echo "<script>window.alert('Preencha todos os campos') ;</script>";
+
+            session_destroy();
+            header("refresh:0;url = ./paginaPrincipal.php");
+
         }
     }
 

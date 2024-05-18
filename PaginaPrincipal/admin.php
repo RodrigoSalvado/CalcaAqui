@@ -11,7 +11,8 @@ include("../basedados/db.h");
 #   exit;
 # }
 
-$user_logado = $_SESSION['username'];
+$user_logado = $_SESSION['user'];
+
 $sql = "SELECT username, nome, email, genero FROM conta WHERE username = '$user_logado'";
 $result = $conn->query($sql);
 
