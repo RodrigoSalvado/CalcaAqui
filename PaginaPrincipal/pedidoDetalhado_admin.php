@@ -77,9 +77,9 @@ try{
         }else if($estado == 3){
             $mail->addAddress($mailUser);
             $mail->Subject = "O Seu Pedido Está Concluído";
-            $mail->Body = "Olá ".$user.", <br>A reparação do seu pedido encontra-se concluida, para poder levantar o seu pedido diriga-se à loja. <br><br>
+            $mail->Body = "<html>Olá ".$user.", <br>A reparação do seu pedido encontra-se concluida, para poder levantar o seu pedido diriga-se à loja. <br><br>
             <a href='./feedback.php?id=".$id."'>Envie Feedback</a>
-            <br><br>Cumprimentos  Calça Aqui";
+            <br><br>Cumprimentos  Calça Aqui </html>";
 
             $mail->send();
 
@@ -173,15 +173,15 @@ if($result -> num_rows > 0) {
                         </ul>
                         <div class="user_option">
                         <?php
-                            $href = 'login.php';
-                                            
+                        $href = 'login.php';
+
                             if (isset($_SESSION['user'])) {
-                            if ($_SESSION['user']['tipo_user'] == 1) {
-                                $href = 'admin.php';
-                            } elseif ($_SESSION['user']['tipo_user'] == 2) {
-                                $href = 'perfilCliente.php';
+                                if ($_SESSION['tipo_user'] == 1) {
+                                    $href = 'admin.php';
+                                } elseif ($_SESSION['tipo_user'] == 2) {
+                                    $href = 'perfilCliente.php';
+                                }
                             }
-                        }
                         ?>
                         <a href="<?php echo $href; ?>">
                             <img src="images/user.png" alt="User">

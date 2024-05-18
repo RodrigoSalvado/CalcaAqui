@@ -99,9 +99,9 @@ if($resultPedidos -> num_rows > 0){
                                 $href = 'login.php';
                                                 
                                 if (isset($_SESSION['user'])) {
-                                if ($_SESSION['user']['tipo_user'] == 1) {
+                                if ($_SESSION['tipo_user'] == 1) {
                                     $href = 'admin.php';
-                                } elseif ($_SESSION['user']['tipo_user'] == 2) {
+                                } elseif ($_SESSION['tipo_user'] == 2) {
                                     $href = 'perfilCliente.php';
                                 }
                             }

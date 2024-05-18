@@ -7,7 +7,7 @@ $tipo_servico = $_POST["tipo_servico"];
 $botao = $_POST["botao"];
 $descricao = $_POST["descricao"];
 $tipo_calcado = $_POST["tipo_calcado"];
-$foto = null;
+$foto = $_FILES["imagem"];
 
 if(isset($botao)) {
 

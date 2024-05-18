@@ -87,16 +87,17 @@ Calça Aqui
                 </li>
               </ul>
               <div class="user_option">
-              <?php
-                $href = 'login.php';
-                                
-                if (isset($_SESSION['user'])) {
-                  if ($_SESSION['user']['tipo_user'] == 1) {
-                    $href = 'admin.php';
-                  } elseif ($_SESSION['user']['tipo_user'] == 2) {
-                    $href = 'perfilCliente.php';
+                  <?php
+                  $href = 'login.php';
+
+                  if (isset($_SESSION['user'])) {
+                      if ($_SESSION['tipo_user'] == 1 ) {
+                          $href = 'admin.php';
+                      } elseif ($_SESSION['tipo_user'] == 2) {
+                          $href = 'perfilCliente.php';
+                      }
                   }
-              }
+                  ?>
               ?>
               <a href="<?php echo $href; ?>">
                 <img src="images/user.png" alt="User">

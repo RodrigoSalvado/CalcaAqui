@@ -63,14 +63,14 @@ $tipo_servico = $_GET["id"];
                                 session_start();
 
                                 $href = 'login.php';
-                                                
+
                                 if (isset($_SESSION['user'])) {
-                                if ($_SESSION['user']['tipo_user'] == 1) {
-                                    $href = 'admin.php';
-                                } elseif ($_SESSION['user']['tipo_user'] == 2) {
-                                    $href = 'perfilCliente.php';
+                                    if ($_SESSION['tipo_user'] == 1) {
+                                        $href = 'admin.php';
+                                    } elseif ($_SESSION['tipo_user'] == 2) {
+                                        $href = 'perfilCliente.php';
+                                    }
                                 }
-                            }
                             ?>
                             <a href="<?php echo $href; ?>">
                                 <img src="images/user.png" alt="User">
@@ -86,7 +86,7 @@ $tipo_servico = $_GET["id"];
         </header>
     </div>
     <section>
-    <form action="envioPedido.php" method="post">
+    <form action="envioPedido.php" method="post" enctype="multipart/form-data">
         <div class="nomeUtilizador">
 <br>
                 <div class="nomeUtilizador">
