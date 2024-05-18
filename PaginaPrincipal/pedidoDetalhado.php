@@ -2,7 +2,6 @@
 global $conn;
 include("../basedados/db.h");
 session_start();
-
 echo $_SESSION["username"] . "<br>";
 
     $nome = "";

@@ -6,7 +6,6 @@
 //user
 echo $_SESSION["username"];
 
-
     $nome = "";
     $username = "";
     $email = "";

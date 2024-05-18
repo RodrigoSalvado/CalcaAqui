@@ -4,6 +4,7 @@ include("../basedados/db.h");
 session_start();
 $username = $_SESSION["user"];
 $tipo_servico = $_GET["id"];
+
 ?>
 
     <!DOCTYPE html>

@@ -1,7 +1,6 @@
 <?php // Ligação à bd
 
 session_start();
-
 include("../basedados/db.h");
 
 //mudar variavel de sessão

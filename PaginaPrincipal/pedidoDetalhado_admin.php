@@ -6,11 +6,7 @@ include("./enviarMail.php");
 session_start();
 
 
-$nome = "Kirlitos";
-$username = "Kirlitos";
-$email = "erhhbn";
-/*
-$user_logado = $_SESSION["username"];
+$user_logado = $_SESSION["user"];
 $sqlSelect = "SELECT nome, username, email FROM conta WHERE username = '$user_logado'";
 $resultSelect = mysqli_query($conn, $sqlSelect);
 
@@ -24,7 +20,7 @@ if($resultSelect -> num_rows > 0){
 }else{
     echo "<script>window.alert('Não foram encontrados resultados') ;</script>";
 }
-*/
+
 $id = $_GET["id"];
 $_SESSION["id_pedido"] = $id;
 
