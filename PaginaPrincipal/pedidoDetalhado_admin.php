@@ -72,10 +72,12 @@ try{
 
         }else if($estado == 3){
             $mail->addAddress($mailUser);
+            $mail -> addEmbeddedImage('images/scissors.png', 'logo');
             $mail->Subject = "O Seu Pedido Está Concluído";
-            $mail->Body = "Olá ".$user.", <br>A reparação do seu pedido encontra-se concluida, para poder levantar o seu pedido diriga-se à loja. <br><br>
+            $mail->Body = "<html>Olá ".$user.", <br>A reparação do seu pedido encontra-se concluida, para poder levantar o seu pedido diriga-se à loja. <br><br>
             <a href='http://localhost/CalcaAqui/PaginaPrincipal/feedback.php?id=".$username."'>Envie Feedback</a>
-            <br><br>Cumprimentos  Calça Aqui";
+            <br><br>Cumprimentos  Calça Aqui <br><br><br>
+            <img src='cid:logo' style=width: 80px></html>";
 
             $mail->send();
 
