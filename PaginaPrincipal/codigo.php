@@ -1,6 +1,33 @@
 <?php
 global $mail;
 include "./enviarMail.php";
+session_start();
+
+if(isset($_POST["botao"])){
+    if(empty($_POST["email"])) {
+        echo "<script>alert('Insira o seu mail!')</script>";
+        header("Location: email.php");
+    }else {
+
+        $email = $_POST["email"];
+        $codigo = gerarCodigoAleatorio(6);
+        $mail->addAddress($email);
+        $mail->Subject = 'Código de recuperação';
+        $mail->Body= "Olá, o seu código de confirmação é: <b>$codigo</b>";
+        $mail->send();
+
+        $_SESSION["codigo"] = $codigo;
+        $_SESSION["email"] = $email;
+    }
+}
+function gerarCodigoAleatorio($tamanho) {
+    $caracteres = '0123456789';
+    $codigo = '';
+    for ($i = 0; $i < $tamanho; $i++) {
+        $codigo .= $caracteres[rand(0, strlen($caracteres) - 1)];
+    }
+    return $codigo;
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +61,7 @@ include "./enviarMail.php";
     <div class="photo">
     </div>
     <span>Código de Recuperação:</span>
-    <form action="recuperarPass.php" method="post">
+    <form action="" method="post">
         <label>Insira o código:</label>
         <div class="form-group">
             <input id="codigo1" spellcheck=false class="form-control" name="codigo1" type="text" size="1" alt="login" maxlength="1" required="">
@@ -45,7 +72,7 @@ include "./enviarMail.php";
             <input id="codigo6" spellcheck=false class="form-control" name="codigo6" type="text" size="1" alt="login" maxlength="1" required="">
         </div>
         <div class = botao>
-            <button id="submit" type="submit" name="botao" ripple>Enviar</button>
+            <button id="submit" type="submit" name="submit" ripple>Enviar</button>
         </div>
 
     </form>
@@ -75,26 +102,19 @@ include "./enviarMail.php";
 
 
 <?php
-if(isset($_POST["botao"])){
-    if(empty($_POST["email"])) {
-        echo "<script>alert('Insira o seu mail!')</script>";
-    }else {
 
-        $email = $_POST["email"];
-        $codigo = gerarCodigoAleatorio(6);
-        $mail->addAddress($email);
-        $mail->Subject = 'Código de recuperação';
-        $mail->Body= "Olá, o seu código de confirmação é: <b>$codigo</b>";
-        $mail->send();
+if(isset($_POST["submit"])){
+
+    $codigoIntroduzido = $_POST["codigo1"].$_POST["codigo2"].$_POST["codigo3"].$_POST["codigo4"].$_POST["codigo5"].$_POST["codigo6"];
+
+    if(strcmp($codigoIntroduzido, $_SESSION["codigo"]) == 0){
+        header("Location: recuperarPass.php");
+    }else{
+        echo "<script>alert('Codigo Incorreto')</script>";
     }
+
+
 }
-function gerarCodigoAleatorio($tamanho) {
-    $caracteres = '0123456789';
-    $codigo = '';
-    for ($i = 0; $i < $tamanho; $i++) {
-        $codigo .= $caracteres[rand(0, strlen($caracteres) - 1)];
-    }
-    return $codigo;
-}
+
 ?>
 

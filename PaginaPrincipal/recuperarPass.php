@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -34,7 +30,7 @@ session_start();
             </erroru>
         </div>
         <div id="p" class="form-group">
-            <input id="pass" spellcheck=false class="form-control" name="pass" type="text" size="18" alt="login" required="">
+            <input id="pass" spellcheck=false class="form-control" name="confirmar_pass" type="text" size="18" alt="login" required="">
             <span class="form-highlight"></span>
             <span class="form-bar"></span>
             <label for="confirmar_pass" class="float-label">Confirmar nova palavra-passe!</label>
@@ -62,17 +58,30 @@ session_start();
 
 <?php
 global$conn;
-
+session_start();
 include("../basedados/db.h");
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nova_pass = $_POST["pass"];
-    $confirmar_pass = $_POST["confirmar_pass"];
+if(isset($_POST["botao"])){
+    try{
+        $nova_pass = $_POST["pass"];
+        $confirmar_pass = $_POST["confirmar_pass"];
+    }catch(Exception $e){
 
-    if ($nova_pass === $confirmar_pass) {
-        echo "Senha recuperada com sucesso!";
-    } else {
-        echo "As senhas não coincidem. Por favor, tente novamente.";
     }
+
+
+    if (strcmp($nova_pass, $confirmar_pass) == 0) {
+        $email = $_SESSION["email"];
+        $nova_pass = md5($nova_pass);
+
+        $sql = "UPDATE conta SET password = '$nova_pass' WHERE email = '$email'";
+        $result = mysqli_query($conn, $sql);
+        session_destroy();
+        echo "<script>window.alert('Password Alterada!') ; window.location.href = 'login.php';</script>";
+
+    } else {
+        echo "<script>alert('Passwords não combinam!')</script>";
+    }
+
 }
 ?>
