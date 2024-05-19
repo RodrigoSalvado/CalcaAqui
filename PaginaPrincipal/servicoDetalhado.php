@@ -43,8 +43,7 @@ if ($result->num_rows > 0) {
                 <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
                     <a class="navbar-brand" href="PaginaPrincipal.php">
             						<span>
-              							Calça Aqui
-            						</span>
+<img src="images/scissors.png" style="width: 80px">            						</span>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -73,6 +72,8 @@ if ($result->num_rows > 0) {
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                                                                        <span style="text-decoration: none; color: white">Logout</span>
+
                                         </a>
                                     ';
                                 }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
@@ -173,7 +174,7 @@ if ($result->num_rows > 0) {
                                 <img src="images/telephone-white.png" width="12px" alt="">
                             </div>
                             <p>
-                                +961 000000000
+                                +351 000000000
                             </p>
                         </div>
                         <div>
@@ -193,7 +194,7 @@ if ($result->num_rows > 0) {
                             Informações
                         </h5>
                         <p>
-                            Colocar texto
+                            Dedicados em satisfazer as necessidades dos nossos clientes!
                         </p>
                     </div>
                 </div>

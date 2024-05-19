@@ -35,7 +35,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
           <a class="navbar-brand" href="PaginaPrincipal.php">
             <span>
-Calça Aqui
+              <img src="images/scissors.png" style="width: 80px">
 </span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,18 +48,11 @@ Calça Aqui
                 <li class="nav-item active">
                   <a class="nav-link" href="PaginaPrincipal.php">Página Principal <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.php"> Sobre Nós </a>
-                </li>
+
                 <li class="nav-item">
                   <a class="nav-link" href="servicos.php"> Serviços </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="portfolio.php"> Portfolio </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.php">Contacte-nos</a>
-                </li>
+
               </ul>
               <div class="user_option">
                   <?php
@@ -71,6 +64,8 @@ Calça Aqui
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                                                                        <span style="text-decoration: none; color: white">Logout</span>
+
                                         </a>
                                     ';
                   }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
@@ -83,6 +78,8 @@ Calça Aqui
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                                                                        <span style="text-decoration: none; color: white">Logout</span>
+
                                         </a>
                                         
                                     ';
@@ -94,9 +91,7 @@ Calça Aqui
                                     ';
                   }
                   ?>
-                <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                </form>
+
               </div>
             </div>
           </div>
@@ -110,6 +105,7 @@ Calça Aqui
       <div class="row">
         <div class="admin_box">
           <div class="admin_heading">
+              <br><br><br>
             <h2>Gestão dos Clientes</h2>
           </div>
         </div>
@@ -157,7 +153,7 @@ Calça Aqui
         <tr>
             <td class='text-center'>$user</td>
             <td class='text-center'>$email</td>
-            <td class='text-center'><a href='clienteDetalhado.php?id_utilizador=$id_utilizador' class='button_detalhes'>Detalhes</a></td>
+            <td class='text-center' style='font-size: '><a href='clienteDetalhado.php?id_utilizador=$id_utilizador' class='button_detalhes'>Detalhes</a></td>
         </tr>
     ";
                   }
@@ -209,7 +205,7 @@ Calça Aqui
       </div>
 
   </div>
-<br><br>
+<br><br><br>
 
   <section class="info_section ">
     <div class="container">
@@ -232,7 +228,7 @@ Calça Aqui
                 <img src="images/telephone-white.png" width="12px" alt="">
               </div>
               <p>
-              +961 000000000
+              +351 000000000
               </p>
             </div>
             <div>
@@ -252,7 +248,7 @@ calcaaqui
 Informações
             </h5>
             <p>
-Colocar texto
+                Dedicados em satisfazer as necessidades dos nossos clientes!
 </p>
           </div>
         </div>

@@ -30,11 +30,14 @@
                 //Identifica o utilizador
                 $_SESSION["user"] = $row["username"];
                 $_SESSION["tipo"] = $row["tipo_utilizador"];
+                header("Location: PaginaPrincipal.php");
             }else{
                 $_SESSION["user"] = -1;
                 $_SESSION["tipo"] = -1;
+                echo "<script>window.alert('Dados de login inválidos') ;window.location.href = 'login.php';</script>";
+
             }
-            header("Location: PaginaPrincipal.php");
+
         }else{
 
             session_destroy();

@@ -30,7 +30,7 @@ $nomeUser = $_SESSION["user"];
             <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
                 <a class="navbar-brand" href="PaginaPrincipal.php">
             <span>
-              Calça Aqui
+              <img src="images/scissors.png" style="width: 80px">
             </span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,18 +43,11 @@ $nomeUser = $_SESSION["user"];
                             <li class="nav-item active">
                                 <a class="nav-link" href="PaginaPrincipal.php">Página Principal <span class="sr-only">(current)</span></a>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link" href="about.php"> Sobre Nós </a>
+                                <a class="nav-link" href="servicos.php"> Serviços </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="servicos.php"> What we do </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="portfolio.php"> Portfolio </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.php">Contact us</a>
-                            </li>
+
                         </ul>
                         <div class="user_option">
                             <?php
@@ -66,6 +59,7 @@ $nomeUser = $_SESSION["user"];
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                            <span style="text-decoration: none; color: white">Logout</span>
                                         </a>
                                     ';
                             }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
@@ -78,6 +72,7 @@ $nomeUser = $_SESSION["user"];
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                            <span style="text-decoration: none; color: white">Logout</span>
                                         </a>
                                         
                                     ';
@@ -89,9 +84,7 @@ $nomeUser = $_SESSION["user"];
                                     ';
                             }
                             ?>
-                            <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -196,7 +189,7 @@ $nomeUser = $_SESSION["user"];
                             <img src="images/telephone-white.png" width="12px" alt="">
                         </div>
                         <p>
-                            +961 000000000
+                            +351 000000000
                         </p>
                     </div>
                     <div>
@@ -216,7 +209,7 @@ $nomeUser = $_SESSION["user"];
                         Informações
                     </h5>
                     <p>
-                        Colocar texto
+                        Dedicados em satisfazer as necessidades dos nossos clientes!
                     </p>
                 </div>
             </div>

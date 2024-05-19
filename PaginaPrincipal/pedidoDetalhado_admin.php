@@ -105,6 +105,7 @@ $result = mysqli_query($conn, $sql);
 
 if($result -> num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $idUser = $row["id_utilizador"];
         $descricao = $row["descricao"];
         $notas = $row["notas"];
         $status = $row["status_pedido"];
@@ -112,6 +113,15 @@ if($result -> num_rows > 0) {
     }
 }
 
+$sqlDados = "SELECT username, email, nome FROM conta WHERE id_utilizador = '$idUser'";
+$resultDados = mysqli_query($conn, $sqlDados);
+if(mysqli_num_rows($resultDados)){
+    while($rowDados = mysqli_fetch_assoc($resultDados)){
+        $userPedido = $rowDados["username"];
+        $emailPedido = $rowDados["email"];
+        $nomePedido = $rowDados["nome"];
+    }
+}
 
 
 ?>
@@ -143,8 +153,7 @@ if($result -> num_rows > 0) {
             <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
                 <a class="navbar-brand" href="PaginaPrincipal.php">
             <span>
-              Calça Aqui
-            </span>
+<img src="images/scissors.png" style="width: 80px">            </span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -156,18 +165,11 @@ if($result -> num_rows > 0) {
                             <li class="nav-item active">
                                 <a class="nav-link" href="PaginaPrincipal.php">Página Principal <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="about.php"> Sobre Nós </a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="servicos.php"> Serviços </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="portfolio.php"> Portfolio </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.php">Contacte-nos</a>
-                            </li>
+                            <
                         </ul>
                         <div class="user_option">
                             <?php
@@ -179,6 +181,8 @@ if($result -> num_rows > 0) {
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                                                                        <span style="text-decoration: none; color: white">Logout</span>
+
                                         </a>
                                     ';
                             }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
@@ -191,6 +195,8 @@ if($result -> num_rows > 0) {
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                                                                        <span style="text-decoration: none; color: white">Logout</span>
+
                                         </a>
                                         
                                     ';
@@ -202,9 +208,7 @@ if($result -> num_rows > 0) {
                                     ';
                             }
                             ?>
-                            <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -216,7 +220,7 @@ if($result -> num_rows > 0) {
 <div class="info-pedido">
     <div class="linha1">
         <h2>Pedido de reparação:</h2>
-        <br>
+        <br><br>
         <?php echo "<img src='./images/$foto' alt='imagem sapato' width='150px' height='150px'>";?>
         <label>Estado do pedido: </label>
         <label>
@@ -280,9 +284,9 @@ if($result -> num_rows > 0) {
     </div>
     <div class="linha3">
         <h4>Dados do cliente:</h4>
-        <label class="campos2"><?php echo $nome; ?></label><br>
-        <label class="campos2"><?php echo $username; ?></label><br>
-        <label class="campos2"><?php echo $email; ?></label>
+        <label class="campos2">Nome: <?php echo $nomePedido; ?></label><br>
+        <label class="campos2">Username: <?php echo $userPedido; ?></label><br>
+        <label class="campos2">Email: <?php echo $emailPedido; ?></label>
     </div>
 </div>
 
@@ -307,7 +311,7 @@ if($result -> num_rows > 0) {
                             <img src="images/telephone-white.png" width="12px" alt="">
                         </div>
                         <p>
-                            +961 000000000
+                            +351 000000000
                         </p>
                     </div>
                     <div>
@@ -327,7 +331,7 @@ if($result -> num_rows > 0) {
                         Informações
                     </h5>
                     <p>
-                        Colocar texto
+                        Dedicados em satisfazer as necessidades dos nossos clientes!
                     </p>
                 </div>
             </div>

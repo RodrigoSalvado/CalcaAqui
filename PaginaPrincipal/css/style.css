@@ -953,13 +953,13 @@ a:focus {
 
 .linha3 .campos2{
   align-items: center;
-  width: 80%;
+  width: 50%;
   height: 50px;
   text-align: center;
   padding: 10px;
   border-radius: 15px;
   border: solid 1px #333333;
-  color: #333333;
+  color: #7d7d7d;
 }
 
 

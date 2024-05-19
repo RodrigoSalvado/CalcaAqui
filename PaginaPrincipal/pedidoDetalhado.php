@@ -2,7 +2,6 @@
 global $conn;
 include("../basedados/db.h");
 session_start();
-echo $_SESSION["user"] . "<br>";
 
     $nome = "";
     $username = "";
@@ -27,7 +26,7 @@ echo $_SESSION["user"] . "<br>";
 
     if(isset($_GET['id_pedido'])){
         $id_pedido = $_GET['id_pedido'];
-        echo $id_pedido;
+
     }else{
         echo "erro id";
     }
@@ -44,9 +43,8 @@ echo $_SESSION["user"] . "<br>";
             $status_pedido = $row["status_pedido"];
             $foto = $row["foto"];
         }
-        echo "sucesso";
+
     }else{
-        echo "erro no select";
     }
 
 // Data no formato padrão do MySQL
@@ -90,7 +88,7 @@ $hora = $data1->format('H:i:s');
                 <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
                     <a class="navbar-brand" href="PaginaPrincipal.php">
             <span>
-              Calça Aqui
+              <img src="images/scissors.png" style="width: 80px">
             </span>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,18 +101,12 @@ $hora = $data1->format('H:i:s');
                                 <li class="nav-item active">
                                     <a class="nav-link" href="PaginaPrincipal.php">Página Principal <span class="sr-only">(current)</span></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="about.php"> Sobre Nós </a>
-                                </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="servicos.php"> Serviços </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="portfolio.php"> Portfolio </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.php">Contacte-nos</a>
-                                </li>
+
+
                             </ul>
                             <div class="user_option">
                                 <?php
@@ -122,10 +114,12 @@ $hora = $data1->format('H:i:s');
                                     echo '
                                         <a href="admin.php">
                                             <img src="images/user.png" alt="">   
-                                            <span style="text-decoration: none; color: white">' . htmlspecialchars($nomeUser) . '</span>                                    
+                                            <span style="text-decoration: none; color: white">' . htmlspecialchars($user_logado) . '</span>                                    
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                                <span style="text-decoration: none; color: white">Logout</span>
+
                                         </a>
                                     ';
                                 }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
@@ -134,10 +128,12 @@ $hora = $data1->format('H:i:s');
                                         <a href="perfilCliente.php">
                                             
                                             <img src="images/user.png" alt="">   
-                                            <span style="text-decoration: none; color: white">' . htmlspecialchars($nomeUser) . '</span>                                    
+                                            <span style="text-decoration: none; color: white">' . htmlspecialchars($user_logado) . '</span>                                    
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                                                                                                                    <span style="text-decoration: none; color: white">Logout</span>
+
                                         </a>
                                         
                                     ';
@@ -165,11 +161,11 @@ $hora = $data1->format('H:i:s');
             <h2>Pedido de reparação:</h2>
             <br>
             <?php echo "<img src='./images/$foto' alt='imagem sapato' width='150px' height='150px'>";?>
-            <br>
+            <br><br>
             <label>Estado do pedido: </label>
             <label><?php echo $status_pedido ?></label>
             <br>
-            <label><?php echo $servico ?></label>
+            <label>Tipo de serviço: <?php echo $servico ?></label>
             <br>
             <label><?php echo "Dia: " . $dia . "<br>"; ?></label>
             <br>
@@ -186,13 +182,15 @@ $hora = $data1->format('H:i:s');
 
             </div>
         </div>
+        <br><br>
         <div class="linha3">
             <h4>Dados do cliente:</h4>
-            <label class="campos2"><?php echo $nome; ?></label><br>
-            <label class="campos2"><?php echo $username; ?></label><br>
-            <label class="campos2"><?php echo $email; ?></label>
+            <label class="campos2">Nome: <?php echo $nome; ?></label><br>
+            <label class="campos2">Username: <?php echo $username; ?></label><br>
+            <label class="campos2">Email: <?php echo $email; ?></label>
         </div>
     </div>
+    <br><br><br>
 
     <section class="info_section ">
         <div class="container">
@@ -215,7 +213,7 @@ $hora = $data1->format('H:i:s');
                                 <img src="images/telephone-white.png" width="12px" alt="">
                             </div>
                             <p>
-                                +961 000000000
+                                +351 000000000
                             </p>
                         </div>
                         <div>
@@ -235,7 +233,7 @@ $hora = $data1->format('H:i:s');
                             Informações
                         </h5>
                         <p>
-                            Colocar texto
+                            Dedicados em satisfazer as necessidades dos nossos clientes!
                         </p>
                     </div>
                 </div>

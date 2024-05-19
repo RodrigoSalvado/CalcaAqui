@@ -60,7 +60,7 @@ if ($result->num_rows > 0) {
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
           <a class="navbar-brand" href="PaginaPrincipal.php">
             <span>
-Calça Aqui
+              <img src="images/scissors.png" style="width: 80px">
 </span>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,18 +73,11 @@ Calça Aqui
                 <li class="nav-item active">
                   <a class="nav-link" href="PaginaPrincipal.php">Página Principal <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.php"> Sobre Nós </a>
-                </li>
+
                 <li class="nav-item">
                   <a class="nav-link" href="servicos.php"> Serviços </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="portfolio.php"> Portfolio </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.php">Contacte-nos</a>
-                </li>
+
               </ul>
               <div class="user_option">
                   <?php
@@ -96,6 +89,7 @@ Calça Aqui
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                            <span style="text-decoration: none; color: white">Logout</span>
                                         </a>
                                     ';
                   }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
@@ -108,6 +102,7 @@ Calça Aqui
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                            <span style="text-decoration: none; color: white">Logout</span>
                                         </a>
                                         
                                     ';
@@ -135,21 +130,24 @@ Calça Aqui
       <div class="row">
         <div class="admin_box">
           <div class="admin_heading">
+              <br><br><br>
             <h2>
               Informações Pessoais
             </h2>
           </div>
           <div class="info_box">
-            <label for=""><?php echo $username; ?> </label><br>
-            <label for=""><?php echo $nome; ?> </label><br>
-            <label for=""><?php echo $email; ?> </label><br>
+              <label for="">Nome: <?php echo $nome; ?></label><br>
+              <label for="">Username: <?php echo $username; ?></label><br>
+              <label for="">Email: <?php echo $email; ?></label>
           </div>
+            <br><br>
           <div class="admin_heading">
              <h2>Área de Administração</h2>
           </div>
           <div class="botoes_gest">
             <button onclick="window.location.href='gestaoPedidos.php'">Gestão de Pedidos</button><br>
             <button onclick="window.location.href='gestaoClientes.php'">Gestão dos Clientes</button>
+              <br><br><br>
           </div>
         </div>
       </div>
@@ -177,7 +175,7 @@ Calça Aqui
                 <img src="images/telephone-white.png" width="12px" alt="">
               </div>
               <p>
-              +961 000000000
+              +351 000000000
               </p>
             </div>
             <div>
@@ -197,7 +195,7 @@ calcaaqui
 Informações
             </h5>
             <p>
-Colocar texto
+                Dedicados em satisfazer as necessidades dos nossos clientes!
 </p>
           </div>
         </div>

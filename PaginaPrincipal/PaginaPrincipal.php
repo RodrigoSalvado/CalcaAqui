@@ -63,6 +63,8 @@ $nomeUser = isset($_SESSION["user"])? $_SESSION["user"]: Null;
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                                                                        <span style="text-decoration: none; color: white">Logout</span>
+
                                         </a>
                                     ';
                             }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
@@ -346,7 +348,7 @@ $nomeUser = isset($_SESSION["user"])? $_SESSION["user"]: Null;
                             <img src="images/telephone-white.png" width="12px" alt="">
                         </div>
                         <p>
-                            +961 000000000
+                            +351 000000000
                         </p>
                     </div>
                     <div>
@@ -366,7 +368,7 @@ $nomeUser = isset($_SESSION["user"])? $_SESSION["user"]: Null;
                         Informações
                     </h5>
                     <p>
-                        Colocar texto
+                        Dedicados em satisfazer as necessidades dos nossos clientes!
                     </p>
                 </div>
             </div>
