@@ -1,6 +1,5 @@
 <?php
-global $mail;
-include "./enviarMail.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -41,34 +40,5 @@ include "./enviarMail.php";
     </form>
 
 </div>
-<?php
-if(isset($_POST["botao"])){
-    if(empty($_POST["email"])) {
-        echo "<script>alert('Insira o seu mail!')</script>";
-    }else {
-
-        $email = $_POST["email"];
-        $codigo = gerarCodigoAleatorio(6);
-        $mail->addAdress($mail);
-        $mail->Subject = 'Código de recuperação';
-        $mail->Body= "Olá, o seu código de confirmação é: <b>$codigo</b>";
-
-
-    $mail->send();
-        }
-    }
-function gerarCodigoAleatorio($tamanho) {
-    $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $codigo = '';
-    for ($i = 0; $i < $tamanho; $i++) {
-        $codigo .= $caracteres[rand(0, strlen($caracteres) - 1)];
-    }
-    return $codigo;
-}
-
-
-
-
-?>
 </body>
 </html>
