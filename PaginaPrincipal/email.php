@@ -1,4 +1,6 @@
 <?php
+global $mail;
+include "./enviarMail.php";
 ?>
 
 <!DOCTYPE html>
@@ -16,9 +18,9 @@
     <div class="photo">
     </div>
     <span>Insira o seu Email:</span>
-    <form action="" method="post">
+    <form action="codigo.php" method="post">
         <div id="u" class="form-group">
-            <input id="mail" spellcheck=false class="form-control" name="male" type="text" size="30" alt="login" required="">
+            <input id="email" spellcheck=false class="form-control" name="email" type="text" size="30" alt="login" required="">
             <span class="form-highlight"></span>
             <span class="form-bar"></span>
             <label for="mail" class="float-label">Insira o mail!</label>
@@ -39,6 +41,34 @@
     </form>
 
 </div>
+<?php
+if(isset($_POST["botao"])){
+    if(empty($_POST["email"])) {
+        echo "<script>alert('Insira o seu mail!')</script>";
+    }else {
 
+        $email = $_POST["email"];
+        $codigo = gerarCodigoAleatorio(6);
+        $mail->addAdress($mail);
+        $mail->Subject = 'Código de recuperação';
+        $mail->Body= "Olá, o seu código de confirmação é: <b>$codigo</b>";
+
+
+    $mail->send();
+        }
+    }
+function gerarCodigoAleatorio($tamanho) {
+    $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $codigo = '';
+    for ($i = 0; $i < $tamanho; $i++) {
+        $codigo .= $caracteres[rand(0, strlen($caracteres) - 1)];
+    }
+    return $codigo;
+}
+
+
+
+
+?>
 </body>
 </html>

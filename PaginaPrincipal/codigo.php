@@ -29,7 +29,7 @@
     <div class="photo">
     </div>
     <span>Código de Recuperação:</span>
-    <form action="" method="post">
+    <form action="recuperarPass.php" method="post">
         <label>Insira o código:</label>
         <div class="form-group">
             <input id="codigo1" spellcheck=false class="form-control" name="codigo1" type="text" size="1" alt="login" maxlength="1" required="">
@@ -70,9 +70,6 @@
 
 
 <?php
-$codigo_aleatorio = sprintf("%06d", mt_rand(0, 999999));
 
-session_start();
-$_SESSION['codigo_recuperacao'] = $codigo_aleatorio;
 ?>
 

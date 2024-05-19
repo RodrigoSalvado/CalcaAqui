@@ -45,7 +45,7 @@
             </errorp>
         </div>
         <div class="form-group">
-            <a href="recuperarPass.php" id="pass">Esqueceu-se da palavra-passe?</a>
+            <a href="email.php" id="pass">Esqueceu-se da palavra-passe?</a>
             <button id="submit" type="submit" name="botao" ripple>Iniciar sessão</button>
         </div>
     </form>
