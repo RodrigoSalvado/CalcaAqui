@@ -65,26 +65,32 @@ try{
 
         if($estado == 2){
             $mail->addAddress($mailUser);
+            $mail -> addEmbeddedImage('images/scissorsamarelo.png', 'logo');
             $mail->Subject = "O Seu Pedido Foi Aceite";
-            $mail->Body = "Olá ".$user.", <br> Vimos por este meio informar que o seu pedido foi aceite e entrará em processo de reparação. <br><br> Cumprimentos Calça Aqui.";
+            $mail->Body = "<html>Olá ".$user.", <br> Vimos por este meio informar que o seu pedido foi aceite e entrará em processo de reparação.
+            <br><br> Cumprimentos Calça Aqui.<br><br><br>
+            <img src='cid:logo' style='width: 175px'></html>";
 
             $mail->send();
 
         }else if($estado == 3){
             $mail->addAddress($mailUser);
-            $mail -> addEmbeddedImage('images/scissors.png', 'logo');
+            $mail -> addEmbeddedImage('images/scissorsamarelo.png', 'logo');
             $mail->Subject = "O Seu Pedido Está Concluído";
             $mail->Body = "<html>Olá ".$user.", <br>A reparação do seu pedido encontra-se concluida, para poder levantar o seu pedido diriga-se à loja. <br><br>
             <a href='http://localhost/CalcaAqui/PaginaPrincipal/feedback.php?id=".$username."'>Envie Feedback</a>
             <br><br>Cumprimentos  Calça Aqui <br><br><br>
-            <img src='cid:logo' style=width: 80px></html>";
+            <img src='cid:logo' style='width: 175px'></html>";
 
             $mail->send();
 
         }else if($estado == 4){
             $mail->addAddress($mailUser);
+            $mail -> addEmbeddedImage('images/scissorsamarelo.png', 'logo');
             $mail->Subject = "O Seu Pedido Foi Recusado";
-            $mail->Body = "Lamentamos ".$user.",mas não iremos avançar com a reparação do seu pedido.<br><br> Cumprimentos Calça Aqui.";
+            $mail->Body = "<html>Lamentamos ".$user.",mas não iremos avançar com a reparação do seu pedido.<br><br> 
+            Cumprimentos Calça Aqui.<br><br><br>
+            <img src='cid:logo' style='width: 175px'></html>";
 
             $mail->send();
         }
