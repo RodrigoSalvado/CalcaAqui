@@ -56,18 +56,12 @@ if ($result->num_rows > 0) {
                                 <li class="nav-item active">
                                     <a class="nav-link" href="PaginaPrincipal.php">Página Principal <span class="sr-only">(current)</span></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="about.php"> Sobre Nós </a>
-                                </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="servicos.php"> Serviços </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="portfolio.php"> Portfolio </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.php">Contacte-nos</a>
-                                </li>
+
+
                             </ul>
                             <div class="user_option">
                                 <?php
@@ -91,6 +85,7 @@ if ($result->num_rows > 0) {
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                            <span style="text-decoration: none; color: white">Logout</span>
                                         </a>
                                         
                                     ';
@@ -98,13 +93,12 @@ if ($result->num_rows > 0) {
                                     echo '
                                         <a href="login.php">
                                             <img src="images/user.png" alt="">
+                                             
                                         </a>
                                     ';
                                 }
                                 ?>
-                                <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                                    <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -123,22 +117,25 @@ if ($result->num_rows > 0) {
         <section id="intro" class="main">
             <div class="spotlight">
                 <div class="content">
-                    <header class="major">
+                    <h2 class="major">
                         <?php
                         echo $row["tipo_servico"];
                         ?>
-                    </header>
+                    </h2>
+                    <br>
                     <?php
                     echo $row["descricao"];
                     ?>
                     <ul class="actions">
                         <?php
                         $tipoServico = $row["tipo_servico"];
-                        echo "<li><a href='formularioPedido.php?id=".$tipoServico."' class='button'>Fazer Pedido</a></li>"
+                        echo "<li <br><br><br><br><a href='formularioPedido.php?id=".$tipoServico."' id='btn' class='button' style='background: #fec016; '>Fazer Pedido</a></li>"
                         ?>
 
                     </ul>
                 </div>
+                <br><br><br>
+
                 <span class="image">
                     <?php
                     $caminho = $row["foto"];

@@ -286,48 +286,59 @@ a:focus {
   color: black;
   margin: 7px 10% 4px;
   width: 30%;
-  border: 1px solid #7d7d7d;
+  border: none;
+  border-bottom: 2px solid;
   padding: 6px;
-  border-radius: 17px;
 }
 .servico select{
   color: black;
   margin: 7px 10% 20px;
   width: 30%;
-  border: 1px solid #7d7d7d;
+  border: none;
+  border-bottom: 2px solid black;
   padding: 4px;
-  border-radius: 17px;
   text-align: center;
 }
 .calcado select{
   color: black;
   margin: 7px 10% 20px;
   width: 30%;
-  border: 1px solid #7d7d7d;
+  border-bottom: 2px solid;
   padding: 4px;
-  border-radius: 17px;
   text-align: center;
 }
 
 .desc input{
   color: black;
   margin: 7px 10% 20px;
-  width: 80%;
-  border: 1px solid #7d7d7d;
+  width: 30%;
+  border: none;
+  border-bottom: 2px solid;
   padding: 12px;
-  border-radius: 17px;
   height: 70px;
 }
 .nomeUtilizador {
   text-align: center;
+  width: 100%;
+
 }
 .container {
   text-align: center;
 }
 .botao {
   margin: 0 auto;
-  text-align: right;
+  text-align: center;
   font-size: 25px;
   padding: 10px 40px;
+  border-radius: 5px;
 
 }
+.nomeUtilizador h2{
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+}
+
+
+

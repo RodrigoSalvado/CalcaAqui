@@ -35,7 +35,7 @@ $nomeUser = isset($_SESSION["user"])? $_SESSION["user"]: Null;
             <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
                 <a class="navbar-brand" href="PaginaPrincipal.php">
             <span>
-              Calça Aqui
+              <img src="images/scissors.png" style="width: 80px">
             </span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,17 +48,9 @@ $nomeUser = isset($_SESSION["user"])? $_SESSION["user"]: Null;
                             <li class="nav-item active">
                                 <a class="nav-link" href="PaginaPrincipal.php">Página Principal <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="about.php"> Sobre Nós </a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="servicos.php"> Serviços </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="portfolio.php"> Portfolio </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.php">Contacte-nos</a>
                             </li>
                         </ul>
                         <div class="user_option">
@@ -83,6 +75,7 @@ $nomeUser = isset($_SESSION["user"])? $_SESSION["user"]: Null;
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                            <span style="text-decoration: none; color: white">Logout</span>
                                         </a>
                                         
                                     ';
@@ -90,6 +83,7 @@ $nomeUser = isset($_SESSION["user"])? $_SESSION["user"]: Null;
                                 echo '
                                         <a href="login.php">
                                             <img src="images/user.png" alt="">
+                                            <span style="text-decoration: none; color: white">Login</span>
                                         </a>
                                     ';
                             }
@@ -114,7 +108,7 @@ $nomeUser = isset($_SESSION["user"])? $_SESSION["user"]: Null;
                                         <h2>
                                             Sapataria
                                         </h2>
-                                        <h1>
+                                        <h1 style="font-family: 'Lucida Handwriting'">
                                             Calça aqui
                                         </h1>
                                         <p>

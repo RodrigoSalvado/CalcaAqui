@@ -1840,6 +1840,7 @@ input, select, textarea {
 		text-align: center;
 		text-decoration: none;
 		white-space: nowrap;
+		border: none;
 	}
 
 		input[type="submit"].icon,
@@ -2557,6 +2558,7 @@ input, select, textarea {
 					ul.actions:not(.fixed) li button,
 					ul.actions:not(.fixed) li .button {
 						width: 100%;
+
 					}
 
 						ul.actions:not(.fixed) li input[type="submit"].icon:before,
@@ -2929,8 +2931,11 @@ input, select, textarea {
 				margin-bottom: 0;
 			}
 
-			.spotlight .content header.major {
-				margin: 0 0 2em 0;
+			.spotlight .content h2.major {
+				font-weight: bold;
+				text-transform: uppercase;
+				position: relative;
+				color: black;
 			}
 
 		.spotlight .image {
@@ -3711,3 +3716,4 @@ input, select, textarea {
 			}
 
 		}
+

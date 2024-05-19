@@ -47,18 +47,12 @@ $tipo_servico = $_GET["id"];
                                 <li class="nav-item active">
                                     <a class="nav-link" href="PaginaPrincipal.php">Página Principal <span class="sr-only">(current)</span></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="about.php"> Sobre Nós </a>
-                                </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="servicos.php"> Serviços </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="portfolio.php"> Portfolio </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.php">Contacte-nos</a>
-                                </li>
+
+
                             </ul>
                             <div class="user_option">
                                 <?php
@@ -82,6 +76,7 @@ $tipo_servico = $_GET["id"];
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                            <span style="text-decoration: none; color: white">Logout</span>       
                                         </a>
                                         
                                     ';
@@ -103,11 +98,14 @@ $tipo_servico = $_GET["id"];
             </div>
         </header>
     </div>
+    <br><br><br>
     <section>
     <form action="envioPedido.php" method="post" enctype="multipart/form-data">
         <div class="nomeUtilizador">
 <br>
                 <div class="nomeUtilizador">
+                    <h2>Formulario de pedido</h2>
+                    <br><br>
                     <h3>Nome do Utilizador:</h3>
                     <div class="info_box input">
                         <input type="text" name="username" value=<?php if(isset($_SESSION["user"])){
@@ -146,19 +144,22 @@ $tipo_servico = $_GET["id"];
                     </div>
                     <br>
                     <h3>Foto:</h3>
-                    <input type="file" name="file"/>
+                    <label for="file-upload" class="custom-file-upload">
+                        <input id="file-upload" type="file" name="file">
+                    </label>
+
                     <br>
                     <br>
                     <h3>Descrição</h3>
                     <div class="desc input">
-                        <input type="text" name="descricao" placeholder="Caso deseje deixar alguma indicação, uma data limite para ter o serviço feito!">
+                        <input type="text" name="descricao" placeholder="Deixe-nos alguma indicação!">
                     </div>
                 </div>
-                    <div class="container">
                     <div class="botao">
-                        <input name = "botao" type="submit" value="Enviar">
+                        <input name = "botao" type="submit" value="Enviar" style="background: #fec016; border: none; color: white">
                     </div>
             </section>
+    <br><br><br>
 
 
     </form>
