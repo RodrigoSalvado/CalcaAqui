@@ -8,6 +8,16 @@ $botao = $_POST["botao"];
 $descricao = $_POST["descricao"];
 $tipo_calcado = $_POST["tipo_calcado"];
 $foto = $_FILES["file"];
+$senha = gerarCodigoAleatorio(5);
+
+function gerarCodigoAleatorio($tamanho) {
+    $caracteres = '0123456789abcdefghijklmnopqrstuvwxyz';
+    $codigo = '';
+    for ($i = 0; $i < $tamanho; $i++) {
+        $codigo .= $caracteres[rand(0, strlen($caracteres) - 1)];
+    }
+    return $codigo;
+}
 
 if(isset($botao)) {
 
@@ -49,8 +59,8 @@ if(isset($botao)) {
     echo "Id: ".$id_utilizador."<br>";
 
 
-    $sql = "INSERT INTO `pedido_reparacao`(`id_utilizador`, `descricao`, `servico`, `calcado`, `foto`) VALUES 
-                                        ('$id_utilizador', '$descricao', '$tipo_servico', '$tipo_calcado', '$nomeFoto')";
+    $sql = "INSERT INTO `pedido_reparacao`(`id_utilizador`, `descricao`, `servico`, `calcado`, `foto`, `senha`) VALUES 
+                                        ('$id_utilizador', '$descricao', '$tipo_servico', '$tipo_calcado', '$nomeFoto', '$senha')";
 
     $resultInsert = $conn->query($sql);
 

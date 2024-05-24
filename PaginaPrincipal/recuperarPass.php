@@ -15,7 +15,7 @@
     <span>Recuperar a palavra passe:</span>
     <form action="" method="post">
         <div id="u" class="form-group">
-            <input id="pass" spellcheck=false class="form-control" name="pass" type="text" size="18" alt="login" required="">
+            <input id="pass" spellcheck=false class="form-control" name="pass" type="password" size="18" alt="login" required="">
             <span class="form-highlight"></span>
             <span class="form-bar"></span>
             <label for="pass" class="float-label">Nova palavra-passe!</label>
@@ -30,7 +30,7 @@
             </erroru>
         </div>
         <div id="p" class="form-group">
-            <input id="pass" spellcheck=false class="form-control" name="confirmar_pass" type="text" size="18" alt="login" required="">
+            <input id="pass" spellcheck=false class="form-control" name="confirmar_pass" type="password" size="18" alt="login" required="">
             <span class="form-highlight"></span>
             <span class="form-bar"></span>
             <label for="confirmar_pass" class="float-label">Confirmar nova palavra-passe!</label>

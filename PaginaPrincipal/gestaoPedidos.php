@@ -146,38 +146,40 @@ $nomeUser = $_SESSION["user"];
                   $offset = ($pagina_atual - 1) * $resultados_por_pagina;
 
                   // Query para buscar os resultados paginados
-                  $sql = "SELECT * FROM pedido_reparacao LIMIT $offset, $resultados_por_pagina";
+                  $sql = "SELECT * FROM pedido_reparacao WHERE status_pedido != 'Recusar' ORDER BY 
+                          CASE 
+                            WHEN status_pedido = 'Concluido' THEN 1 
+                            ELSE 0 
+                          END, status_pedido LIMIT $offset, $resultados_por_pagina";
                   $result = $conn->query($sql);
 
                   if ($result->num_rows > 0) {
                       while ($row = $result->fetch_assoc()) {
-                          if($row["status_pedido"]!= "Recusar"){
-                              $id = $row["id_pedido"];
-                              $servico = $row["servico"];
-                              $calcado = $row["calcado"];
-                              $status = $row["status_pedido"];
-                              $idu = $row["id_utilizador"];
+                          $id = $row["id_pedido"];
+                          $servico = $row["servico"];
+                          $calcado = $row["calcado"];
+                          $status = $row["status_pedido"];
+                          $idu = $row["id_utilizador"];
+                          $senha = strtoupper($row["senha"]);
 
-                              $sqlUser = "SELECT * FROM utilizador where id_utilizador = $idu";
-                              $resultUser = $conn->query($sqlUser);
+                          $sqlUser = "SELECT * FROM utilizador WHERE id_utilizador = $idu";
+                          $resultUser = $conn->query($sqlUser);
 
-                              if ($resultUser->num_rows > 0) {
-                                  $rowUser = $resultUser->fetch_assoc();
-                                  $user = $rowUser["username"];
-                              }
-
-
-                              echo "
-                                 <tr>
-                                      <td class='text-center'>$id</td>
-                                      <td class='text-center'>$user</td>
-                                      <td class='text-center'>$servico</td>
-                                      <td class='text-center'>$calcado</td>
-                                      <td class='text-center'>$status</td>
-                                      <td class='text-center'><a href='pedidoDetalhado_admin.php?id=$id'><button class='button_detalhes'>Detalhes</button></a></td>
-                                 </tr>
-                                 ";
+                          if ($resultUser->num_rows > 0) {
+                              $rowUser = $resultUser->fetch_assoc();
+                              $user = $rowUser["username"];
                           }
+
+                          echo "
+            <tr>
+                <td class='text-center'>$senha</td>
+                <td class='text-center'>$user</td>
+                <td class='text-center'>$servico</td>
+                <td class='text-center'>$calcado</td>
+                <td class='text-center'>$status</td>
+                <td class='text-center'><a href='pedidoDetalhado_admin.php?id=$id'><button class='button_detalhes'>Detalhes</button></a></td>
+            </tr>
+        ";
                       }
                   }
                   ?>

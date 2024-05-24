@@ -3,9 +3,7 @@ session_start();
 global $conn;
 include("../basedados/db.h");
 
-$nomeUser = $_SESSION["user"];
-$user = $_GET["id"];
-echo $user;
+$user = $_GET["id"] ?? $_SESSION["user"];
 ?>
     <!DOCTYPE html>
     <html>
@@ -67,7 +65,7 @@ Calça Aqui
                                     echo '
                                         <a href="admin.php">
                                             <img src="images/user.png" alt="">   
-                                            <span style="text-decoration: none; color: white">' . htmlspecialchars($nomeUser) . '</span>                                    
+                                            <span style="text-decoration: none; color: white">' . htmlspecialchars($user) . '</span>                                    
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
@@ -79,7 +77,7 @@ Calça Aqui
                                         <a href="perfilCliente.php">
                                             
                                             <img src="images/user.png" alt="">   
-                                            <span style="text-decoration: none; color: white">' . htmlspecialchars($nomeUser) . '</span>                                    
+                                            <span style="text-decoration: none; color: white">' . htmlspecialchars($user) . '</span>                                    
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
@@ -296,9 +294,6 @@ if(isset($_POST["submit"]) && isset($_POST["feedback"])){
     }else{
         $feedback = $_POST["feedback"];
         $rating = $_POST["rating"];
-
-
-
 
         $sqlUser = "SELECT id_utilizador FROM utilizador WHERE username = '$user'";
         $resultUser = mysqli_query($conn, $sqlUser);

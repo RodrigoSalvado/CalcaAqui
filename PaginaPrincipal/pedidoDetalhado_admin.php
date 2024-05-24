@@ -62,6 +62,8 @@ try{
             }
         }
 
+        $sql = "UPDATE pedido_reparacao SET status_pedido = '$st' WHERE id_pedido = $id";
+        $result = mysqli_query($conn, $sql);
 
         if($estado == 2){
             $mail->addAddress($mailUser);
@@ -96,8 +98,7 @@ try{
         }
 
 
-        $sql = "UPDATE pedido_reparacao SET status_pedido = '$st' WHERE id_pedido = $id";
-        $result = mysqli_query($conn, $sql);
+
 
 
         echo "<script>alert('O estado foi atualizado para ".$st."');</script>";

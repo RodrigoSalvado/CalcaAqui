@@ -141,7 +141,6 @@
         <thead>
         <tr>
             <th class="text-center header" scope="col" role="columnheader"><span>Pedido</span></th>
-            <th class="text-center header" scope="col" role="columnheader"><span>Utilizador</span></th>
             <th class="text-center header" scope="col" role="columnheader"><span>Serviço</span></th>
             <th class="text-center header" scope="col" role="columnheader"><span>Calçado</span></th>
             <th class="text-center header" scope="col" role="columnheader"><span>Status</span></th>
@@ -169,14 +168,14 @@
                                 while ($row = $result->fetch_assoc()) {
                                     if($row["status_pedido"]!= "Recusar"){
                                         $id = $row["id_pedido"];
+                                        $senha = $row["senha"];
                                         $servico = $row["servico"];
                                         $calcado = $row["calcado"];
                                         $status = $row["status_pedido"];
 
                                         echo "
                                         <tr>
-                                                <td class='text-center'>$id</td>
-                                                <td class='text-center'>$username</td>
+                                                <td class='text-center'>$senha</td>
                                                 <td class='text-center'>$servico</td>
                                                 <td class='text-center'>$calcado</td>
                                                 <td class='text-center'>$status</td>

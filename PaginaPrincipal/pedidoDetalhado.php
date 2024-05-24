@@ -16,7 +16,6 @@ session_start();
             $nome = $row["nome"];
             $username = $row["username"];
             $email = $row["email"];
-
         }
 
     }else{
