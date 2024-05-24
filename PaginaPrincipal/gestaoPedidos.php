@@ -146,11 +146,14 @@ $nomeUser = $_SESSION["user"];
                   $offset = ($pagina_atual - 1) * $resultados_por_pagina;
 
                   // Query para buscar os resultados paginados
-                  $sql = "SELECT * FROM pedido_reparacao WHERE status_pedido != 'Recusar' ORDER BY 
-                          CASE 
-                            WHEN status_pedido = 'Concluido' THEN 1 
-                            ELSE 0 
-                          END, status_pedido LIMIT $offset, $resultados_por_pagina";
+                  $sql ="SELECT * FROM pedido_reparacao WHERE status_pedido != 'Recusado' ORDER BY 
+                              CASE 
+                                WHEN status_pedido = 'Em Espera' THEN 1 
+                                WHEN status_pedido = 'Em Progresso' THEN 2 
+                                WHEN status_pedido = 'Concluido' THEN 3 
+                                ELSE 4 
+                              END 
+                            LIMIT $offset, $resultados_por_pagina";
                   $result = $conn->query($sql);
 
                   if ($result->num_rows > 0) {

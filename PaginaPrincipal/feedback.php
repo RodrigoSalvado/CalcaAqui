@@ -33,8 +33,8 @@ $user = $_GET["id"] ?? $_SESSION["user"];
                 <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
                     <a class="navbar-brand" href="PaginaPrincipal.php">
             <span>
-Calça Aqui
-</span>
+              <img src="images/scissors.png" style="width: 80px">
+            </span>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -46,18 +46,12 @@ Calça Aqui
                                 <li class="nav-item active">
                                     <a class="nav-link" href="PaginaPrincipal.php">Página Principal <span class="sr-only">(current)</span></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="about.php"> Sobre Nós </a>
-                                </li>
+
                                 <li class="nav-item">
                                     <a class="nav-link" href="servicos.php"> Serviços </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="portfolio.php"> Portfolio </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.php">Contacte-nos</a>
-                                </li>
+
+
                             </ul>
                             <div class="user_option">
                                 <?php
@@ -69,6 +63,8 @@ Calça Aqui
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                                                                                                                    <span style="text-decoration: none; color: white">Logout</span>
+
                                         </a>
                                     ';
                                 }else if(isset($_SESSION["user"]) && $_SESSION["tipo"] == 2){
@@ -81,6 +77,8 @@ Calça Aqui
                                         </a>
                                         <a href="logout.php">
                                             <img id="logout" src="images/logout.png" alt="" style="width: 25px; margin-left: 20px">
+                                                                                        <span style="text-decoration: none; color: white">Logout</span>
+
                                         </a>
                                         
                                     ';
@@ -92,9 +90,7 @@ Calça Aqui
                                     ';
                                 }
                                 ?>
-                                <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                                    <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                                </form>
+
                             </div>
                         </div>
                     </div>

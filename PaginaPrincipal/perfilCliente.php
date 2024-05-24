@@ -161,14 +161,20 @@
                             $offset = ($pagina_atual - 1) * $resultados_por_pagina;
 
                             // Query para buscar os resultados paginados
-                            $sql = "SELECT * FROM pedido_reparacao WHERE id_utilizador = '$id_utilizador' LIMIT $offset, $resultados_por_pagina";
+                            $sql = "SELECT * FROM pedido_reparacao WHERE id_utilizador = '$id_utilizador' ORDER BY 
+                              CASE 
+                                WHEN status_pedido = 'Em Espera' THEN 1 
+                                WHEN status_pedido = 'Em Progresso' THEN 2 
+                                WHEN status_pedido = 'Concluido' THEN 3 
+                                ELSE 4 
+                              END LIMIT $offset, $resultados_por_pagina";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
                                     if($row["status_pedido"]!= "Recusar"){
                                         $id = $row["id_pedido"];
-                                        $senha = $row["senha"];
+                                        $senha = strtoupper($row["senha"]);
                                         $servico = $row["servico"];
                                         $calcado = $row["calcado"];
                                         $status = $row["status_pedido"];

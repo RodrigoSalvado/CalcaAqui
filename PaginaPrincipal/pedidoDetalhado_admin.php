@@ -90,7 +90,7 @@ try{
             $mail->addAddress($mailUser);
             $mail -> addEmbeddedImage('images/scissorsamarelo.png', 'logo');
             $mail->Subject = "O Seu Pedido Foi Recusado";
-            $mail->Body = "<html>Lamentamos ".$user.",mas não iremos avançar com a reparação do seu pedido.<br><br> 
+            $mail->Body = "<html>Lamentamos ".$user.", mas não iremos avançar com a reparação do seu pedido.<br><br> 
             Cumprimentos Calça Aqui.<br><br><br>
             <img src='cid:logo' style='width: 175px'></html>";
 
