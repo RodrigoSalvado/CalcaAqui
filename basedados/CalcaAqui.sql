@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Maio-2024 às 23:05
+-- Tempo de geração: 24-Maio-2024 às 21:12
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -83,7 +83,8 @@ INSERT INTO `feedback` (`id_feedback`, `id_utilizador`, `feedback`, `rating`) VA
                                                                                   (2, 7, 'qenflw', 2),
                                                                                   (3, 7, 'kwefb 2;v', 5),
                                                                                   (4, 4, 'Adorei o serviço', 4),
-                                                                                  (5, 4, 'Mau serviço', 1);
+                                                                                  (5, 4, 'Mau serviço', 1),
+                                                                                  (6, 4, 'Adorei!!!!!!', 4);
 
 -- --------------------------------------------------------
 
@@ -100,6 +101,7 @@ CREATE TABLE `pedido_reparacao` (
                                     `notas` text DEFAULT NULL,
                                     `servico` varchar(50) NOT NULL,
                                     `calcado` varchar(50) NOT NULL,
+                                    `senha` varchar(10) NOT NULL,
                                     `status_pedido` varchar(40) NOT NULL DEFAULT 'Em Espera'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -107,8 +109,12 @@ CREATE TABLE `pedido_reparacao` (
 -- Extraindo dados da tabela `pedido_reparacao`
 --
 
-INSERT INTO `pedido_reparacao` (`id_pedido`, `id_utilizador`, `data`, `foto`, `descricao`, `notas`, `servico`, `calcado`, `status_pedido`) VALUES
-    (24, 7, '2024-05-18 21:13:28', '', '', NULL, 'Costura de Calçado', '', 'Concluído');
+INSERT INTO `pedido_reparacao` (`id_pedido`, `id_utilizador`, `data`, `foto`, `descricao`, `notas`, `servico`, `calcado`, `senha`, `status_pedido`) VALUES
+                                                                                                                                                        (26, 4, '2024-05-23 17:40:54', 'Captura de ecrã 2023-07-02 030154.png', '', NULL, 'Costura de Calçado', 'Ténis', 'wr4vt', 'Recusar'),
+                                                                                                                                                        (27, 7, '2024-05-23 17:45:36', 'Captura de ecrã 2023-06-11 011309.png', '', NULL, 'Costura de Calçado', 'Sapato de Salto Alto', 'tfdd0', 'Concluído'),
+                                                                                                                                                        (28, 4, '2024-05-24 19:58:27', '', '', NULL, 'Engraxamento', '', '2eqip', 'Em Espera'),
+                                                                                                                                                        (29, 7, '2024-05-24 20:05:59', '', '', NULL, 'Muda de Capas e Solas', '', 'vsfzx', 'Em Progresso'),
+                                                                                                                                                        (30, 7, '2024-05-24 20:06:12', '', '', NULL, 'Limpeza de Calçado', '', 's54qj', 'Em Espera');
 
 -- --------------------------------------------------------
 
@@ -150,7 +156,7 @@ CREATE TABLE `status` (
 --
 
 INSERT INTO `status` (`id`, `status`, `cor`) VALUES
-                                                 (1, 'Em Espera', 'Blue'),
+                                                 (1, 'Em Espera', 'lightblue'),
                                                  (2, 'Em Progresso', 'Yellow'),
                                                  (3, 'Concluído', 'Green'),
                                                  (4, 'Recusar', 'Red');
@@ -261,13 +267,13 @@ ALTER TABLE `conta`
 -- AUTO_INCREMENT de tabela `feedback`
 --
 ALTER TABLE `feedback`
-    MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+    MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `pedido_reparacao`
 --
 ALTER TABLE `pedido_reparacao`
-    MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+    MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de tabela `servico`
