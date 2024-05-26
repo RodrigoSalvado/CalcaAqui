@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Maio-2024 às 21:12
+-- Tempo de geração: 26-Maio-2024 às 16:44
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.2.12
 
@@ -50,7 +50,7 @@ INSERT INTO `conta` (`id_utilizador`, `username`, `password`, `email`, `nome`, `
                                                                                                                 (5, 'pedroduarte', 'c6cc8094c2dc07b700ffcc36d64e2138', 'pedro@gmail.com', 'Pedro Duarte', 'masculino', 2),
                                                                                                                 (6, 'Pedrocas', '202cb962ac59075b964b07152d234b70', 'pedrorduarte135@gmail.com', 'Pedro Duarte', 'masculino', 2),
                                                                                                                 (7, 'Kirlitos1', '202cb962ac59075b964b07152d234b70', 'rodrigosalvado51@gmail.com', 'Rodrigo Salvado', 'masculino', 2),
-                                                                                                                (9, 'fm', '202cb962ac59075b964b07152d234b70', 'fran04mateus11@gmail.com', 'Francisco Mateus', 'outro', 2),
+                                                                                                                (9, 'Fm', '202cb962ac59075b964b07152d234b70', 'fran04mateus11@gmail.com', 'Francisco Mateus', 'outro', 2),
                                                                                                                 (10, 'Rodrigo', '202cb962ac59075b964b07152d234b70', 'dsgaj@gmail.com', 'Rodrigo Salvado', 'masculino', 2);
 
 --
@@ -79,12 +79,9 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`id_feedback`, `id_utilizador`, `feedback`, `rating`) VALUES
-                                                                                  (1, 7, 'Bom dia', 3),
-                                                                                  (2, 7, 'qenflw', 2),
-                                                                                  (3, 7, 'kwefb 2;v', 5),
-                                                                                  (4, 4, 'Adorei o serviço', 4),
-                                                                                  (5, 4, 'Mau serviço', 1),
-                                                                                  (6, 4, 'Adorei!!!!!!', 4);
+                                                                                  (1, 10, 'No inicio não estava com muita fé, mas como não tinha outra alternativa optei pelo CalçaAqui, melhor decisão possível. Que trabalho bem feito', 4),
+                                                                                  (2, 6, 'Excelente serviços, foi tudo muito prático e rápido, uma semana e já tive o meu serviço pronto, recomendo ', 4),
+                                                                                  (3, 9, 'Foram muito atenciosos, viram o meu problema e resolveram num instante, quem me dera que fossem todos assim!', 5);
 
 -- --------------------------------------------------------
 
@@ -202,7 +199,7 @@ INSERT INTO `utilizador` (`id_utilizador`, `username`, `email`) VALUES
                                                                     (5, 'pedroduarte', 'pedro@gmail.com'),
                                                                     (6, 'Pedrocas', 'pedrorduarte135@gmail.com'),
                                                                     (7, 'Kirlitos1', 'rodrigosalvado51@gmail.com'),
-                                                                    (9, 'fm', 'fran04mateus11@gmail.com'),
+                                                                    (9, 'Fm', 'fran04mateus11@gmail.com'),
                                                                     (10, 'Rodrigo', 'dsgaj@gmail.com');
 
 --
@@ -267,7 +264,7 @@ ALTER TABLE `conta`
 -- AUTO_INCREMENT de tabela `feedback`
 --
 ALTER TABLE `feedback`
-    MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+    MODIFY `id_feedback` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `pedido_reparacao`
