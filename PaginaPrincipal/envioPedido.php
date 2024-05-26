@@ -66,7 +66,7 @@ if(isset($botao)) {
 
     if($resultInsert){
         echo "O seu pedido foi criado com sucesso!";
-        header("Location: PaginaPrincipal.php");
+        header("Location: index.php");
 
     }else{
         echo "<script>window.alert('Não foi possivel criar o pedido! Tente novamente.') ;</script>";

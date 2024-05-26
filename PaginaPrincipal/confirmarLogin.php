@@ -30,7 +30,7 @@
                 //Identifica o utilizador
                 $_SESSION["user"] = $row["username"];
                 $_SESSION["tipo"] = $row["tipo_utilizador"];
-                header("Location: PaginaPrincipal.php");
+                header("Location: index.php");
             }else{
                 $_SESSION["user"] = -1;
                 $_SESSION["tipo"] = -1;

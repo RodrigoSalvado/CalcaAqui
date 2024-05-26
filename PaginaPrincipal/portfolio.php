@@ -31,7 +31,7 @@ $nomeUser = $_SESSION["user"];
     <header class="header_section">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-                <a class="navbar-brand" href="PaginaPrincipal.php">
+                <a class="navbar-brand" href="index.php">
             <span>
               Calça Aqui
             </span>
@@ -44,7 +44,7 @@ $nomeUser = $_SESSION["user"];
                     <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                         <ul class="navbar-nav  ">
                             <li class="nav-item active">
-                                <a class="nav-link" href="PaginaPrincipal.php">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="about.php"> About </a>

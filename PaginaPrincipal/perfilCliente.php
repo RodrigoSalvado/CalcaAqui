@@ -54,7 +54,7 @@
     <header class="header_section">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-                <a class="navbar-brand" href="PaginaPrincipal.php">
+                <a class="navbar-brand" href="index.php">
             <span>
               <img src="images/scissors.png" style="width: 80px">
             </span>
@@ -67,7 +67,7 @@
                     <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
                         <ul class="navbar-nav  ">
                             <li class="nav-item active">
-                                <a class="nav-link" href="PaginaPrincipal.php">Página Principal <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="index.php">Página Principal <span class="sr-only">(current)</span></a>
                             </li>
 
                             <li class="nav-item">
