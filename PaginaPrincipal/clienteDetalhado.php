@@ -189,10 +189,11 @@ if($resultPedidos -> num_rows > 0){
                                 $servico = $row["servico"];
                                 $calcado = $row["calcado"];
                                 $status = $row["status_pedido"];
+                                $senha = strtoupper($row["senha"]);
 
                                 echo "
                                 <tr>
-                                        <td class='text-center'>$id</td>
+                                        <td class='text-center'>$senha</td>
                                         <td class='text-center'>$servico</td>
                                         <td class='text-center'>$calcado</td>
                                         <td class='text-center'>$status</td>
