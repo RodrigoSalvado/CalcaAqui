@@ -26,8 +26,6 @@ session_start();
     if(isset($_GET['id_pedido'])){
         $id_pedido = $_GET['id_pedido'];
 
-    }else{
-        echo "erro id";
     }
 
     $sqlDetalhado = "SELECT data, descricao, servico, calcado,foto, status_pedido FROM pedido_reparacao WHERE id_pedido = '$id_pedido'";
@@ -43,7 +41,6 @@ session_start();
             $foto = $row["foto"];
         }
 
-    }else{
     }
 
 // Data no formato padrão do MySQL
