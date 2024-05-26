@@ -42,12 +42,6 @@ if(isset($botao)) {
         }
     }
 
-
-    echo "Username: ".$username."<br>";
-    echo "Tipo Servico: ".$tipo_servico."<br>";
-    echo "Descricao: ".$descricao."<br>";
-    echo "Tipo Calcado: ".$tipo_calcado."<br>";
-
     $sql = "SELECT id_utilizador FROM utilizador WHERE username = '$username';";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
@@ -55,8 +49,6 @@ if(isset($botao)) {
     }
 
     $id_utilizador = $row["id_utilizador"];
-
-    echo "Id: ".$id_utilizador."<br>";
 
 
     $sql = "INSERT INTO `pedido_reparacao`(`id_utilizador`, `descricao`, `servico`, `calcado`, `foto`, `senha`) VALUES 
@@ -69,7 +61,7 @@ if(isset($botao)) {
         header("Location: index.php");
 
     }else{
-        echo "<script>window.alert('Não foi possivel criar o pedido! Tente novamente.') ;</script>";
+        echo "<script>window.alert('Não foi possivel criar o pedido! Tente novamente.') ; window.location.href = 'formularioPedido.php';</script>";
     }
 
 

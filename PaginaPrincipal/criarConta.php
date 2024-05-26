@@ -27,18 +27,11 @@ global $conn;
     $registo = $_POST["botao"];
 
     if(isset($registo)){
-        //testes
-        echo $nomeCompleto . "<br>";
-        echo "$username". "<br>";
-        echo "$email". "<br>";
-        echo "$genero" . "<br>";
-        echo "$password". "<br>";
-        echo "$confPassword". "<br>";
 
         if(isset($nome, $sobrenome, $username, $email, $genero, $password, $confPassword)){
 
             if($password != $confPassword){
-               echo "<script>window.alert('As passwords não coincidem!') ;</script>";
+                echo "<script>window.alert('As passwords não coincidem!') ; window.location.href = 'login.php';</script>";
                // echo "As passwords nao conincidem";
             }else{
                 //encriptacao da password
@@ -57,7 +50,7 @@ global $conn;
                         header("Location: login.php");
 
                     }else{
-                        echo "<script>window.alert('Não foi possivel criar a conta! Tente novamente.') ;</script>";
+                        echo "<script>window.alert('Não foi possivel criar a conta! Tente novamente.') ; window.location.href = 'login.php';</script>";
                     }
                 }
             }
