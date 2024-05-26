@@ -6,8 +6,6 @@ session_start();
 $nomeUser = $_SESSION["user"];
 if(isset($_GET['id_utilizador'])){
     $id_utilizador = $_GET['id_utilizador'];
-}else{
-    echo "erro id";
 }
 
 //user information

@@ -27,8 +27,6 @@ if ($result->num_rows > 0) {
       $nome = $row["nome"];
       $email = $row["email"];
   }
-} else {
-  echo "Informações do utilizador não encontradas.";
 }
 
 ?>
