@@ -90,7 +90,6 @@ $user = $_GET["id"] ?? $_SESSION["user"];
                                     ';
                                 }
                                 ?>
-
                             </div>
                         </div>
                     </div>
