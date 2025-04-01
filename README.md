@@ -41,7 +41,7 @@ To import the project database:
 
 Access phpMyAdmin through your browser: http://localhost/phpmyadmin
 
-Select the Import option on the homepage and choose the file basedados/criar_bd.sql.
+Select the Import option on the homepage and choose the file basedados/CalcaAqui.sql.
 
 Click Execute to complete the import.
 
